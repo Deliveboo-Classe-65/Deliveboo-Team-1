@@ -40,10 +40,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Category model relationship
     public function categories() {
         return $this->belongsToMany('App\Category');
     }
 
+    // Dish model relationship
     public function dishes() {
         return $this->hasMany('App\Dish');
     }

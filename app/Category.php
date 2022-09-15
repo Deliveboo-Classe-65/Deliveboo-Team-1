@@ -16,6 +16,7 @@ class Category extends Model
         'name', 'color', 'image'
     ];
 
+    // User model relationship
     public function users() {
         return $this->belongsToMany('App\User');
     }

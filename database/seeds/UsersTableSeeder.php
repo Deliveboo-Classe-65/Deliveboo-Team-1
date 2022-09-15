@@ -18,6 +18,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        // Create a user array, which represents a list of restaurants. 
+        // Each user will have an email, a password, a name, a description, an address, an image src and a vat_number.
+        // It also has one key for an array of categories and one for an array of dishes, which are objects.
+        // Each dish will have a name, a price and a description. It may also have an image src and a visibility key.
         $users = [
             [
                 'email' => 'diablo@gmail.com',
@@ -27,6 +31,9 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Via della Liberazione 42',
                 'image' => '/storage/img/ristoranti/diablo.jpg',
                 'vat_number' => '11101010100',
+                'categories' => [
+                    'messicano'
+                ],
                 'dishes' => [
                     [
                         'name' => "Burrito",
@@ -54,6 +61,9 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Via della Pistoiese 120',
                 'image' => '/storage/img/ristoranti/summer_palace.jpg',
                 'vat_number' => '11101010101',
+                'categories' => [
+                    'cinese'
+                ],
                 'dishes' => [
                     [
                         'name' => "Nuvole di drago",
@@ -68,13 +78,16 @@ class UsersTableSeeder extends Seeder
                 ]
             ],      
             [
-                'email' => 'goong@gmail.com',
-                'password' => 'goong123',
-                'name' => 'Goong',
-                'description' => 'Il primo ristorante coreano nel lazio dove potrete gustare il fantastico sapore dei piatti coreani, famosi per essere benifici per la salute.',
+                'email' => 'nikkosushi@gmail.com',
+                'password' => 'nikkosushi123',
+                'name' => 'Nikko Sushi',
+                'description' => 'Ristorante giapponese a Roma che offre piatti cucinati da chef esperti della cucina e della tradizione giapponese, come il sushi, sashimi e noodles. ',
                 'address' => 'Via Ognissanti',
-                'image' => '/storage/img/ristoranti/goong.jpg',
+                'image' => '/storage/img/ristoranti/nikko_sushi.jpg',
                 'vat_number' => '22202020202',
+                'categories' => [
+                    'giapponese'
+                ],
                 'dishes' => [
                     [
                         'name' => "Nighiri",
@@ -96,6 +109,9 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Via Ferrucci 22/B',
                 'image' => '/storage/img/ristoranti/raja_indian_lounge_restaurant.jpg',
                 'vat_number' => '22202020203',
+                'categories' => [
+                    'indiano'
+                ],
                 'dishes' => [
                     [
                         'name' => "Daulat Ki Chaat",
@@ -122,6 +138,9 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Via Cavour 116',
                 'image' => '/storage/img/ristoranti/atomic_falafel.jpg',
                 'vat_number' => '33303030303',
+                'categories' => [
+                    'arabo'
+                ],
                 'dishes' => [
                     [
                         'name' => "Hummus",
@@ -147,6 +166,9 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Via Firenze 66',
                 'image' => '/storage/img/ristoranti/il_sipario.jpg',
                 'vat_number' => '44404040404',
+                'categories' => [
+                    'pizza, italiano'
+                ],
                 'dishes' => [
                     [
                         'name' => "Margherita",
@@ -179,7 +201,7 @@ class UsersTableSeeder extends Seeder
                 'image' => '/storage/img/ristoranti/runner_pizza.jpg',
                 'vat_number' => '66606060606',
                 'categories' => [
-                    'pizza', 'italiano'
+                    'pizza'
                 ],
                 'dishes' => [
                     [
@@ -213,6 +235,9 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Via Cavour 116',
                 'image' => '/storage/img/ristoranti/mcdonalds.jpg',
                 'vat_number' => '55505050505',
+                'categories' => [
+                    'hamburger'
+                ],
                 'dishes' => [
                     [
                         'name' => "Big Mac",
@@ -239,6 +264,9 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Via Cava 100',
                 'image' => '/storage/img/ristoranti/burger_king.jpg',
                 'vat_number' => '77707070707',
+                'categories' => [
+                    'hamburger'
+                ],
                 'dishes' => [
                     [
                         'name' => "Big King",
@@ -266,7 +294,7 @@ class UsersTableSeeder extends Seeder
                 'image' => '/storage/img/ristoranti/farid_kebab.jpg',
                 'vat_number' => '99909090909',
                 'categories' => [
-                    'arabo'
+                    'arabo', 'piadina'
                 ],
                 'dishes' => [
                     [
@@ -288,28 +316,51 @@ class UsersTableSeeder extends Seeder
             ]             
         ];
 
+        // Start iterating on the array
         foreach($users as $user) {
+            // Create an istance of the User model
             $newUser = new User();
+            // Set its values
             $newUser->email = $user['email'];
+            // Save the hashed password only
             $newUser->password = Hash::make($user['password']);
             $newUser->name = $user['name'];
+            // Save a slug
             $newUser->slug = Str::slug($user['name']);
+            if (key_exists('description', $user)) {
+                $newUser->description = $user['description'];
+            }
             $newUser->address = $user['address'];
             $newUser->image = $user['image'];
             $newUser->vat_number = $user['vat_number'];
+            // Save data to database
             $newUser->save();
-            if(key_exists('categories', $user)) {
-                foreach($user['categories'] as $category) {
-                    $variable = Category::where('name', $category)->first();
-                    $newUser->categories()->attach($variable);
-                }
+
+            // Start iterating on the categories array
+            foreach($user['categories'] as $category) {
+                // Find the matching category in the database
+                $variable = Category::where('name', $category)->first();
+                // Link the user to its category
+                $newUser->categories()->attach($variable);
             }
+
+            // Start iterating on the dishes array
             foreach($user['dishes'] as $dish) {
+                // Create an istance of the Dish model
                 $newDish = new Dish();
+                // Set the value of the user_id FK
                 $newDish->user_id = $newUser->id;
+                // Set its values
                 $newDish->name = $dish['name'];
                 $newDish->price = $dish['price'];
                 $newDish->description = $dish['description'];
+                if (key_exists('image', $dish)) {
+                    $newDish->image = $dish['image'];
+                }
+                if (key_exists('visibility', $dish)) {
+                    $newDish->visibility = $dish['visibility'];
+                }
+                // Save data to database
                 $newDish->save();
             }
         }

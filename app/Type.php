@@ -17,6 +17,7 @@ class Type extends Model
         'name', 'image'
     ];
 
+    // Dish model relationship
     public function dishes() {
         return $this->belongsToMany('App\Dish');
     }

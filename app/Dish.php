@@ -18,14 +18,17 @@ class Dish extends Model
         'name', 'price', 'description', 'image', 'visibility'
     ];
 
+    // User model relationship
     public function users() {
         return $this->belongsTo('App\User');
     }
 
+    // Type model relationship
     public function types() {
         return $this->belongsToMany('App\Type');
     }
 
+    // Order model relationship
     public function orders() {
         return $this->belongsToMany('App\Order');
     }

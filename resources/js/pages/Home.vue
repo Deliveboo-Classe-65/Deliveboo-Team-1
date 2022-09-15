@@ -1,5 +1,8 @@
 <template>
-    <h1>Ciao</h1>
+    <div>    
+        <h1>Ciao</h1>
+        <img src="/storage/img/categoria_messicano.png">
+    </div>
 </template>
 
 <script>

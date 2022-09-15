@@ -22,9 +22,9 @@ class UsersTableSeeder extends Seeder
                 'email' => 'diablo@gmail.com',
                 'password' => 'diablo123',
                 'name' => 'Diablo',
-                'description' => '',
+                'description' => 'Al Diablo potrai gustare i veri sapori e colori del Messico in piatti che riprendono le ricette tradizionali messicane con uno stile contemporaneo',
                 'address' => 'Via della Liberazione 42',
-                'image' => '/img/ristoranti/diablo.jpg',
+                'image' => '/storage/img/ristoranti/diablo.jpg',
                 'vat_number' => '11101010100',
                 'dishes' => [
                     [
@@ -36,30 +36,249 @@ class UsersTableSeeder extends Seeder
                         'name' => "Chilaquiles",
                         'price' => 4.99,
                         'description' => "Per chilaquiles si intende delle tortilla di mais che, dopo essere state tagliate in quarti e leggermente fritte, vengono ammorbidite e insaporite in un composto a base di salsa verde o rossa, carne di pollo, formaggio e fagioli fritti."
-                    ]
+                    ],
+                    [
+                        'name' => "Enchilada",
+                        'price' => 4.69,
+                        'description' => "La enchilada (o, solitamente, enchiladas) è un piatto tipico della tradizione culinaria messicana, composto da una tortilla ripiena, arrotolata su se stessa e condita con salsa chili. Il ripieno della tortilla può essere di vari tipi: carne, formaggio, verdura, fagioli."
+                    ],
+
                 ]
             ],
             [
-                'email' => 'cinese@gmail.com',
-                'password' => 'cinese123',
-                'name' => 'cinese',
-                'description' => '',
-                'address' => 'Via della Liberazione 42',
-                'image' => '/img/ristoranti/cinese.jpg',
-                'vat_number' => '11101010100',
+                'email' => 'summerpalace@gmail.com',
+                'password' => 'summerpalace123',
+                'name' => 'Summer Palace',
+                'description' => 'Ristorante Cinese che serve solo cibo autentico del Sichuan, ricette tradizionali, una esperienza nuova.',
+                'address' => 'Via della Pistoiese 120',
+                'image' => '/storage/img/ristoranti/summer_palace.jpg',
+                'vat_number' => '11101010101',
                 'dishes' => [
                     [
                         'name' => "Nuvole di drago",
                         'price' => 4.99,
-                        'description' => "Il burrito o taco de harina è una pietanza che appartiene alla cucina tex-mex e consiste in una tortilla di farina di grano riempita con carne di bovino, pollo o maiale, che è poi chiusa ottenendo una forma sottile."
+                        'description' => "Le nuvole di drago sono un tipico antipasto cinese. Sono delle patate fritte di colore bianco a base di granchio, particolarmente leggere. Generalmente sono accompagnate dalla tipica salsa agrodolce cinese"
                     ],
                     [
                         'name' => "Involtini primavera",
                         'price' => 4.99,
-                        'description' => "Per chilaquiles si intende delle tortilla di mais che, dopo essere state tagliate in quarti e leggermente fritte, vengono ammorbidite e insaporite in un composto a base di salsa verde o rossa, carne di pollo, formaggio e fagioli fritti."
+                        'description' => "Gli involtini primavera sono un antipasto tipico cinese, molto apprezzato in Occidente. Sono dei fagottini di pasta con un ripieno di verdure, di carne o misto e in origine venivano preparati per festeggiare il Capodanno Cinese, che portava con sè anche la primavera."
                     ]
                 ]
-            ]       
+            ],      
+            [
+                'email' => 'goong@gmail.com',
+                'password' => 'goong123',
+                'name' => 'Goong',
+                'description' => 'Il primo ristorante coreano nel lazio dove potrete gustare il fantastico sapore dei piatti coreani, famosi per essere benifici per la salute.',
+                'address' => 'Via Ognissanti',
+                'image' => '/storage/img/ristoranti/goong.jpg',
+                'vat_number' => '22202020202',
+                'dishes' => [
+                    [
+                        'name' => "Nighiri",
+                        'price' => 5.99,
+                        'description' => "8 pezzi, nigiri è una pallina ovale di riso, modellata a mano e guarnita da una fettina sottile di pesce. Solitamente si tratta di salmone, tonno, anguilla, polpo, gambero o anche di frittata."
+                    ],
+                    [
+                        'name' => "Hosomaki",
+                        'price' => 5.99,
+                        'description' => "8 pezzi, un tipico hosomaki consiste in un rotolino di riso avvolto in alga Nori (un particolare tipo di alga, che viene essiccata e tostata). Il ripieno può essere di pesce, crostacei, frutta o verdura."
+                    ]
+                ]
+            ],       
+            [
+                'email' => 'rajaindianloungerestaurant@gmail.com',
+                'password' => 'rajaindianloungerestaurant123',
+                'name' => 'Raja Indian Lounge Restaurant',
+                'description' => 'Benvenuti al Raja, dove la tradizionale cucina indiana si unisce alla famosa ospitalità di questo meraviglioso paese. Specialità indiane cucinate con cura e raffinatezza, una incredibile varietà di pietanze per incontrare, ne siamo certi, il gusto degli italiani.',
+                'address' => 'Via Ferrucci 22/B',
+                'image' => '/storage/img/ristoranti/raja_indian_lounge_restaurant.jpg',
+                'vat_number' => '22202020203',
+                'dishes' => [
+                    [
+                        'name' => "Daulat Ki Chaat",
+                        'price' => 6.70,
+                        'description' => "Deliziosi anche i dolci indiani tipici tra cui non posso non menzionare il Daulat ki Chaat, un vero e proprio soufflé a base di latte, panna, zucchero, pistacchi e spezie quali lo zafferano. Si tratta di una ricetta dipica della città di Delhi, ma diffusa in tutto il Paese, apprezzata sia per la colazione che per un goloso fine pasto."
+                    ],
+                    [
+                        'name' => "Kati Rool",
+                        'price' => 5.20,
+                        'description' => "Il Kati Roll invece, originario di Calcutta è un tipico cibo da strada del tutto simile a un kebab: la ricetta consiste nell’arrotolare all’interno del pane paratha, una sorta di piadina, carne di agnello e verdure. E’ comunque possibile gustare kati con carne di pollo o accompagnarlo a una rinfrescante salsa a base di lime o limone, o ancora al chaat masala, miscela di spezie e mango in polvere."
+                    ],
+                    [
+                        'name' => "Pollo Tandoori",
+                        'price' => 7,70,
+                        'description' => "Il Pollo Tandoori è senza dubbio una delle tipicità che fanno parte della cucina indiana, anche se particolarmente popolare anche nella cucina del sud-est asiatico. Consiste nel marinare il pollo in una salsa di yogurt e spezie chiamata Tandoori Masala che prevede l’utilizzo di coriandolo, cumino, aglio, cannella, cardamomo, pepe di Cayenna, pepe, zenzero, chiodi di garofano e alloro per poi cuocerlo come da tradizione all’interno di particolari forni di argilla detti Tandoor da cui trae origine il nome."
+                    ],
+                ]
+            ],       
+            [
+                'email' => 'atomicfalafel@gmail.com',
+                'password' => 'atomicfalafel123',
+                'name' => 'Atomic Falafel',
+                'description' => 'Atomic Falafel propone il vero gusto dello street food mediorientale portando le sue speziate fragranze a Roma.',
+                'address' => 'Via Cavour 116',
+                'image' => '/storage/img/ristoranti/atomic_falafel.jpg',
+                'vat_number' => '33303030303',
+                'dishes' => [
+                    [
+                        'name' => "Hummus",
+                        'price' => 4.20,
+                        'description' => "L'hummus è una salsa a base di pasta di ceci e pasta di semi di sesamo (tahina) aromatizzata con olio di oliva, aglio, succo di limone e paprica, semi di cumino in polvere e prezzemolo finemente tritato."
+                    ],
+                    [
+                        'name' => "Labneh",
+                        'price' => 4.99,
+                        'description' => "Il labneh, pronunciato anche labaneh, è un tipo di yogurt di colore bianco, realizzato con latte di pecora, vacca, occasionalmente con latte di capra, tipico delle cucine del Medio Oriente."
+                    ],
+                    [
+                        'name' => "Manakeesh",
+                        'price' => 4.99,
+                        'description' => "Lo Za'atar è una miscela di spezie originaria del Medio Oriente. Il termine arabo zaʿtar si riferisce ad alcune piante locali della famiglia delle Lamiaceae, tra le quali maggiorana, origano e timo."
+                    ],
+                ]
+            ],      
+            [
+                'email' => 'ilsipario@gmail.com',
+                'password' => 'ilsipario123',
+                'name' => 'Il Sipario',
+                'address' => 'Via Firenze 66',
+                'image' => '/storage/img/ristoranti/il_sipario.jpg',
+                'vat_number' => '44404040404',
+                'dishes' => [
+                    [
+                        'name' => "Margherita",
+                        'price' => 4.50,
+                        'description' => "La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella, basilico fresco, sale e olio; è, assieme alla pizza marinara, la più popolare pizza italiana."
+                    ],
+                    [
+                        'name' => "Diavola",
+                        'price' => 6.00,
+                        'description' => "Pomodoro, mozzarella, acciughe, cipolle, olive, olio piccante"
+                    ],
+                    [
+                        'name' => "Capricciosa",
+                        'price' => 6.50,
+                        'description' => "La pizza capricciosa è una pizza tipica della cucina italiana caratterizzata da un condimento di pomodoro, mozzarella, prosciutto cotto (o spesso anche crudo), funghi (di solito champignon), olive verdi e nere, e carciofini e spesso uova."
+                    ],
+                    [
+                        'name' => "Wurstel patatine",
+                        'price' => 5.50,
+                        'description' => "La pizza würstel e patatine è notoriamente la pizza preferita dai bambini, quindi farete felici i vostri piccoli se inserirete anche questo gusto alla prossima pizzata in famiglia, garantito."
+                    ],
+
+                ]
+            ],
+            [
+                'email' => 'runnerpizza@gmail.com',
+                'password' => 'runnerpizza123',
+                'name' => 'Runner Pizza',
+                'address' => 'Via dei Casini 60/A',
+                'image' => '/storage/img/ristoranti/runner_pizza.jpg',
+                'vat_number' => '66606060606',
+                'dishes' => [
+                    [
+                        'name' => "Margherita",
+                        'price' => 4.50,
+                        'description' => "La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella, basilico fresco, sale e olio; è, assieme alla pizza marinara, la più popolare pizza italiana."
+                    ],
+                    [
+                        'name' => "Diavola",
+                        'price' => 6.00,
+                        'description' => "Pomodoro, mozzarella, acciughe, cipolle, olive, olio piccante"
+                    ],
+                    [
+                        'name' => "Capricciosa",
+                        'price' => 6.50,
+                        'description' => "La pizza capricciosa è una pizza tipica della cucina italiana caratterizzata da un condimento di pomodoro, mozzarella, prosciutto cotto (o spesso anche crudo), funghi (di solito champignon), olive verdi e nere, e carciofini e spesso uova."
+                    ],
+                    [
+                        'name' => "Wurstel patatine",
+                        'price' => 5.50,
+                        'description' => "La pizza würstel e patatine è notoriamente la pizza preferita dai bambini, quindi farete felici i vostri piccoli se inserirete anche questo gusto alla prossima pizzata in famiglia, garantito."
+                    ],
+
+                ]
+            ],
+            [
+                'email' => 'mcdonalds@gmail.com',
+                'password' => 'mcdonalds123',
+                'name' => 'McDonalds',
+                'description' => "La McDonald's Corporation è una catena di ristoranti di fast food statunitense",
+                'address' => 'Via Cavour 116',
+                'image' => '/storage/img/ristoranti/mcdonalds.jpg',
+                'vat_number' => '55505050505',
+                'dishes' => [
+                    [
+                        'name' => "Big Mac",
+                        'price' => 6.60,
+                        'description' => "Il classico che mette d’accordo tutti, con carne bovina al 100%, formaggio, salsa Big Mac, insalata, cipolla, cetriolo e pane."
+                    ],
+                    [
+                        'name' => "Mc Chicken",
+                        'price' => 4.90,
+                        'description' => "Tutta la semplicità del petto di pollo avvolto in una panatura croccante, insieme all’insalata iceberg e all’inconfondibile salsa McChicken. Con petto di pollo italiano, insalata iceberg, salsa McChicken e pane."
+                    ],
+                    [
+                        'name' => "Gran Crispy McBacon",
+                        'price' => 6.20,
+                        'description' => "Chi ama il Crispy McBacon® ne prenderebbe volentieri un altro e un altro e un altro e un altro ancora. Per questo c’è il Gran Crispy McBacon®: carne 100% bovina da allevamenti italiani, croccante bacon 100% da pancetta italiana, formaggio e l'inconfondibile salsa Crispy. Come il classico, ma ancora più grande. Con carne 100% bovina, formaggio, bacon, salsa Crispy e pane."
+                    ],
+                ]
+            ],             
+            [
+                'email' => 'burgerking@gmail.com',
+                'password' => 'burgerking123',
+                'name' => 'Burger King',
+                'description' => "IL NOSTRO GUSTO? SUPERIORE. BURGER KING®. A MODO TUO.",
+                'address' => 'Via Cava 100',
+                'image' => '/storage/img/ristoranti/burger_king.jpg',
+                'vat_number' => '77707070707',
+                'dishes' => [
+                    [
+                        'name' => "Big King",
+                        'price' => 6.80,
+                        'description' => "Il re degli hamburger è qui. Il nostro BIG KING® ti conquisterà con doppia carne di manzo alla griglia, formaggio e deliziosa salsa BIG KING®. Un hamburger decisamente maestoso, che, con i suoi 4 pollici di diametro, rende merito al proprio nome."
+                    ],
+                    [
+                        'name' => "Grilled Chicken Royale",
+                        'price' => 5.20,
+                        'description' => "Panino con petto di pollo grigliato Fileni 100% Italiano, il mix perfetto per chi vuole consumare cibo genuino senza rinunciare al gusto! I polli sono allevati a terra e vengono nutriti con alimenti 100% italiani. L'abbinamento con il soncino, il pomodoro, i delicati petali di parmigiano reggiano e la maionese contribuiscono a rendere questo panino veramente unico e delizioso!"
+                    ],
+                    [
+                        'name' => "Bacon King 3.0",
+                        'price' => 6.70,
+                        'description' => "L'evoluzione del Bacon King: 3 strati di carne alla griglia, 3 strati di formaggio e 8 fette di delizioso bacon. Vieni a scoprire Bacon King 3.0 in tutta la sua esagerazione."
+                    ],
+                ]
+            ],             
+            [
+                'email' => 'faridkebab@gmail.com',
+                'password' => 'faridkebab123',
+                'name' => 'Farid Kebab',
+                'description' => "Il miglior kebab di Roma comodamente a casa tua.",
+                'address' => 'Via Santa Trinita 30',
+                'image' => '/storage/img/ristoranti/farid_kebab.jpg',
+                'vat_number' => '99909090909',
+                'dishes' => [
+                    [
+                        'name' => "Panino Kebab",
+                        'price' => 3.50,
+                        'description' => "Il kebab, in turco kebap, significa carne arrostita. È un piatto tipico della cucina turca a base di carne, diventato popolare in tutto il mondo grazie alle immigrazioni provenienti dal Medio Oriente"
+                    ],
+                    [
+                        'name' => "Piadina Kebab",
+                        'price' => 4.00,
+                        'description' => "Una buona piadina è sempre un’ottima idea per un pranzo veloce o da consumare fuori casa. Questa versione con kebab di pollo e verdure è particolarmente sfiziosa e particolare"
+                    ],
+                    [
+                        'name' => "Falafel",
+                        'price' => 4.00,
+                        'description' => "I falafel sono una pietanza mediorientale costituita da polpette di legumi speziate e fritte. I più utilizzati sono le fave, i ceci e i fagioli tritati e conditi con sommacco, cipolla, aglio, cumino e coriandolo. I falafel sostituivano la carne nei giorni del digiuno dei copti egiziani. Il termine è formato da tre parole che in copto significavano letteralmente 'con tanti fagioli'."
+                    ],
+                ]
+            ]             
         ];
 
         foreach($users as $user) {

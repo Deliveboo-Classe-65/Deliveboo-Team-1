@@ -23,14 +23,64 @@ class CategoriesTableSeeder extends Seeder
                 'name' => "italiano",
                 'color' => "00CCBC",
                 'image' => "/storage/img/categorie/categoria_italiano.png"
-            ]
+            ],
+
+            [
+                'name' => "pizza",
+                'color' => "00727D",
+                'image' => "/storage/img/categorie/categoria_pizza.png"
+            ],
+
+            [
+                'name' => "arabo",
+                'color' => "CC3A2F",
+                'image' => "/storage/img/categorie/categoria_arabo.png"
+            ],
+
+            [
+                'name' => "cinese",
+                'color' => "3B0055",
+                'image' => "/storage/img/categorie/categoria_cinese.png"
+            ],
+
+            [
+                'name' => "indiano",
+                'color' => "FABE00",
+                'image' => "/storage/img/categorie/categoria_indiano.png"
+            ],
+
+            [
+                'name' => "hamburger",
+                'color' => "00CCBC",
+                'image' => "/storage/img/categorie/categoria_hamburger.png"
+            ],
+
+            [
+                'name' => "bakery",
+            ],
+
+            [
+                'name' => "piadina",
+            ],
+
+            [
+                'name' => "libanese",
+            ],
+
         ];
+
+
+
 
         foreach ($categories as $category) {
             $data = new Category();
             $data->name = $category['name'];
-            $data->color = $category['color'];
-            $data->image = $category['image'];
+            if (key_exists('color', $category)) {
+                $data->color = $category['color'];
+            }
+            if (key_exists('image', $category)) {
+                $data->image = $category['image'];
+            }
             $data->save();
         }
     }

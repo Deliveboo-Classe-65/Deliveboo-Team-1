@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use Illuminate\Database\Seeder;
 
 use App\User;
@@ -177,6 +178,9 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Via dei Casini 60/A',
                 'image' => '/storage/img/ristoranti/runner_pizza.jpg',
                 'vat_number' => '66606060606',
+                'categories' => [
+                    'pizza', 'italiano'
+                ],
                 'dishes' => [
                     [
                         'name' => "Margherita",
@@ -261,6 +265,9 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Via Santa Trinita 30',
                 'image' => '/storage/img/ristoranti/farid_kebab.jpg',
                 'vat_number' => '99909090909',
+                'categories' => [
+                    'arabo'
+                ],
                 'dishes' => [
                     [
                         'name' => "Panino Kebab",
@@ -291,6 +298,12 @@ class UsersTableSeeder extends Seeder
             $newUser->image = $user['image'];
             $newUser->vat_number = $user['vat_number'];
             $newUser->save();
+            if(key_exists('categories', $user)) {
+                foreach($user['categories'] as $category) {
+                    $variable = Category::where('name', $category)->first();
+                    $newUser->categories()->attach($variable);
+                }
+            }
             foreach($user['dishes'] as $dish) {
                 $newDish = new Dish();
                 $newDish->user_id = $newUser->id;

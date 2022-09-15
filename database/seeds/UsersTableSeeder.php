@@ -167,7 +167,7 @@ class UsersTableSeeder extends Seeder
                 'image' => '/storage/img/ristoranti/il_sipario.jpg',
                 'vat_number' => '44404040404',
                 'categories' => [
-                    'pizza, italiano'
+                    'pizza', 'italiano'
                 ],
                 'dishes' => [
                     [

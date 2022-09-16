@@ -7,8 +7,12 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+
+use App\Mail\MailBenvenuto;
 
 class RegisterController extends Controller
 {
@@ -56,9 +60,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'description' => ['nullable'],
             'address' => ['required'],
-            'image' => ['required'],
+            'image' => ['required', 'image'],
             'vat_number' => ['required'],
-
         ]);
     }
 
@@ -70,24 +73,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $img_src = Storage::put("/img/ristoranti", $data['image']);
+
+        $newUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'slug' => Str::slug($data['name']),
             'description' => $data['description'],
             'address' => $data['address'],
-            'image' => $data['image'],
+            'image' => '/storage/' . $img_src,
             'vat_number' => $data['vat_number']
         ]);
+        
+        Mail::to($data['email'])->send(new MailBenvenuto($data['name']));
+
+        return $newUser;
+
     }
 }
-
-// $table->id();
-// $table->string('slug')->unique();
-// $table->text('description')->nullable();
-// $table->string('address');
-// $table->string('image');
-// $table->string('vat_number');
-// $table->rememberToken();
-// $table->timestamps();

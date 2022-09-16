@@ -56,6 +56,7 @@ class OrderTableSeeder extends Seeder
                 }
 
                 $newOrder->created_at = $faker->dateTimeBetween('-1 year');
+                $newOrder->sent = $newOrder->created_at;
                 $newOrder->total = $total;
                 $newOrder->update();
             }

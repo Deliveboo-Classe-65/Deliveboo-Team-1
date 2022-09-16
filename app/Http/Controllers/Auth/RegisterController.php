@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -53,6 +54,11 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'description' => ['nullable'],
+            'address' => ['required'],
+            'image' => ['required'],
+            'vat_number' => ['required'],
+
         ]);
     }
 
@@ -68,6 +74,20 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'slug' => Str::slug($data['name']),
+            'description' => $data['description'],
+            'address' => $data['address'],
+            'image' => $data['image'],
+            'vat_number' => $data['vat_number']
         ]);
     }
 }
+
+// $table->id();
+// $table->string('slug')->unique();
+// $table->text('description')->nullable();
+// $table->string('address');
+// $table->string('image');
+// $table->string('vat_number');
+// $table->rememberToken();
+// $table->timestamps();

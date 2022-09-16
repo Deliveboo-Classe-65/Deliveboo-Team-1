@@ -55,6 +55,7 @@ class OrderTableSeeder extends Seeder
                     $total += $detail['price'] * $detail['pivot']['quantity'];
                 }
 
+                $newOrder->created_at = $faker->dateTimeBetween('-1 year');
                 $newOrder->total = $total;
                 $newOrder->update();
             }

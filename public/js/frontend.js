@@ -15949,8 +15949,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\Boolean\Repos\deliveboo-team-1\resources\js\frontend.js */"./resources/js/frontend.js");
-module.exports = __webpack_require__(/*! E:\Boolean\Repos\deliveboo-team-1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/constantinandtodirascu/learntocode/boolean/deliveboo-team-1/resources/js/frontend.js */"./resources/js/frontend.js");
+module.exports = __webpack_require__(/*! /Users/constantinandtodirascu/learntocode/boolean/deliveboo-team-1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -27920,7 +27920,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Boolean\Repos\deliveboo-team-1\resources\js\backend.js */"./resources/js/backend.js");
+module.exports = __webpack_require__(/*! /Users/constantinandtodirascu/learntocode/boolean/deliveboo-team-1/resources/js/backend.js */"./resources/js/backend.js");
 
 
 /***/ })

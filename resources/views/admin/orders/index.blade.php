@@ -7,7 +7,7 @@
                 <div class="col-lg-8">
                     <div class="card mb-1">
                         <div class="card-body py-1">
-                            <div class="card-title mb-0 d-flex align-items-center justify-content-between">
+                            <div class="card-title py-2 mb-0 d-flex align-items-center justify-content-between">
                                 <div class="col-md-2"> Ordine # {{ $order->id }}</div>
                                 <div class="col-md-2">Totale: € {{ $order->total }}</div>
                                 <div class="col-md-3">Orario consegna: {{ $order->chosen_delivery_time }}</div>
@@ -20,11 +20,11 @@
                                     <ul class="list-group col-lg-5 mb-2 mb-lg-0">
                                         <li class="list-group-item">
                                             <div class="row">
-                                                <div class="col-5">
+                                                <div class="col-9">
                                                     Articolo
                                                 </div>
-                                                <div class="col-5">
-                                                    Quantità
+                                                <div class="col-3">
+                                                    Q.tà
                                                 </div>
                                             </div>
                                         </li>
@@ -32,10 +32,10 @@
                                         @foreach ($order->dishes as $dish)
                                             <li class="list-group-item">
                                                 <div class="row">
-                                                    <div class="col-5">
+                                                    <div class="col-9">
                                                         {{ $dish->name }}
                                                     </div>
-                                                    <div class="col-5">
+                                                    <div class="col-3">
                                                         {{ $dish->pivot->quantity }}
                                                     </div>
                                                 </div>

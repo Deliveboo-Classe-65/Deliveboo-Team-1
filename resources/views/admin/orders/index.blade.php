@@ -4,20 +4,20 @@
     <div class="container">
         <div class="row justify-content-center">
             @foreach ($index as $order)
-                <div class="col-8">
+                <div class="col-lg-8">
                     <div class="card mb-1">
                         <div class="card-body py-1">
                             <div class="card-title mb-0 d-flex align-items-center justify-content-between">
-                                <div> Ordine # {{ $order->id }}</div>
-                                <div>Totale: € {{ $order->total }}</div>
-                                <div>Orario consegna: {{ $order->chosen_delivery_time }}</div>
+                                <div class="col-md-2"> Ordine # {{ $order->id }}</div>
+                                <div class="col-md-2">Totale: € {{ $order->total }}</div>
+                                <div class="col-md-3">Orario consegna: {{ $order->chosen_delivery_time }}</div>
                                 <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target={{ '#order' . $order->id }}>
                                     Dettagli Ordine
                                 </button>
                             </div>
                             <div class="collapse" id={{ 'order' . $order->id }}>
                                 <div class="card-text row px-2 py-2" >
-                                    <ul class="list-group col-4">
+                                    <ul class="list-group col-lg-5 mb-2 mb-lg-0">
                                         <li class="list-group-item">
                                             <div class="row">
                                                 <div class="col-5">
@@ -42,8 +42,8 @@
                                             </li>
                                         @endforeach
                                     </ul>
-                                    <div class="col-8">
-                                        <ul class="list-group">
+                                    
+                                        <ul class="list-group col-lg-7">
                                             <li class="list-group-item d-flex">
                                                 <div class="col-4">
                                                     Nome:
@@ -69,7 +69,7 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

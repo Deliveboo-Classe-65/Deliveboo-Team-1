@@ -9,7 +9,7 @@ use App\Order;
 class OrderController extends Controller
 {
     public function index($userId){
-        $index = Order::where('user_id', $userId)->get()->load('dishes')->toArray();
-        dd($index);
+        $index = Order::where('user_id', $userId)->get()->load('dishes');
+        return view('admin.orders.index', compact('index'));
     }
 }

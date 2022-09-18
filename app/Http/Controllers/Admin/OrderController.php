@@ -19,7 +19,14 @@ class OrderController extends Controller
 
         $this->checkId($userId);
 
-        $index = Order::where('user_id', $userId)->get()->load('dishes');
+        // $indexNull = Order::where([['user_id', $userId]])
+        //     ->whereNull('sent')
+        //     ->get();
+        // $indexNull->load('dishes');
+        $index = Order::where([['user_id', $userId]])->orderByRaw('sent IS NULL DESC, sent DESC, chosen_delivery_time asc')
+        // ->whereNotNull('sent')
+        ->get();
+        $index->load('dishes');
         return view('admin.orders.index', compact('index'));
     }
 }

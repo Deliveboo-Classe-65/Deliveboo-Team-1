@@ -12,6 +12,12 @@
                             <div class="col-md-2">Totale: €{{ $order->total }}</div>
                             <div class="col-md-2">Data: {{ $order->created_at->format('d/m/Y') }}</div>
                             <div class="col-md-3">Orario consegna: {{ $order->chosen_delivery_time }}</div>
+                            <form action="{{ route('admin.set_order_sent', ['postId' => $order->id]) }}" method="post">
+                                @csrf
+                                <button class="btn btn-sm {{ $order->sent ? 'disabled btn-outline-success' : 'btn-warning' }}">
+                                    Preparato
+                                </button>
+                            </form>
                             <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse" data-bs-target={{ '#order' . $order->id }}>
                                 Dettagli
                             </button>

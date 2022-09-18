@@ -22,6 +22,7 @@ Route::middleware("auth")
         Route::get('/home', 'HomeController@index')->name('home');
         // Route::resource("users", "UserController");
         Route::get('orders/{userId}', 'OrderController@index')->name('orders_index');
+        Route::post('orders', 'OrderController@setOrderSent')->name('set_order_sent');
     });
 
 Route::get('{any?}', function () {

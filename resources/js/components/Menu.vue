@@ -8,7 +8,7 @@
                 <div class="row mt-4 gap-4">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="card my-card">
+                            <div class="my-card">
                                 <div class="row">
                                     <div class="col col-8">
                                         <div class="card-body">
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="card my-card">
+                            <div class="my-card">
                                 <div class="row">
                                     <div class="col col-8">
                                         <div class="card-body">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="card my-card">
+                            <div class="my-card">
                                 <div class="row">
                                     <div class="col col-8">
                                         <div class="card-body">
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="card my-card">
+                            <div class="my-card">
                                 <div class="row">
                                     <div class="col col-8">
                                         <div class="card-body">
@@ -122,6 +122,10 @@
         max-height: 132px;
         max-width: 100%;
         overflow: hidden;
+        border-radius: 4px;
+        padding: 1rem;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,.04);
 
     }
 

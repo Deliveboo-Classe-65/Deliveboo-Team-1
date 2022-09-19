@@ -16,6 +16,15 @@ class Category extends Model
         'name', 'color', 'image'
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at', 'updated_at',
+    ];
+
     // User model relationship
     public function users() {
         return $this->belongsToMany('App\User');

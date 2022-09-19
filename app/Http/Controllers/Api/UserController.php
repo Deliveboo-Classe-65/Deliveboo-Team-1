@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index(Request $request) {
         // Get all users and load its categories
-        $users = User::with("categories")->select(["name"])->get();
+        $users = User::with("categories")->select("id", "name", "slug", "image")->get();
         // Get the query string
         $queryString = $request->query();
         if (key_exists("categories", $queryString)) {
@@ -30,7 +30,7 @@ class UserController extends Controller
 
     public function show($id) {
         // Get the user with the specified id
-        $user = User::findOrFail($id);
+        $user = User::with("categories")->select("id", "name", "slug", "description", "address", "image")->findOrFail($id);
         // Returns the user
         return response()->json($user);
     }

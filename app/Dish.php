@@ -18,6 +18,15 @@ class Dish extends Model
         'name', 'price', 'description', 'image', 'visibility'
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'visibility','created_at', 'updated_at',
+    ];
+
     // User model relationship
     public function users() {
         return $this->belongsTo('App\User');

@@ -24,6 +24,7 @@ Route::middleware("auth")
         // Route::resource("users", "UserController");
         Route::get('orders/{userId}', 'OrderController@index')->name('orders_index');
         Route::post('orders', 'OrderController@setOrderSent')->name('set_order_sent');
+        Route::resource("dishes", "DishController");
     });
 
 Route::get('{any?}', function () {

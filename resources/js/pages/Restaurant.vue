@@ -1,7 +1,7 @@
 <template>
     <section class="restaurant">
         <div class="container">
-            <div class="row border-bottom">
+            <div class="row">
                 <!-- Restaurant image -->
                 <div class="col col-3 m-3">
                     <img src="../../../public/img/bk.jpeg" alt="Burger King" class="w-100">
@@ -56,6 +56,7 @@
 
 .restaurant {
         background-color: #fff;
+        border-bottom: 1px solid rgba(0,0,0,.08);
     }
     .icon {
         width: 20px;

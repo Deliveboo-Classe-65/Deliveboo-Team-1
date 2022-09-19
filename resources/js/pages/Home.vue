@@ -1,12 +1,15 @@
 <template>
-    <div>    
-        <h1>Ciao</h1>
+    <div></div>
+
+
+   
+    <!-- <h1>Ciao</h1>
         <img src="/storage/img/categorie/categoria_messicano.png">
-    </div>
+    </div> -->
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {
+
+}
 </script>

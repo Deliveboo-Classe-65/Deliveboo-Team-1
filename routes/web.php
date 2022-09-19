@@ -22,6 +22,8 @@ Route::middleware("auth")
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('admin');
         // Route::resource("users", "UserController");
+        Route::get('orders/{userId}', 'OrderController@index')->name('orders_index');
+        Route::post('orders', 'OrderController@setOrderSent')->name('set_order_sent');
     });
 
 Route::get('{any?}', function () {

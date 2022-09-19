@@ -30,6 +30,6 @@ class Dish extends Model
 
     // Order model relationship
     public function orders() {
-        return $this->belongsToMany('App\Order');
+        return $this->belongsToMany('App\Order')->withPivot('quantity');
     }
 }

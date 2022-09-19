@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row border-bottom">
             <!-- Restaurant image -->
-            <div class="col col-3">
-                <img src="" alt="">
+            <div class="col col-3 m-3">
+                <img src="../../../public/img/bk.jpeg" alt="Burger King" class="w-100">
             </div>
             <!-- Restaurant name and description -->
-            <div class="col">
+            <div class="col m-3">
                 <h1>Burger King</h1>
                 <div class="d-flex categories">
                     <p class="delivery-time">20 - 25 minuti</p>
@@ -16,7 +16,10 @@
                 <h5>IL NOSTRO GUSTO? SUPERIORE. BURGER KING®. A MODO TUO.</h5>
             </div>
             <!-- Restaurant time to deliver -->
-            <div class="col col-3">
+            <div class="col col-3 m-3 d-flex">
+                <div class="icon">
+                    <img src="../../../public/img/biker_icon.png" alt="biker icon" class="w-100">
+                </div>
                 <p>Tempo previsto di consegna: 20 - 25 minuti</p>
             </div>
         </div>
@@ -48,5 +51,9 @@
 </script>
 
 <style lang="scss">
-
+    .icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 4px;
+    }
 </style>

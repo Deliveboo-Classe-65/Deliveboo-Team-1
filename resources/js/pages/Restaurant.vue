@@ -1,25 +1,24 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div class="row border-bottom">
             <!-- Restaurant image -->
-            <div class="col">
-                <h1>restaurant component</h1>
+            <div class="col col-3">
                 <img src="" alt="">
             </div>
-            <!-- Restaurant description -->
+            <!-- Restaurant name and description -->
             <div class="col">
-
+                <h1>Burger King</h1>
+                <div class="d-flex categories">
+                    <p class="delivery-time">20 - 25 minuti</p>
+                    <p class="me-3">Americano</p>
+                    <p class="me-3">Hamburger</p>
+                </div>
+                <h5>IL NOSTRO GUSTO? SUPERIORE. BURGER KING®. A MODO TUO.</h5>
             </div>
             <!-- Restaurant time to deliver -->
-            <div class="col">
-
+            <div class="col col-3">
+                <p>Tempo previsto di consegna: 20 - 25 minuti</p>
             </div>
-        </div>
-        <div class="row">
-            <!-- Restautant menù -->
-            <div class="col col-8"></div>
-            <!--  Checkout-->
-            <div class="col col-4"></div>
         </div>
     </div>
 </template>

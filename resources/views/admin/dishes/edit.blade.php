@@ -1,6 +1,6 @@
 @php
     function checked($type, $dish, $old, $errors) {
-      if ($errors->has("name") || $errors->has("description") || $errors->has("price") || $errors->has("image")) {
+      if ($errors->count() > 0) {
         if (in_array($type->id, $old ?? [])) {
           return 'checked';
         }
@@ -49,7 +49,10 @@
         <label for="img_file" class="form-label">Immagine</label>
 
         <div class="d-flex">
+          @if ($dish->image)
           <img class="img-thumbnail" style="width: 150px" src="{{ asset('storage/' . $dish->image) }}">
+          @endif
+          
           <input type="file" name="image" class="form-control-file @error('image') is-invalid @enderror" id="img_file">
         </div>
         @error('image')
@@ -68,20 +71,20 @@
 
       @foreach ($types as $type)
       <div class="form-check">
-          <input class="form-check-input" {{ checked($type, $dish, old("type"), $errors) }} name="types[]" type="checkbox" value="{{ $type->id }}" id="{{"flexCheckDefault" . $type->id}}">
+          <input class="form-check-input" {{ checked($type, $dish, old("types"), $errors) }} name="types[]" type="checkbox" value="{{ $type->id }}" id="{{"flexCheckDefault" . $type->id}}">
           <label class="form-check-label" for={{"flexCheckDefault" . $type->id}}>
             {{ $type->name }}
           </label>
       </div>
       @endforeach
-
+      
       <div class="form-check">
-        <input class="form-check-input" {{ old("visibility") ? 'checked' : '' }} name="visibility" type="checkbox" value="1" id="flexCheckDefault">
+        <input class="form-check-input" {{ $errors->count() === 0 && $dish->visibility === 1 || old("visibility") ? 'checked' : '' }} name="visibility" type="checkbox" value="1" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
           Visibile
         </label>
       </div>
-
+      
       <div class="d-flex gap-2">
         <button type="submit" class="btn btn-success">Salva</button>
         <a href="{{ route('admin.dishes.index') }}" class="btn btn-danger">Annulla</a>

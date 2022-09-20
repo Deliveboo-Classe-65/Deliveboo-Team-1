@@ -115,7 +115,8 @@ class DishController extends Controller
             'price' => "required",
             'description' => "required|min:10|max:300",
             'types' => "nullable",
-            'image' => 'nullable|image'
+            'image' => 'nullable|image',
+            'visibility' => 'nullable|boolean'
         ]);
         
         $dish = Dish::findOrFail($id);
@@ -128,6 +129,10 @@ class DishController extends Controller
             
             $image = Storage::put("/img/dishes", $validated["image"]);
             $dish->image = $image;
+        }
+
+        if (!key_exists("visibility", $validated)){
+            $dish->visibility = 0;
         }
         
         $dish->update($validated);

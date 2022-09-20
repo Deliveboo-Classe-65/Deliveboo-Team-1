@@ -27,7 +27,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="name" class="form-label">Nome</label>
-                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Inserisci il nome del piatto" value="{{ old('name') }}">
+                    <input type="text" required minlength="5" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Inserisci il nome del piatto" value="{{ old('name') }}">
                     @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -71,7 +71,7 @@
                 @endforeach
 
                 <div class="form-check">
-                  <input class="form-check-input" {{ old("visibility") ? 'checked' : '' }} name="visibility" type="checkbox" value="1" id="flexCheckDefault">
+                  <input class="form-check-input" {{ old("visibility") || $errors->count() === 0 ? 'checked' : '' }} name="visibility" type="checkbox" value="1" id="flexCheckDefault">
                   <label class="form-check-label" for="flexCheckDefault">
                     Visibile
                   </label>

@@ -38,12 +38,12 @@
             </nav>
         </header>
 
-        <!-- <div class="content"> -->
+        <div class="content">
             <video autoplay muted loop class="video-jb">
                 <source src="img/jb.mp4">
             </video>
 
-        <!-- </div> -->
+        </div>
     </div>
 
 </template>

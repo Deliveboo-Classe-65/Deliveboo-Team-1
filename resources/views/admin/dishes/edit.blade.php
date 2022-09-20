@@ -1,5 +1,5 @@
 @php
-    function hello($type, $dish, $old, $errors) {
+    function checked($type, $dish, $old, $errors) {
       if ($errors->has("name") || $errors->has("description") || $errors->has("price") || $errors->has("image")) {
         if (in_array($type->id, $old ?? [])) {
           return 'checked';
@@ -55,7 +55,7 @@
 
       @foreach ($types as $type)
       <div class="form-check">
-          <input class="form-check-input" {{ hello($type, $dish, old("type"), $errors) }} name="type[]" type="checkbox" value="{{ $type->id }}" id="{{"flexCheckDefault" . $type->id}}">
+          <input class="form-check-input" {{ checked($type, $dish, old("type"), $errors) }} name="types[]" type="checkbox" value="{{ $type->id }}" id="{{"flexCheckDefault" . $type->id}}">
           <label class="form-check-label" for={{"flexCheckDefault" . $type->id}}>
             {{ $type->name }}
           </label>

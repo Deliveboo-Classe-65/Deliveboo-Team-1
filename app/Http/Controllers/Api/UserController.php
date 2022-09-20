@@ -15,22 +15,25 @@ class UserController extends Controller
         $users = User::with("categories")->select("id", "name", "slug", "image")->get();
         // Get the query string
         $queryString = $request->query();
+        // Check if categories is a query field
         if (key_exists("categories", $queryString)) {
+            // Filter users so that the result contains only users with the specified categories
             $users = $users->filter(function ($user) use($queryString) {
-                if($user->categories()->get()->toArray()) {
-                    $categories = $user->categories()->get()->toArray()[0]["name"];
-                    return $queryString["categories"] === $categories;
+                $userCategories = $user->categories()->get();
+                foreach($queryString["categories"] as $category) {
+                    if ($userCategories->contains($category)) {
+                        return true;
+                    }
                 }
                 return false;
             });
         }
-        // Returns array containing all users
         return response()->json($users);
     }
 
     public function show($id) {
         // Get the user with the specified id
-        $user = User::with("categories")->select("id", "name", "slug", "description", "address", "image")->findOrFail($id);
+        $user = User::with("categories", "dishes")->select("id", "name", "slug", "description", "address", "image")->findOrFail($id);
         // Returns the user
         return response()->json($user);
     }

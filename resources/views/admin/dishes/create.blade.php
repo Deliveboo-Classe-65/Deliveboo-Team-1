@@ -63,7 +63,7 @@
 
                 @foreach ($types as $type)
                   <div class="form-check">
-                    <input class="form-check-input" checked name="type[]" type="checkbox" value="{{ $type->id }}" id="{{"flexCheckDefault" . $type->id}}">
+                    <input class="form-check-input" checked name="types[]" type="checkbox" value="{{ $type->id }}" id="{{"flexCheckDefault" . $type->id}}">
                     <label class="form-check-label" for={{"flexCheckDefault" . $type->id}}>
                       {{ $type->name }}
                     </label>

@@ -1,29 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="container">
-        <div class="row">
-            <!-- Restaurant image -->
-            <div class="col">
-                <h1>restaurant component</h1>
-                <img src="" alt="">
-            </div>
-            <!-- Restaurant description -->
-            <div class="col">
-
-            </div>
-            <!-- Restaurant time to deliver -->
-            <div class="col">
-
-            </div>
-        </div>
-        <div class="row">
-            <!-- Restautant menù -->
-            <div class="col col-8"></div>
-            <!--  Checkout-->
-            <div class="col col-4"></div>
-        </div>
-    </div>
-=======
     <section class="restaurant py-3">
         <div class="container">
             <div class="row restaurant-row">
@@ -51,10 +26,11 @@
             </div>
         </div>
     </section>
->>>>>>> adds-restaurant-and-menù
+
 </template>
 
 <script>
+    
     import axios from "axios"
 
     export default {
@@ -76,9 +52,6 @@
         }
     }
 
-<<<<<<< HEAD
-</script>
-=======
 </script>
 
 <style lang="scss">
@@ -99,4 +72,4 @@
         margin-right: 4px;
     }
 </style>
->>>>>>> adds-restaurant-and-menù
+

@@ -1,8 +1,9 @@
 <template>
     <div>
         <TheNavbar></TheNavbar>
+      
 
-        <TheMain></TheMain>
+
         <router-view></router-view>
 
         <TheFooter></TheFooter>
@@ -13,10 +14,11 @@
 <script>
 import TheNavbar from './components/TheNavbar.vue';
 import TheFooter from './components/TheFooter.vue';
-import TheMain from './components/TheMain.vue';
+import Home from './pages/Home.vue';
+import Restaurant from './pages/Restaurant.vue';
 
 export default {
-    components: { TheNavbar, TheFooter, TheMain }
+    components: { TheNavbar, TheFooter, Home, Restaurant }
 }
 </script>
 

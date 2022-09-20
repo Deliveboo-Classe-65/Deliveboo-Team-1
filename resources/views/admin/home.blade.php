@@ -8,13 +8,14 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <div>
+                        <strong>Piatti:</strong>
+                        <a href="{{ route('admin.dishes.index') }}">Vai ai piatti</a>
+                    </div>
+                    <div>
+                        <strong>Ordini:</strong>
+                        <a href="{{ route('admin.orders.index') }}">Vedi tutti gli ordini</a>
+                    </div>
                 </div>
             </div>
         </div>

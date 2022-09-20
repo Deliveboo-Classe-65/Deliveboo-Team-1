@@ -6,6 +6,7 @@
         <Restaurant></Restaurant>
         <Menu></Menu>
 
+
     </div>
 </template>
 

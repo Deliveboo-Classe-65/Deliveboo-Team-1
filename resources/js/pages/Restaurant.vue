@@ -26,9 +26,13 @@
             </div>
         </div>
     </section>
+
+
 </template>
 
 <script>
+    
+
     import axios from "axios"
 
     export default {
@@ -70,3 +74,4 @@
         margin-right: 4px;
     }
 </style>
+

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +20,11 @@ Route::middleware("auth")
     ->namespace("Admin")
     ->prefix("admin")
     ->group(function () {
-        Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/', 'HomeController@index')->name('admin');
         // Route::resource("users", "UserController");
+        Route::get('orders', 'OrderController@index')->name('orders.index');
+        Route::post('orders', 'OrderController@setOrderSent')->name('set_order_sent');
+        Route::resource("dishes", "DishController");
     });
 
 Route::get('{any?}', function () {

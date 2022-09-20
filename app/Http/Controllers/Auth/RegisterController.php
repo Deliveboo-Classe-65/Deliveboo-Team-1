@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Category;
 
 use App\Mail\MailBenvenuto;
 
@@ -44,6 +45,12 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showRegistrationForm()
+    {
+        $category = Category::all();
+        return view('auth.register')->with('category',$category);
     }
 
     /**

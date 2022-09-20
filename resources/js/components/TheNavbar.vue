@@ -8,7 +8,7 @@
                         <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
                     <button type="button" class="btn btn-outline-secondary">
-                        <router-link class="nav-link" :to="{ name: 'restaurants.index' }">
+                        <router-link class="nav-link" :to="{ name: 'home.index' }">
                             Visualizza i ristoranti</router-link>
                     </button>
 

@@ -4,14 +4,17 @@ import Home from "./pages/Home";
 import Restaurant from "./pages/Restaurant"
 
 
+Vue.use(VueRouter)
 
 
 
 const routes = [
-    { path: "/", component: Home, name: "Home" },
+    { path: "/restaurants", component: Home, name: "home.index" },
+    { path: "/users/:id", component: Restaurant, name: "restaurant.show" },
     
     
-    { path: "/restaurants", component: Restaurant, name: "restaurants.index" },
+    
+    // { path: "/restaurants", component: Restaurant, name: "restaurants.index" },
 
 
 

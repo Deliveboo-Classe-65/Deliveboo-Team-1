@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description', ['description' => 'descrizione ristorante']) }}</label>
 
                             <div class="col-md-6">
                                 <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" autocomplete="textarea" autofocus>{{ old('description') }}</textarea>

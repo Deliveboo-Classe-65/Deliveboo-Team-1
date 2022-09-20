@@ -357,9 +357,7 @@ class UsersTableSeeder extends Seeder
                 if (key_exists('image', $dish)) {
                     $newDish->image = $dish['image'];
                 }
-                if (key_exists('visibility', $dish)) {
-                    $newDish->visibility = $dish['visibility'];
-                }
+                $newDish->visibility = 1;
                 // Save data to database
                 $newDish->save();
             }

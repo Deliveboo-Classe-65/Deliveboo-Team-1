@@ -26,7 +26,7 @@
             </button>
             <div class="collapse" id="orders-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-4">
-                    <li><a href="{{ route('admin.orders_index') }}" class="link-dark d-inline-flex text-decoration-none rounded">Lista Ordini</a></li>
+                    <li><a href="{{ route('admin.orders.index') }}" class="link-dark d-inline-flex text-decoration-none rounded">Lista Ordini</a></li>
                     <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Grafico Fatturato</a></li>
                 </ul>
             </div>

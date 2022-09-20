@@ -1,7 +1,6 @@
 @extends('admin.home')
 
 @section('content')
-<div class="container">
     <div class="row justify-content-center">
         @foreach ($orders as $order)
             <div class="col-lg-8">
@@ -84,6 +83,5 @@
             </div>
         @endforeach
     </div>
-</div>
 
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Dish;
 use App\Type;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -31,6 +32,7 @@ class DishController extends Controller
     public function show($id)
     {
         $dish = Dish::findOrFail($id);
+        $dish->load("types");
 
         return view('admin.dishes.show', compact('dish'));
     }
@@ -61,14 +63,25 @@ class DishController extends Controller
             'price' => "required",
             'description' => "required|min:10|max:300",
             'types' => "nullable",
+            'image' => 'nullable|image',
+            'visibility' => 'nullable|boolean'
         ]);
         
         $newDish = new Dish();
         $newDish->fill($validated);
         $newDish->user_id = Auth::user()->id;
+        if (key_exists("image", $validated)) {
+            $image = Storage::put("/img/dishes", $validated["image"]);
+            $newDish->image = $image;
+        }
         $newDish->save();
         
-        $newDish->types()->sync($validated['types']);
+        
+        if (key_exists("types", $validated)) {
+            $newDish->types()->sync($validated['types']);
+        } else {
+            $newDish->types()->detach();
+        }
         
         
         return redirect()->route('admin.dishes.show', $newDish->id);
@@ -102,6 +115,7 @@ class DishController extends Controller
             'price' => "required",
             'description' => "required|min:10|max:300",
             'types' => "nullable",
+            'image' => 'nullable|image'
         ]);
         
         $dish = Dish::findOrFail($id);
@@ -112,7 +126,7 @@ class DishController extends Controller
                 Storage::delete($dish->image);
             }
             
-            $image = Storage::put("/dishes", $validated["image"]);
+            $image = Storage::put("/img/dishes", $validated["image"]);
             $dish->image = $image;
         }
         
@@ -135,7 +149,6 @@ class DishController extends Controller
     public function destroy($id)
     {
         $dish = Dish::findOrFail($id);
-
         $dish->delete();
 
         return redirect()->route("admin.dishes.index");

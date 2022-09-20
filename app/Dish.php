@@ -7,15 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Type;
 use App\Order;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Dish extends Model
 {
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'price', 'description', 'image', 'visibility'
+        'name', 'price', 'description', 'visibility'
     ];
 
     /**

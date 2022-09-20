@@ -73,15 +73,18 @@
         </nav>
 
         <main class="py-4">
-            <div class="row">
-                <div class="col-10">@yield('content')</div>
-                @guest 
-                @else
-                <div class="col-2">
-                    @include('admin.components.sidebar')
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-10">@yield('content')</div>
+                    @guest 
+                    @else
+                    <div class="col-2">
+                        @include('admin.components.sidebar')
+                    </div>
+                    @endguest
+                    
                 </div>
-                @endguest
-                
             </div>
             
         </main>

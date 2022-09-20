@@ -17,11 +17,9 @@ class OrderController extends Controller
     }
 
     public function index(){
-
-
-        $index = Order::where([['user_id', Auth::user()->id]])->orderByRaw('sent IS NULL DESC, sent DESC, chosen_delivery_time asc')->get();
-        $index->load('dishes');
-        return view('admin.orders.index', compact('index'));
+        $orders = Order::where([['user_id', Auth::user()->id]])->orderByRaw('sent IS NULL DESC, sent DESC, chosen_delivery_time asc')->get();
+        $orders->load('dishes');
+        return view('admin.orders.index', compact('orders'));
     }
 
     public function setOrderSent (Request $request){
@@ -29,6 +27,6 @@ class OrderController extends Controller
         $order->sent = Carbon::now();
         $order->update();
 
-        return redirect()->route("admin.orders_index", $order->user_id);
+        return redirect()->route("admin.orders.index", $order->user_id);
     }
 }

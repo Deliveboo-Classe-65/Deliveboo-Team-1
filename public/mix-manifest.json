@@ -1,5 +1,6 @@
 {
     "/js/backend.js": "/js/backend.js",
+    "/js/backend/dishesvalidation.js": "/js/backend/dishesvalidation.js",
     "/js/frontend.js": "/js/frontend.js",
     "/css/app.css": "/css/app.css"
 }

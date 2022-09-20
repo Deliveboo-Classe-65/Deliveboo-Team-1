@@ -10,6 +10,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    @if (Route::currentRouteName() == 'admin.dishes.edit' || Route::currentRouteName() == 'admin.dishes.create' )
+        <script src="{{ asset('js/backend/dishesvalidation.js') }}" defer></script>
+    @endif
     <script src="{{ asset('js/backend.js') }}" defer></script>
 
     <!-- Fonts -->

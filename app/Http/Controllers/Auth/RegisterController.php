@@ -49,8 +49,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $category = Category::all();
-        return view('auth.register')->with('category',$category);
+        $categories = Category::all();
+        return view('auth.register')->with('categories',$categories);
     }
 
     /**
@@ -62,13 +62,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:5', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'description' => ['nullable'],
-            'address' => ['required'],
+            'description' => ['nullable', 'max:999'],
+            'address' => ['required', 'min:5', 'max:255'],
             'image' => ['required', 'image'],
-            'vat_number' => ['required'],
+            'vat_number' => ['required', 'min:11', 'max:11'],
+            'categories' => ['required']
         ]);
     }
 
@@ -80,7 +81,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $img_src = Storage::put("/img/ristoranti", $data['image']);
+        $img_src = Storage::put("/img/restaurants", $data['image']);
 
         $newUser = User::create([
             'name' => $data['name'],
@@ -89,9 +90,11 @@ class RegisterController extends Controller
             'slug' => Str::slug($data['name']),
             'description' => $data['description'],
             'address' => $data['address'],
-            'image' => '/storage/' . $img_src,
+            'image' => substr($img_src, 16),
             'vat_number' => $data['vat_number']
         ]);
+
+        $newUser->categories()->attach($data['categories']);
         
         Mail::to($data['email'])->send(new MailBenvenuto($data['name']));
 

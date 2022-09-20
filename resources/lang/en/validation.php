@@ -30,7 +30,7 @@ return [
         'array' => 'The :attribute must have between :min and :max items.',
     ],
     'boolean' => 'The :attribute field must be true or false.',
-    'confirmed' => 'The :attribute confirmation does not match.',
+    'confirmed' => 'Le password non coincidono.',
     'date' => 'The :attribute is not a valid date.',
     'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format' => 'The :attribute does not match the format :format.',
@@ -39,7 +39,7 @@ return [
     'digits_between' => 'The :attribute must be between :min and :max digits.',
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
-    'email' => 'The :attribute must be a valid email address.',
+    'email' => 'Il campo :attribute deve contenere un indirizzo email valido.',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'exists' => 'The selected :attribute is invalid.',
     'file' => 'The :attribute must be a file.',
@@ -79,7 +79,7 @@ return [
     'max' => [
         'numeric' => 'The :attribute may not be greater than :max.',
         'file' => 'The :attribute may not be greater than :max kilobytes.',
-        'string' => 'The :attribute may not be greater than :max characters.',
+        'string' => 'Il campo :attribute deve contenere massimo :max caratteri.',
         'array' => 'The :attribute may not have more than :max items.',
     ],
     'mimes' => 'Il campo :attribute deve essere un file di tipo :values.',
@@ -87,13 +87,13 @@ return [
     'min' => [
         'numeric' => 'The :attribute must be at least :min.',
         'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => 'The :attribute must be at least :min characters.',
+        'string' => 'Il campo :attribute deve contenere almeno :min caratteri.',
         'array' => 'The :attribute must have at least :min items.',
     ],
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'The :attribute must be a number.',
-    'password' => 'The password is incorrect.',
+    'password' => 'La password non è corretta.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
     'required' => 'Il campo :attribute è obbligatorio.',
@@ -130,9 +130,10 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        // 'name' => [
+        //     'min' => 'Il nome deve essere minimo di :min caratteri.',
+        //     'max' => 'Il nome deve essere massimo di :max caratteri.',
+        // ],
     ],
 
     /*
@@ -150,7 +151,10 @@ return [
         'name' => 'nome',
         'price' => 'prezzo',
         'description' => 'descrizione',
-        'image' => 'immagine'
+        'image' => 'immagine',
+        'address' => 'indirizzo',
+        'vat_number' => 'partita IVA',
+        'categories' => 'categorie'
     ],
 
 ];

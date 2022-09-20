@@ -49,4 +49,9 @@ class User extends Authenticatable
     public function dishes() {
         return $this->hasMany('App\Dish');
     }
+
+    // Order model relationship
+    public function orders() {
+        return $this->hasMany('App\Order');
+    }
 }

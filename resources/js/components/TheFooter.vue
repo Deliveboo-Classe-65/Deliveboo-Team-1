@@ -6,9 +6,9 @@
 
                 <div class="footer-right">
 
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><font-awesome-icon icon="fa-brands fa-facebook" /></a>
+                    <a href="#"><font-awesome-icon icon="fa-brands fa-twitter" /></a>
+                    <a href="#"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
                     <!-- <a href="#"><i class="fa-brands fa-github"></i></a> -->
 
                 </div>

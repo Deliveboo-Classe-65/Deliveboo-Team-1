@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Diablo',
                 'description' => 'Al Diablo potrai gustare i veri sapori e colori del Messico in piatti che riprendono le ricette tradizionali messicane con uno stile contemporaneo',
                 'address' => 'Via della Liberazione 42',
-                'image' => '/storage/img/ristoranti/diablo.jpg',
+                'image' => 'diablo.jpg',
                 'vat_number' => '11101010100',
                 'categories' => [
                     'messicano'
@@ -59,7 +59,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Summer Palace',
                 'description' => 'Ristorante Cinese che serve solo cibo autentico del Sichuan, ricette tradizionali, una esperienza nuova.',
                 'address' => 'Via della Pistoiese 120',
-                'image' => '/storage/img/ristoranti/summer_palace.jpg',
+                'image' => 'summer_palace.jpg',
                 'vat_number' => '11101010101',
                 'categories' => [
                     'cinese'
@@ -83,7 +83,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Nikko Sushi',
                 'description' => 'Ristorante giapponese a Roma che offre piatti cucinati da chef esperti della cucina e della tradizione giapponese, come il sushi, sashimi e noodles. ',
                 'address' => 'Via Ognissanti',
-                'image' => '/storage/img/ristoranti/nikko_sushi.jpg',
+                'image' => 'nikko_sushi.jpg',
                 'vat_number' => '22202020202',
                 'categories' => [
                     'giapponese'
@@ -107,7 +107,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Raja Indian Lounge Restaurant',
                 'description' => 'Benvenuti al Raja, dove la tradizionale cucina indiana si unisce alla famosa ospitalità di questo meraviglioso paese. Specialità indiane cucinate con cura e raffinatezza, una incredibile varietà di pietanze per incontrare, ne siamo certi, il gusto degli italiani.',
                 'address' => 'Via Ferrucci 22/B',
-                'image' => '/storage/img/ristoranti/raja_indian_lounge_restaurant.jpg',
+                'image' => 'raja_indian_lounge_restaurant.jpg',
                 'vat_number' => '22202020203',
                 'categories' => [
                     'indiano'
@@ -136,7 +136,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Atomic Falafel',
                 'description' => 'Atomic Falafel propone il vero gusto dello street food mediorientale portando le sue speziate fragranze a Roma.',
                 'address' => 'Via Cavour 116',
-                'image' => '/storage/img/ristoranti/atomic_falafel.jpg',
+                'image' => 'atomic_falafel.jpg',
                 'vat_number' => '33303030303',
                 'categories' => [
                     'arabo'
@@ -164,7 +164,7 @@ class UsersTableSeeder extends Seeder
                 'password' => 'ilsipario123',
                 'name' => 'Il Sipario',
                 'address' => 'Via Firenze 66',
-                'image' => '/storage/img/ristoranti/il_sipario.jpg',
+                'image' => 'il_sipario.jpg',
                 'vat_number' => '44404040404',
                 'categories' => [
                     'pizza', 'italiano'
@@ -198,7 +198,7 @@ class UsersTableSeeder extends Seeder
                 'password' => 'runnerpizza123',
                 'name' => 'Runner Pizza',
                 'address' => 'Via dei Casini 60/A',
-                'image' => '/storage/img/ristoranti/runner_pizza.jpg',
+                'image' => 'runner_pizza.jpg',
                 'vat_number' => '66606060606',
                 'categories' => [
                     'pizza'
@@ -233,7 +233,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'McDonalds',
                 'description' => "La McDonald's Corporation è una catena di ristoranti di fast food statunitense",
                 'address' => 'Via Cavour 116',
-                'image' => '/storage/img/ristoranti/mcdonalds.jpg',
+                'image' => 'mcdonalds.jpg',
                 'vat_number' => '55505050505',
                 'categories' => [
                     'hamburger'
@@ -262,7 +262,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Burger King',
                 'description' => "IL NOSTRO GUSTO? SUPERIORE. BURGER KING®. A MODO TUO.",
                 'address' => 'Via Cava 100',
-                'image' => '/storage/img/ristoranti/burger_king.jpg',
+                'image' => 'burger_king.jpg',
                 'vat_number' => '77707070707',
                 'categories' => [
                     'hamburger'
@@ -291,7 +291,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Farid Kebab',
                 'description' => "Il miglior kebab di Roma comodamente a casa tua.",
                 'address' => 'Via Santa Trinita 30',
-                'image' => '/storage/img/ristoranti/farid_kebab.jpg',
+                'image' => 'farid_kebab.jpg',
                 'vat_number' => '99909090909',
                 'categories' => [
                     'arabo', 'piadina'

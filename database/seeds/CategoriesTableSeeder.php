@@ -18,47 +18,47 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name' => "messicano",
                 'color' => "9C006D",
-                'image' => "/storage/img/categorie/categoria_messicano.png"
+                'image' => "categoria_messicano.png"
             ],
             [
                 'name' => "cinese",
                 'color' => "3B0055",
-                'image' => "/storage/img/categorie/categoria_cinese.png"
+                'image' => "categoria_cinese.png"
             ],
             [
                 'name' => "coreano",
                 'color' => "007E8A",
-                'image' => "/storage/img/categorie/categoria_coreano.png"
+                'image' => "categoria_coreano.png"
             ],
             [
                 'name' => "indiano",
                 'color' => "FABE00",
-                'image' => "/storage/img/categorie/categoria_indiano.png"
+                'image' => "categoria_indiano.png"
             ],
             [
                 'name' => "arabo",
                 'color' => "CC3A2F",
-                'image' => "/storage/img/categorie/categoria_arabo.png"
+                'image' => "categoria_arabo.png"
             ],
             [
                 'name' => "pizza",
                 'color' => "00727D",
-                'image' => "/storage/img/categorie/categoria_pizza.png"
+                'image' => "categoria_pizza.png"
             ],
             [
                 'name' => "hamburger",
                 'color' => "00CCBC",
-                'image' => "/storage/img/categorie/categoria_hamburger.png"
+                'image' => "categoria_hamburger.png"
             ],
             [
                 'name' => "italiano",
                 'color' => "00CCBC",
-                'image' => "/storage/img/categorie/categoria_italiano.png"
+                'image' => "categoria_italiano.png"
             ],
             [
                 'name' => "giapponese",
                 'color' => "00CCBC",
-                'image' => "/storage/img/categorie/categoria_giapponese.png"
+                'image' => "categoria_giapponese.png"
             ],
             [
                 'name' => "bakery",

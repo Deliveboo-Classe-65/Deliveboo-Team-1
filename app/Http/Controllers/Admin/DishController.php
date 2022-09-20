@@ -47,21 +47,7 @@ class DishController extends Controller
         return view("admin.dishes.create", compact("types"));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $dish = Dish::findOrFail($id);
-
-        $dish->delete();
-
-        return redirect()->route("admin.dishes.index");
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -74,20 +60,20 @@ class DishController extends Controller
             'name' => "required|min:4|max:255",
             'price' => "required",
             'description' => "required|min:10|max:300",
-            'type' => "nullable",
+            'types' => "nullable",
         ]);
-
+        
         $newDish = new Dish();
         $newDish->fill($validated);
         $newDish->user_id = Auth::user()->id;
         $newDish->save();
-
-        $newDish->types()->sync($validated['type']);
-
-
+        
+        $newDish->types()->sync($validated['types']);
+        
+        
         return redirect()->route('admin.dishes.show', $newDish->id);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -98,10 +84,10 @@ class DishController extends Controller
     {
         $dish = Dish::findOrFail($id);
         $types = Type::all();
-
+        
         return view("admin.dishes.edit", compact("dish", "types"));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -115,13 +101,13 @@ class DishController extends Controller
             'name' => "required|min:4|max:255",
             'price' => "required",
             'description' => "required|min:10|max:300",
-            'type' => "nullable",
+            'types' => "nullable",
         ]);
-       
+        
         $dish = Dish::findOrFail($id);
-
+        
         if (key_exists("image", $validated)) {
-
+            
             if ($dish->image) {
                 Storage::delete($dish->image);
             }
@@ -129,14 +115,29 @@ class DishController extends Controller
             $image = Storage::put("/dishes", $validated["image"]);
             $dish->image = $image;
         }
-
+        
         $dish->update($validated);
-        if (key_exists("type", $validated)) {
-            $dish->types()->sync($validated['type']);
+        if (key_exists("types", $validated)) {
+            $dish->types()->sync($validated['types']);
         } else {
             $dish->types()->detach();
         }
-
+        
         return redirect()->route("admin.dishes.show", $dish->id);
+    }
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $dish = Dish::findOrFail($id);
+
+        $dish->delete();
+
+        return redirect()->route("admin.dishes.index");
     }
 }

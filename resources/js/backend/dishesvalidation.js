@@ -1,13 +1,18 @@
 
 import Vue from 'vue'
 import { ValidationProvider, extend } from 'vee-validate';
-import { required, email, min, max, min_value } from 'vee-validate/dist/rules';
+import { required, image, min, max, min_value } from 'vee-validate/dist/rules';
 
 // Add a rule.
 extend('required', {
     ...required,
     params: ['name'],
     message: 'Il campo {_field_} è obbligatorio'
+});
+
+extend('image', {
+    ...image,
+    message: 'Il file deve essere un\'immagine'
 });
 
 extend('min', {
@@ -35,7 +40,6 @@ new Vue ({
     data: {
         nome: '',
         prezzo: undefined,
-        immagine: undefined,
         descrizione: undefined
     },
 

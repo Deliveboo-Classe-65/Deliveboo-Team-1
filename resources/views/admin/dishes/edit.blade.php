@@ -70,7 +70,10 @@
             <img class="img-thumbnail" style="width: 150px" src="{{ asset('storage/' . $dish->image) }}">
           @endif
           
-          <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="img_file">
+          <validation-provider name="immagine" :immediate="true" rules="required|image" v-slot="{ errors, validate }">
+            <input accept="image/png, image/gif, image/jpeg" type="file" name="image" @change="validate" class="form-control @error('image') is-invalid @enderror" id="img_file">
+            <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+          </validation-provider>
         </div>
         @error('image')
           <div class="invalid-feedback">{{ $message }}</div>

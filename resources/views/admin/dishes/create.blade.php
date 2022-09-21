@@ -61,13 +61,13 @@
 
             <div class="mb-3">
                 <label for="img_file">Immagine</label>
-                <validation-provider name="immagine" :skip-if-empty="false" :immediate="true" rules="required|image" v-slot="{ errors, validate }">
                 <div class="d-flex">
-                    <input type="file" name="image" v-on:change="validate" class="form-control @error('image') is-invalid @enderror"
+                    <validation-provider name="immagine" :immediate="true" rules="required|image" v-slot="{ errors, validate }">
+                    <input accept="image/png, image/gif, image/jpeg" type="file" name="image" @change="validate" class="form-control @error('image') is-invalid @enderror"
                         id="img_file">
+                        <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+                    </validation-provider>
                 </div>
-                <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
-            </validation-provider>
                 @error('image')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

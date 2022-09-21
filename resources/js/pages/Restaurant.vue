@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h2>ciao</h2>
+      
 
         <h1>{{user.name}}</h1>
     </div>

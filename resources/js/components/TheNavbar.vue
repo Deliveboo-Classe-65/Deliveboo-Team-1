@@ -32,7 +32,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-white fw-bold " href="/admin">Registrati o accedi
                                     </a>
-                              
+
 
 
                                 </li>
@@ -47,13 +47,13 @@
             </nav>
         </header>
 
-        <div class="content"></div>
-        <div class="video">
-            <video autoplay muted loop class="video-jb">
-                <source src="img/jb.mp4">
-            </video>
+        <div class="content">
+            <div class="video">
+                <video autoplay muted loop class="video-jb">
+                    <source src="img/jb.mp4">
+                </video>
+            </div>
         </div>
-    </div>
 
     </div>
 

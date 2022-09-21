@@ -9,22 +9,22 @@
                             <div class="col-sm-6">
                                 <div class="my-card">
                                     <div class="row">
-                                        <div class="col col-8">
+                                        <div class="col col-8" v-for="dish in dishes" :key="dish.id">
                                             <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
+                                                <h5 class="card-title product-name">{{ dish.name }}</h5>
+                                                <!-- <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
+                                                <p class="price">€ 6.80</p> -->
                                             </div>
                                         </div>
-                                        <div class="col">
+                                        <!-- <div class="col">
                                             <div class="product-img p-3">
                                                 <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>    
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <!-- <div class="col-sm-6">
                                 <div class="my-card">
                                     <div class="row">
                                         <div class="col col-8">
@@ -193,7 +193,7 @@
                                         </div>
                                     </div>    
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     
@@ -214,20 +214,23 @@
 
 <script>
     import axios from 'axios';
-    
+
     export default {
         data() {
             return {
-
+                dishes: {},
             }
         },
         methods: {
             fetchMenu() {
-                axios
+                axios.get("/api/dishes/" + this.$route.params.dishes_id)
+                .then((resp) => {
+                    this.dishes = resp.data
+                })
             }
         },
         mounted() {
-
+            this.fetchMenu();
         }
     }
 

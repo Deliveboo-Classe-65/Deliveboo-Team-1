@@ -23,7 +23,7 @@
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                         aria-labelledby="offcanvasNavbarLabel">
                         <div class="offcanvas-header">
-                            <img src="images/deliveboo.png" class="d-inline-block align-text-top w-100">
+                            <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                 aria-label="Close"></button>
                         </div>

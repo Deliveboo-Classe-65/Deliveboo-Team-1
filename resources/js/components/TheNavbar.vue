@@ -8,7 +8,7 @@
                         <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
                     <button type="button" class="btn btn-outline-secondary">
-                        <router-link class="nav-link" :to="{ name: 'home.index' }">
+                        <router-link class="nav-link" :to="{ name: 'restaurants.index' }">
                             Visualizza i ristoranti</router-link>
                     </button>
 
@@ -43,6 +43,7 @@
                 </div>
             </nav>
         </header>
+    </div>
 
     
 
@@ -69,6 +70,7 @@
 <style lang="scss" scoped>
 nav {
     background-color: #00CCBC;
+    margin-bottom: 4rem;
 
 }
 

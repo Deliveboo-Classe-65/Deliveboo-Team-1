@@ -8,8 +8,8 @@
                 <div class="card-header">Registrati</div>
 
                 <div class="card-body">
-                    <validation-observer v-slot="{ handleSubmit }">
-                    <form class="row" @submit.prevent="handleSubmit(onSubmit)" class="needs-validation @{{ wasvalidated ? 'wasValidated' : '' }}" method="POST" action="{{ route('register') }}" enctype="multipart/form-data" novalidate>
+                    <validation-observer ref="form" v-slot="{ errors }">
+                    <form @submit.prevent="onSubmit($event)" class="row needs-validation" :class="wasValidated ? 'was-validated' : ''" method="POST" action="{{ route('register') }}" enctype="multipart/form-data" novalidate>
                         @csrf
 
                         <div class="mb-3">

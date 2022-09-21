@@ -32,42 +32,51 @@ extend('min_value', {
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
-new Vue ({
+new Vue({
     el: '#app',
     data: {
-        wasValidated : false,
+        wasValidated: 1,
         nome: undefined
     },
 
     methods: {
-        onSubmit(){
-            this.wasValidated = true
+
+        onSubmit(e) {
+            
+            this.$refs.form.validate().then(success => {
+                console.log(this.$refs.form)
+                if (success) {
+                    e.target.submit()
+                }
+                this.wasValidated++;
+                
+            })
+        },
+
+        mounted() {
+            // (() => {
+            //     'use strict'
+
+            //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            //     const forms = document.querySelectorAll('.needs-validation')
+
+            //     // Loop over them and prevent submission
+            //     Array.from(forms).forEach(form => {
+            //         form.addEventListener('submit', event => {
+            //             if (!form.checkValidity()) {
+            //                 event.preventDefault()
+            //                 event.stopPropagation()
+            //             }
+
+            //             form.classList.add('was-validated')
+            //         }, false)
+            //     })
+
+            // })()
+            // this.nome = window.MyLib.name;
+            // this.descrizione = window.MyLib.descrizione;
+
+
         }
-    },
-
-    mounted(){
-        // (() => {
-        //     'use strict'
-        
-        //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        //     const forms = document.querySelectorAll('.needs-validation')
-        
-        //     // Loop over them and prevent submission
-        //     Array.from(forms).forEach(form => {
-        //         form.addEventListener('submit', event => {
-        //             if (!form.checkValidity()) {
-        //                 event.preventDefault()
-        //                 event.stopPropagation()
-        //             }
-        
-        //             form.classList.add('was-validated')
-        //         }, false)
-        //     })
-        
-        // })()
-        // this.nome = window.MyLib.name;
-        // this.descrizione = window.MyLib.descrizione;
-
-        
     }
 })

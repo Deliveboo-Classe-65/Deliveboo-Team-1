@@ -14,18 +14,6 @@
             </a>
         </div>
 
-        <div>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-        </div>
-
         <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data" novalidate
             class="needs-validation">
             @csrf
@@ -33,15 +21,16 @@
             <div class="row mb-3">
                 <div class="col-md-8">
                     <label for="name">Nome</label>
-                    <validation-provider name="nome" :immediate="true"  rules="required|min:5" v-slot="{ errors }">
+                    <validation-provider initial-value="{{(old('name'))}}" name="nome" :immediate="true"  rules="required|min:5" v-slot="{ errors, value }">
                         <input type="text" v-model="nome" minlength="5" required id="name" name="name"
                             class="form-control @error('name') is-invalid @enderror"
-                            placeholder="Inserisci il nome del piatto" value="{{ old('name') }}">
+                            placeholder="Inserisci il nome del piatto" value="{{ old('name') ?? 'nome'}}">
                         <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+                    </validation-provider>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </validation-provider>
+                    
                 </div>
                 <div class="col-md-4">
                     <label for="price">Prezzo</label>
@@ -50,29 +39,36 @@
                             class="form-control @error('price') is-invalid @enderror"
                             placeholder="Inserisci il prezzo del piatto" value="{{ old('price') }}" required>
                             <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+                        </validation-provider>
                         @error('price')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </validation-provider>
+                    
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="img_file">Immagine</label>
-
+                <validation-provider name="immagine" :skip-if-empty="false" :immediate="true" rules="required|image" v-slot="{ errors, validate }">
                 <div class="d-flex">
-                    <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"
+                    <input type="file" name="image" v-on:change="validate" class="form-control @error('image') is-invalid @enderror"
                         id="img_file">
                 </div>
+                <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+            </validation-provider>
                 @error('image')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+           
             </div>
 
             <div class="mb-3">
                 <label for="description">Descrizione</label>
-                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
+                <validation-provider name="descrizione" :skip-if-empty="false" :immediate="true" rules="required|min:10|max:999" v-slot="{ errors }">
+                <textarea name="description" v-model="descrizione" id="description" class="form-control @error('description') is-invalid @enderror"
                     rows="3" required placeholder="Inserisci una descrizione del piatto">{{ old('description') }}</textarea>
+                    <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+                </validation-provider>
                 @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

@@ -31,7 +31,7 @@
 <style lang="scss">
 
     .video-jb {
-        margin-top: 4rem;
+        
         height: 100vh;
         width: 100%;
         object-fit: cover;

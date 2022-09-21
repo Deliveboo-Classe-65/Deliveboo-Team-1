@@ -14,9 +14,11 @@ import TheNavbar from './components/TheNavbar.vue';
 import TheFooter from './components/TheFooter.vue';
 import Home from './pages/Home.vue';
 import Restaurant from './pages/Restaurant.vue';
+import Restaurantslist from './pages/Restaurantslist.vue';
+
 
 export default {
-    components: { TheNavbar, TheFooter, Home, Restaurant }
+    components: { TheNavbar, TheFooter, Home, Restaurant, Restaurantslist }
 }
 </script>
 

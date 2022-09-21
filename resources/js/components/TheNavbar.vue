@@ -2,7 +2,7 @@
 
     <div>
         <header>
-            <nav class="navbar fixed-top ">
+            <nav class="navbar">
                 <div class="container-fluid justify-content-around">
                     <a class="navbar-brand" href="">
                         <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
@@ -32,19 +32,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-white fw-bold " href="/admin">Registrati o accedi
                                     </a>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
-=======
-                              
->>>>>>> parent of 845caf4 (home and restaurant added)
-
-
->>>>>>> 845caf46854709747529423f74f08a9fd5d82ec4
-=======
->>>>>>> 6ea320d09be60db87e2f2f74f1b53c48699d3e74
                                 </li>
                             </ul>
                             <form class="d-flex" role="search">
@@ -56,59 +44,34 @@
                 </div>
             </nav>
         </header>
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     </div>
-=======
-        <div class="content">
-            <div class="video">
-                <video autoplay muted loop class="video-jb">
-                    <source src="img/jb.mp4">
-                </video>
-            </div>
-        </div>
->>>>>>> 845caf46854709747529423f74f08a9fd5d82ec4
-=======
-        <div class="content"></div>
-        <div class="video">
-            <video autoplay muted loop class="video-jb">
-                <source src="img/jb.mp4">
-            </video>
-        </div>
-    </div>
->>>>>>> parent of 845caf4 (home and restaurant added)
-=======
-    </div>
->>>>>>> 6ea320d09be60db87e2f2f74f1b53c48699d3e74
 
-    
 
 </template>
 
 <script>
 
-    export default {
+export default {
 
-        data() {
-            return {
+    data() {
+        return {
 
-            }
-        },
-        methods: {
+        }
+    },
+    methods: {
 
-        },
-        mounted() {
+    },
+    mounted() {
 
-        },
-    }
+    },
+}
 </script>
 
 <style lang="scss" scoped>
 nav {
     background-color: #00CCBC;
-    margin-bottom: 4rem;
+   
 
 }
 

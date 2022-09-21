@@ -213,6 +213,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+    
     export default {
         data() {
             return {
@@ -220,7 +222,9 @@
             }
         },
         methods: {
-
+            fetchMenu() {
+                axios
+            }
         },
         mounted() {
 

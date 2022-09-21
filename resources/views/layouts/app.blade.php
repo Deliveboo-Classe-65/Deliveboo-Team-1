@@ -13,6 +13,9 @@
     @if (Route::currentRouteName() == 'admin.dishes.edit' || Route::currentRouteName() == 'admin.dishes.create' )
         <script src="{{ asset('js/backend/dishesvalidation.js') }}" defer></script>
     @endif
+    @if (Route::currentRouteName() == 'register' )
+        <script src="{{ asset('js/backend/registervalidation.js') }}" defer></script>
+    @endif
     <script src="{{ asset('js/backend.js') }}" defer></script>
 
     <!-- Fonts -->

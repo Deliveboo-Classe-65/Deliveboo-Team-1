@@ -8,7 +8,8 @@
                 <div class="card-header">Registrati</div>
 
                 <div class="card-body">
-                    <form class="row" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <validation-observer v-slot="{ handleSubmit }">
+                    <form class="row" @submit.prevent="handleSubmit(onSubmit)" class="needs-validation @{{ wasvalidated ? 'wasValidated' : '' }}" method="POST" action="{{ route('register') }}" enctype="multipart/form-data" novalidate>
                         @csrf
 
                         <div class="mb-3">
@@ -43,9 +44,10 @@
                         
                         <div class="mb-3">
                             <label for="name">Nome Attività</label>
-
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+                            <validation-provider name="nome" :immediate="true" rules="required|min:5" v-slot="{ errors, value }">
+                            <input id="name" v-model="nome" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+                        </validation-provider>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -124,6 +126,7 @@
                             <button type="submit" class="btn btn-primary">Registrati</button>
                         </div>
                     </form>
+                </validation-observer>
                 </div>
             </div>
         </div>

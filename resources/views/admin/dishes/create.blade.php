@@ -1,6 +1,17 @@
 @extends('admin.home')
 
 @section('content')
+
+@push('nameVar')
+<script defer>
+    window.MyLib = {}
+    window.MyLib.name = '{{old('name')}}'
+    window.MyLib.prezzo = {{old('price')}}
+    window.MyLib.descrizione = '{{old('description')}}'
+</script>
+@endpush
+
+
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <h1>Crea piatto</h1>
@@ -17,20 +28,21 @@
         <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data" novalidate
             class="needs-validation">
             @csrf
-
+           
             <div class="row mb-3">
                 <div class="col-md-8">
                     <label for="name">Nome</label>
-                    <validation-provider initial-value="{{(old('name'))}}" name="nome" :immediate="true"  rules="required|min:5" v-slot="{ errors, value }">
-                        <input type="text" v-model="nome" minlength="5" required id="name" name="name"
+            
+                    <validation-provider name="nome" :immediate="true" rules="required|min:5" v-slot="{ errors, value }">
+                        <input type="text" value="{{ old('name')}}" v-model="nome" minlength="5" required id="name" name="name"
                             class="form-control @error('name') is-invalid @enderror"
-                            placeholder="Inserisci il nome del piatto" value="{{ old('name') ?? 'nome'}}">
+                            placeholder="Inserisci il nome del piatto" >
                         <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
                     </validation-provider>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    
+    
                 </div>
                 <div class="col-md-4">
                     <label for="price">Prezzo</label>
@@ -66,7 +78,7 @@
                 <label for="description">Descrizione</label>
                 <validation-provider name="descrizione" :skip-if-empty="false" :immediate="true" rules="required|min:10|max:999" v-slot="{ errors }">
                 <textarea name="description" v-model="descrizione" id="description" class="form-control @error('description') is-invalid @enderror"
-                    rows="3" required placeholder="Inserisci una descrizione del piatto">{{ old('description') }}</textarea>
+                    rows="3" required minlength="10" maxlength="999" placeholder="Inserisci una descrizione del piatto">{{ old('description') }}</textarea>
                     <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
                 </validation-provider>
                 @error('description')

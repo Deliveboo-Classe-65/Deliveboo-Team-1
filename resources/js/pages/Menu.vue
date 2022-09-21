@@ -7,13 +7,13 @@
                     <div class="row mt-4 gap-4">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="my-card">
+                                <div class="my-card" v-for="dish in dishes" :key="dish.id">
                                     <div class="row">
-                                        <div class="col col-8" v-for="dish in dishes" :key="dish.id">
+                                        <div class="col col-8">
                                             <div class="card-body">
                                                 <h5 class="card-title product-name">{{ dish.name }}</h5>
-                                                <!-- <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p> -->
+                                                <p class="card-text product-description">{{ dish.description }}</p>
+                                                <p class="price">€ {{dish.price}}</p>
                                             </div>
                                         </div>
                                         <!-- <div class="col">
@@ -218,12 +218,12 @@
     export default {
         data() {
             return {
-                dishes: {},
+                dishes: [],
             }
         },
         methods: {
             fetchMenu() {
-                axios.get("/api/dishes/" + this.$route.params.dishes_id)
+                axios.get("/api/users/" + this.$route.params.id + "/dishes")
                 .then((resp) => {
                     this.dishes = resp.data
                 })

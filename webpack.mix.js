@@ -13,4 +13,5 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/frontend.js', 'public/js')
     .js('resources/js/backend.js', 'public/js')
+    .js('resources/js/backend/dishesvalidation.js', 'public/js/backend')
     .sass('resources/sass/app.scss', 'public/css');

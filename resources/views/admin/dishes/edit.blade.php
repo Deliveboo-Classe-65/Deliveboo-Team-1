@@ -17,7 +17,14 @@
 @section('page_title', 'Edit Dish #' . $dish->id)
 
 @section('content')
-
+@push('nameVar')
+<script defer>
+    window.MyLib = {}
+    window.MyLib.name = '{{ $dish->name }}'
+    window.MyLib.prezzo = {{ $dish->price }}
+    window.MyLib.descrizione = '{{$dish->description}}'
+</script>
+@endpush
   @csrf 
   
   <div class="container">
@@ -27,7 +34,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><line x1="20" y1="12" x2="4" y2="12"></line><polyline points="10 18 4 12 10 6"></polyline></svg> Tutti i piatti
       </a>
     </div>
-    <form action="{{ route('admin.dishes.update', $dish->id) }}" method="post" enctype="multipart/form-data">
+    <form class="needs-validation" action="{{ route('admin.dishes.update', $dish->id) }}" method="post" enctype="multipart/form-data" novalidate>
       @csrf
 
       @method('PUT')
@@ -35,14 +42,20 @@
       <div class="row mb-3">
         <div class="col-md-8">
           <label for="nameInput">Nome</label>
-          <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" id="nameInput" value="{{ $dish->name }}">
+          <validation-provider name="nome" :immediate="true" rules="required|min:5" v-slot="{ errors, value }">
+          <input type="text" v-model="nome" required minlength="5" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" id="nameInput" value="{{ $dish->name }}">
+          <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+        </validation-provider>
           <div class="invalid-feedback">
             {{ $errors->first('name') }}
           </div>
         </div>
         <div class="col-md-4">
           <label for="priceInput">Prezzo</label>
-          <input type="number" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" name="price" id="priceInput" value="{{ $dish->price }}">
+          <validation-provider name="prezzo" :skip-if-empty="false" :immediate="true" rules="required|min_value:0" v-slot="{ errors }">
+          <input type="number" v-model='prezzo' required min="0" step="0.01" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" name="price" id="priceInput" value="{{ $dish->price }}">
+          <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+        </validation-provider>
           <div class="invalid-feedback">
             {{ $errors->first('price') }}
           </div>
@@ -66,7 +79,10 @@
 
       <div class="mb-3">
         <label for="descInput" >Descrizione</label>
-        <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="descInput" rows="3">{!! $dish->description  !!}</textarea>
+        <validation-provider  name="descrizione" :skip-if-empty="false" :immediate="true" rules="required|min:10|max:999" v-slot="{ errors }">
+        <textarea v-model="descrizione" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="descInput" rows="3" required minlength="10" maxlength="999">{!! $dish->description  !!}</textarea>
+        <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+      </validation-provider>
         <div class="invalid-feedback">
           {{ $errors->first('description') }}
         </div>

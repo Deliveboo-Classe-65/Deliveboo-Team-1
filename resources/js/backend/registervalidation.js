@@ -1,7 +1,7 @@
 
 import Vue from 'vue'
 import { ValidationProvider, extend } from 'vee-validate';
-import { required, email, min, max, min_value, digits } from 'vee-validate/dist/rules';
+import { required, email, min, max, min_value, digits, image } from 'vee-validate/dist/rules';
 import { ValidationObserver } from 'vee-validate';
 
 // Add a rule.
@@ -9,6 +9,11 @@ extend('required', {
     ...required,
     params: ['name'],
     message: 'Il campo {_field_} è obbligatorio'
+});
+
+extend('image', {
+    ...image,
+    message: 'Il file deve essere un\'immagine'
 });
 
 extend('email', {
@@ -39,6 +44,20 @@ extend('digits', {
     message: 'Il campo partita IVA deve contenere solo 11 numeri'
 })
 
+// extend('confirmed', {
+//     ...confirmed,
+//     params: ['confirm'],
+//     message: 'Le password non coincidono'
+// })
+
+extend('password', {
+    params: ['target'],
+    validate(value, { target }) {
+      return value === target;
+    },
+    message: 'Le password non coincidono'
+  });
+
 
 
 // Register it globally
@@ -53,7 +72,9 @@ new Vue({
         email: undefined,
         indirizzo: undefined,
         partitaiva: undefined,
-        categorie: undefined
+        categorie: [],
+        password: undefined,
+        confirmation: undefined,
     },
 
     methods: {

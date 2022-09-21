@@ -28,9 +28,10 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="password">Password</label>
-
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                            <validation-provider rules="required|password:@confirm|min:8" v-slot="{ errors }">
+                            <input id="password" v-model="password" type="password" :class="errors.length > 0 && wasValidated ? 'is-invalid' : '' " class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                            <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+                        </validation-provider>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -41,8 +42,10 @@
                         
                         <div class="col-md-6 mb-3">
                             <label for="password-confirm">Conferma Password</label>
-                            
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <validation-provider v-slot="{ errors }" name="confirm" rules="required|min:8">
+                            <input id="password-confirm" v-model="confirmation" type="password" :class="errors.length > 0 && wasValidated ? 'is-invalid' : '' " class="form-control" name="password_confirmation" autocomplete="new-password">
+                            <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+                        </validation-provider>
                         </div>
                         
                         <div class="mb-3">
@@ -98,9 +101,10 @@
 
                         <div class="mb-3">
                             <label for="image">Immagine</label>
-
-                            <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" required autocomplete="image" autofocus>
-
+                            <validation-provider name="immagine" :immediate="true" rules="required|image" v-slot="{ errors, validate }">
+                            <input id="image" type="file" @change="validate" class="form-control" :class="errors.length > 0 && wasValidated ? 'is-invalid' : '' " @error('image') is-invalid @enderror name="image" value="{{ old('image') }}" required autocomplete="image" autofocus>
+                            <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+                        </validation-provider>
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -109,20 +113,21 @@
                         </div>
 
                         <div class="mb-5">
-                            <validation-provider name="categorie" :immediate="true" rules="" v-slot="{ errors }">
-                            <fieldset v-model:categorie :class="errors.length > 0 && wasValidated ? 'is-invalid' : '' " class="form-control @error('categories') is-invalid @enderror" >
+                            <validation-provider name="categorie" :immediate="true" rules="required" v-slot="{ errors }">
+                            <fieldset :class="errors.length > 0 && wasValidated ? 'is-invalid' : '' " class="form-control @error('categories') is-invalid @enderror" >
                                 <legend class="fs-6">Seleziona una o più categorie</legend>
                                 @foreach ($categories as $category)
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" {{ in_array($category->id, old("categories", [])) ? 'checked' : '' }} name="categories[]" type="checkbox" value="{{ $category->id }}" id="{{"flexCheckDefault" . $category->id}}">
+                                        <input class="form-check-input" v-model="categorie"  {{ in_array($category->id, old("categories", [])) ? 'checked' : '' }} name="categories[]" type="checkbox" value="{{ $category->id }}" id="{{"flexCheckDefault" . $category->id}}">
                                         <label class="form-check-label" for={{"flexCheckDefault" . $category->id}}>
                                             {{ $category->name }}
                                         </label>
                                     </div>
                                 @endforeach
-                                <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
-                            </validation-provider>
+                                
                             </fieldset>
+                            <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
+                            </validation-provider>
                             @error('categories')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

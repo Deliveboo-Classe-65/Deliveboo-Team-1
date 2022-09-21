@@ -8,7 +8,7 @@
                         <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
                     <button type="button" class="btn btn-outline-secondary">
-                        <router-link class="nav-link" :to="{ name: 'restaurants.index' }">
+                        <router-link class="nav-link" :to="{ name: 'home.index' }">
                             Visualizza i ristoranti</router-link>
                     </button>
 
@@ -32,6 +32,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-white fw-bold " href="/admin">Registrati o accedi
                                     </a>
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 845caf46854709747529423f74f08a9fd5d82ec4
                                 </li>
                             </ul>
                             <form class="d-flex" role="search">
@@ -44,7 +50,17 @@
             </nav>
         </header>
 
+<<<<<<< HEAD
     </div>
+=======
+        <div class="content">
+            <div class="video">
+                <video autoplay muted loop class="video-jb">
+                    <source src="img/jb.mp4">
+                </video>
+            </div>
+        </div>
+>>>>>>> 845caf46854709747529423f74f08a9fd5d82ec4
 
     
 

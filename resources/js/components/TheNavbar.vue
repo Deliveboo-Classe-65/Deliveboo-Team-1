@@ -33,8 +33,12 @@
                                     <a class="nav-link text-white fw-bold " href="/admin">Registrati o accedi
                                     </a>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
+=======
+                              
+>>>>>>> parent of 845caf4 (home and restaurant added)
 
 
 >>>>>>> 845caf46854709747529423f74f08a9fd5d82ec4
@@ -51,6 +55,7 @@
         </header>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     </div>
 =======
         <div class="content">
@@ -61,6 +66,15 @@
             </div>
         </div>
 >>>>>>> 845caf46854709747529423f74f08a9fd5d82ec4
+=======
+        <div class="content"></div>
+        <div class="video">
+            <video autoplay muted loop class="video-jb">
+                <source src="img/jb.mp4">
+            </video>
+        </div>
+    </div>
+>>>>>>> parent of 845caf4 (home and restaurant added)
 
     
 

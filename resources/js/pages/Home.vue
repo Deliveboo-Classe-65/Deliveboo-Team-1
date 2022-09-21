@@ -1,16 +1,18 @@
 <template>
-
-    <div class="container p-2">
+    <div>
+    <Video></Video>
+    <WorkWithUs></WorkWithUs>
+    <!-- <div class="container p-2">
         <div class="section-title">
             <h2>Ricerca per categoria</h2>
             <div class="categories-list">
                 <button type="button" class="btn btn-light" v-for="category in categories" :key="category.id">
                     {{category.name}}</button>
             </div>
-        </div>
+        </div> -->
 
         <!-- Restaurant image -->
-        <div class="row restaurant-row">
+        <!-- <div class="row restaurant-row">
 
             <div class="col-3" v-for="user in users" :key="user.id">
                 <router-link class="text-decoration-none" :to="{ name: 'restaurant.show', params:{ id: user.id}}">
@@ -21,7 +23,7 @@
                 </router-link>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- Restaurant name and description -->
@@ -40,7 +42,7 @@
 
 
 
-
+    </div>
 </template>
   
 <script>
@@ -48,10 +50,12 @@
 import axios from "axios"
 import Restaurant from '../pages/Restaurant.vue';
 import Menu from '../pages/Menu.vue';
+import Video from '../components/Video.vue';
+import WorkWithUs from '../components/WorkWithUs.vue';
 
 
 export default {
-    components: { Restaurant, Menu },
+    components: { Restaurant, Menu, Video, WorkWithUs },
 
 
 

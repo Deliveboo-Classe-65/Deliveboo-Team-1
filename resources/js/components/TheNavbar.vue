@@ -8,7 +8,7 @@
                         <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
                     <button type="button" class="btn btn-outline-secondary">
-                        <router-link class="nav-link" :to="{ name: 'home.index' }">
+                        <router-link class="nav-link" :to="{ name: 'restaurants.index' }">
                             Visualizza i ristoranti</router-link>
                     </button>
 
@@ -34,6 +34,7 @@
                                     </a>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 =======
@@ -42,6 +43,8 @@
 
 
 >>>>>>> 845caf46854709747529423f74f08a9fd5d82ec4
+=======
+>>>>>>> 6ea320d09be60db87e2f2f74f1b53c48699d3e74
                                 </li>
                             </ul>
                             <form class="d-flex" role="search">
@@ -53,6 +56,7 @@
                 </div>
             </nav>
         </header>
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -75,6 +79,9 @@
         </div>
     </div>
 >>>>>>> parent of 845caf4 (home and restaurant added)
+=======
+    </div>
+>>>>>>> 6ea320d09be60db87e2f2f74f1b53c48699d3e74
 
     
 
@@ -101,6 +108,7 @@
 <style lang="scss" scoped>
 nav {
     background-color: #00CCBC;
+    margin-bottom: 4rem;
 
 }
 

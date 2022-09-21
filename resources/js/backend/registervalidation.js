@@ -35,7 +35,7 @@ Vue.component('ValidationObserver', ValidationObserver);
 new Vue({
     el: '#app',
     data: {
-        wasValidated: 1,
+        wasValidated: false,
         nome: undefined
     },
 
@@ -44,11 +44,10 @@ new Vue({
         onSubmit(e) {
             
             this.$refs.form.validate().then(success => {
-                console.log(this.$refs.form)
                 if (success) {
                     e.target.submit()
                 }
-                this.wasValidated++;
+                this.wasValidated = true;
                 
             })
         },

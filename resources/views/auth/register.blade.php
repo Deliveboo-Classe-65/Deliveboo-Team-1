@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <validation-observer ref="form" v-slot="{ errors }">
-                    <form @submit.prevent="onSubmit($event)" class="row needs-validation" :class="wasValidated ? 'was-validated' : ''" method="POST" action="{{ route('register') }}" enctype="multipart/form-data" novalidate>
+                    <form @submit.prevent="onSubmit($event)" class="row" method="POST" action="{{ route('register') }}" enctype="multipart/form-data" novalidate>
                         @csrf
 
                         <div class="mb-3">
@@ -44,8 +44,8 @@
                         
                         <div class="mb-3">
                             <label for="name">Nome Attività</label>
-                            <validation-provider name="nome" :immediate="true" rules="required|min:5" v-slot="{ errors, value }">
-                            <input id="name" v-model="nome" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <validation-provider name="nome" :immediate="true" rules="required|min:5" v-slot="{ errors }">
+                            <input id="name" v-model="nome" type="text" :class="errors.length > 0 && wasValidated ? 'is-invalid' : '' " class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
                             <div v-for="error in errors" class="invalid-feedback">@{{ error }}</div>
                         </validation-provider>
                             @error('name')

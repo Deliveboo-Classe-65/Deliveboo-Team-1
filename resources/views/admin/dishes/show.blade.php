@@ -41,7 +41,7 @@
           <p>{{ $dish->description }}</p>
           @if ($dish->types->count() !== 0)
             <h5>Categorie:</h5>
-            <p>{{ $dish->types->implode("name", " - ") }}</p>
+            <p class="text-capitalize">{{ $dish->types->implode("name", " - ") }}</p>
           @endif
           <h5>Prezzo:</h5>
           <p>€ {{ $dish->price }}</p>

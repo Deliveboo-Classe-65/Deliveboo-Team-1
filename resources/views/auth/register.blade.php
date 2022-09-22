@@ -119,7 +119,7 @@
                                 @foreach ($categories as $category)
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" v-model="categorie"  {{ in_array($category->id, old("categories", [])) ? 'checked' : '' }} name="categories[]" type="checkbox" value="{{ $category->id }}" id="{{"flexCheckDefault" . $category->id}}">
-                                        <label class="form-check-label" for={{"flexCheckDefault" . $category->id}}>
+                                        <label class="form-check-label text-capitalize" for={{"flexCheckDefault" . $category->id}}>
                                             {{ $category->name }}
                                         </label>
                                     </div>

@@ -97,7 +97,7 @@
             @foreach ($types as $type)
             <div class="form-check form-check-inline">
                 <input class="form-check-input" {{ checked($type, $dish, old("types"), $errors) }} name="types[]" type="checkbox" value="{{ $type->id }}" id="{{"flexCheckDefault" . $type->id}}">
-                <label class="form-check-label" for={{"flexCheckDefault" . $type->id}}>
+                <label class="form-check-label text-capitalize" for={{"flexCheckDefault" . $type->id}}>
                   {{ $type->name }}
                 </label>
             </div>

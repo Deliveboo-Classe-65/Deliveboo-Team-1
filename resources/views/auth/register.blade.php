@@ -18,9 +18,9 @@
                             <validation-provider name="email" :immediate="true" rules="required|email" v-slot="{ errors }">
                             <input id="email" v-model="email" :class="errors.length > 0 && wasValidated ? 'is-invalid' : '' " type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                             <div  class="invalid-feedback">
-                                <ul>
-                                    <li v-for="error in errors">  @{{ error }}</li>
-                                    <li>@error('email'){{ $message }}@enderror</li>
+                                <ul class="px-0">
+                                    <li class="list-unstyled" v-for="error in errors">  @{{ error }}</li>
+                                    @error('email')<li class="list-unstyled">{{ $message }}</li>@enderror
                                 </ul>
                             </div>
                         </validation-provider>

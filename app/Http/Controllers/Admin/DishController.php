@@ -31,6 +31,11 @@ class DishController extends Controller
      */
     public function show($id)
     {
+        $dishes = Auth::user()->dishes;
+
+        if (!$dishes->contains($id)){
+            abort('401');
+        }
         $dish = Dish::findOrFail($id);
         $dish->load("types");
 
@@ -95,6 +100,11 @@ class DishController extends Controller
      */
     public function edit($id)
     {
+        $dishes = Auth::user()->dishes;
+
+        if (!$dishes->contains($id)){
+            abort('401');
+        }
         $dish = Dish::findOrFail($id);
         $types = Type::all();
         

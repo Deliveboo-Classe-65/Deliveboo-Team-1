@@ -118,7 +118,6 @@ export default {
             }
 
             window.localStorage.cart = JSON.stringify(cart)
-            this.updateCurrentCart()
             this.setPageCart()
         },
 

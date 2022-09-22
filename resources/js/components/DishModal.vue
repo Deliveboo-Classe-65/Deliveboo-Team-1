@@ -65,16 +65,16 @@ export default {
             this.total = (this.quantity * this.dish.price).toFixed(2);
         },
         addToCart() {
-            let cart = this.cart = JSON.parse(window.localStorage.getItem('cart'))
+            let cart = JSON.parse(window.localStorage.cart)
 
             if (cart.hasOwnProperty(this.dish.id)){
-                this.cart[this.dish.id] += this.quantity;
+                cart[this.dish.id] += this.quantity;
             } else {
-                this.cart[this.dish.id] = this.quantity;
+                cart[this.dish.id] = this.quantity;
             }
 
            
-            window.localStorage.cart = JSON.stringify(this.cart)
+            window.localStorage.cart = JSON.stringify(cart)
             this.cart = JSON.parse(window.localStorage.getItem('cart'));
             this.$emit('updateCart')
         }

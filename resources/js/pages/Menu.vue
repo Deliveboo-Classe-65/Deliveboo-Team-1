@@ -1,12 +1,17 @@
 <template>
+    
     <section>
+        <KeepAlive>
+        <DishModal :dish="currentDish"></DishModal>
+    </KeepAlive>
         <div class="container">
             <div class="row">
                 <!-- Restautant menù -->
+                
                 <div class="col col-8">
                         <div class="row row-cols-2 g-3 mt-4">
                             <div class="col" v-for="dish in dishes" :key="dish.id">
-                                <button data-bs-toggle="modal" :data-bs-target="'#dish' + dish.id" class="my-card">
+                                <button data-bs-toggle="modal" @mouseenter="setCurrentDish(dish)" :data-bs-target="'#dish' + dish.id" class="my-card">
                                     <div class="row">
                                         <div class="col col-8">
                                             <div class="card-body">
@@ -17,10 +22,11 @@
                                         </div>
                                     </div>
                                 </button>
-                                <DishModal :dish="dish"></DishModal>
+                               
                             </div>
                         </div>
                 </div>
+                
                 <!--  Checkout-->
 
                 <div class="col col-4 border mt-4 cart">
@@ -44,6 +50,7 @@
         },
         data() {
             return {
+                currentDish: {},
                 dishes: [],
                 cart: JSON.parse(window.localStorage.getItem('cart'))
             }
@@ -55,6 +62,11 @@
                 .then((resp) => {
                     this.dishes = resp.data
                 })
+            },
+
+            setCurrentDish (dish){
+                this.currentDish = dish
+                
             }
         },
         mounted() {

@@ -73,8 +73,8 @@ export default {
                 this.cart[this.dish.id] = this.quantity;
             }
 
-            
-            window.localStorage.setItem('cart', JSON.stringify(this.cart));
+           
+            window.localStorage.cart = JSON.stringify(this.cart)
             this.cart = JSON.parse(window.localStorage.getItem('cart'));
             this.$emit('updateCart')
         }

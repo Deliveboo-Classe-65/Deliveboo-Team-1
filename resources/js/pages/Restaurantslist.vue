@@ -55,7 +55,6 @@
 
                 for (let i = 0; i < this.searchSelection.length; i++ ){
                     query+= (i > 0 ? '&' : '') + 'categories[]=' + this.searchSelection[i] 
-                    console.log(query)
                 }
                 axios.get("/api/users?" + query)
                     .then((resp) => {

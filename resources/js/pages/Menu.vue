@@ -1,9 +1,9 @@
 <template>
     
     <section>
-        <KeepAlive>
-        <DishModal :dish="currentDish"></DishModal>
-    </KeepAlive>
+        
+        <DishModal @updateCart="setPageCart" :dish="currentDish"></DishModal>
+        
         <div class="container">
             <div class="row">
                 <!-- Restautant menù -->
@@ -31,8 +31,11 @@
 
                 <div class="col col-4 border mt-4 cart">
                         <div class="container">
-                                <img src="../../../public/img/sad_bag.png" alt="Carrello vuoto">
-                                <p>Il carrello è vuoto</p>
+                                <img v-if="pageCart.length == 0" src="../../../public/img/sad_bag.png" alt="Carrello vuoto">
+                                <ul>
+                                    <li v-for="dish in pageCart" :id="'item' + dish.id">Piatto:{{ dish.name }} Quantita {{ cart[dish.id] }}: Prezzo: {{ dish.price * cart[dish.id] }}</li>
+                                </ul>
+                                <p v-if="pageCart.length > 0">Totale = € {{ cartTotal }}</p>
                             <div class="btn btn-warning d-flex flex-grow-1 justify-content-center">Vai al pagamento</div>
                         </div>
                 </div>
@@ -52,7 +55,9 @@
             return {
                 currentDish: {},
                 dishes: [],
-                cart: JSON.parse(window.localStorage.getItem('cart'))
+                cart: JSON.parse(window.localStorage.getItem('cart')),
+                pageCart: [],
+                cartTotal : 0
             }
         },
         methods: {
@@ -61,14 +66,43 @@
                 axios.get("/api/users/" + this.$route.params.id + "/dishes")
                 .then((resp) => {
                     this.dishes = resp.data
+                    this.setPageCart()
                 })
             },
 
             setCurrentDish (dish){
                 this.currentDish = dish
                 
+            },
+
+            updateCurrentCart(){
+                this.cart = JSON.parse(window.localStorage.getItem('cart'))
+            },
+
+            setPageCart (){
+                this.updateCurrentCart()
+                let cart = []
+                for (const id in this.cart){
+                    this.dishes.forEach(dish => {
+                        if (dish.id == id ){
+                            cart.push(dish)
+                        }
+                    })
+                }
+                this.pageCart = cart
+                this.setCartTotal ()
+            },
+
+            setCartTotal (){
+                let total = 0
+                this.pageCart.forEach(dish => {
+                    total += dish.price * this.cart[dish.id]
+                })
+
+                this.cartTotal = total.toFixed(2)
             }
         },
+
         mounted() {
             this.fetchMenu();
             console.log(window.localStorage.getItem('cart'));

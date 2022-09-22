@@ -24,7 +24,7 @@
                             <button @click="changeQuantity('plus')" class="btn btn-primary">+</button>
                         </div>
                     </div>
-                    <button type="button" @click="addToCart()" class="btn btn-primary w-75">Aggiungi per {{returnTotal}}
+                    <button type="button" data-bs-dismiss="modal" @click="addToCart()" class="btn btn-primary w-75">Aggiungi per {{returnTotal}}
                         €</button>
                 </div>
             </div>
@@ -76,6 +76,7 @@ export default {
             
             window.localStorage.setItem('cart', JSON.stringify(this.cart));
             this.cart = JSON.parse(window.localStorage.getItem('cart'));
+            this.$emit('updateCart')
         }
     },
 

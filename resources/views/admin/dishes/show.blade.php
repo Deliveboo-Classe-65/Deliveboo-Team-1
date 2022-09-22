@@ -21,7 +21,7 @@
       <div class="row">
         <div class="col-4">
           @if ($dish->image)
-            <img class="img-thumbnail" src="{{ asset('storage/' . $dish->image) }}">
+            <img class="img-thumbnail" src="{{ asset('storage/img/dishes/' . $dish->image) }}">
           @endif
         </div>
         <div class="col-8">

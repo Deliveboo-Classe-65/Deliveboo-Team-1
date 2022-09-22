@@ -15,4 +15,6 @@ mix.js('resources/js/frontend.js', 'public/js')
     .js('resources/js/backend.js', 'public/js')
     .js('resources/js/backend/dishesvalidation.js', 'public/js/backend')
     .js('resources/js/backend/registervalidation.js', 'public/js/backend')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/frontend.scss', 'public/css')
+    .sass('resources/sass/backend.scss', 'public/css');
+    

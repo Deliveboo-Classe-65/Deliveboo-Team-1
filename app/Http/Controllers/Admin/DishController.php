@@ -77,7 +77,7 @@ class DishController extends Controller
         $newDish->user_id = Auth::user()->id;
         if (key_exists("image", $validated)) {
             $image = Storage::put("/img/dishes", $validated["image"]);
-            $newDish->image = $image;
+            $dish->image = substr($image, 11);
         }
         $newDish->save();
         
@@ -138,7 +138,7 @@ class DishController extends Controller
             }
             
             $image = Storage::put("/img/dishes", $validated["image"]);
-            $dish->image = $image;
+            $dish->image = substr($image, 11);
         }
 
         if (!key_exists("visibility", $validated)){

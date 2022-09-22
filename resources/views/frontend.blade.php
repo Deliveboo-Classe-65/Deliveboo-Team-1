@@ -7,7 +7,7 @@
 
     <title>Deliveboo</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
    <script src="{{ asset('js/frontend.js') }}" defer></script>
 </head>
 

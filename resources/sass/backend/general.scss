@@ -1,0 +1,24 @@
+nav {
+    background-color: #00CCBC;
+}
+
+li {
+
+    a {
+        background-color: #00CCBC;
+        letter-spacing: 1px;
+        border-radius: 4px;
+        padding: .5rem;
+        text-align: center;
+    }
+}
+
+img {
+    width: 150px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.navbar-toggler-icon {
+    color: #00CCBC;
+}

@@ -1,0 +1,61 @@
+<template>
+    <div class="modal fade" :id="'dish' + dish.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="img-fluid">
+                    <img :src="'storage/img/dishes/' + dish.image" alt="">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title" id="staticBackdropLabel">{{dish.name}}</h5>
+                    <p v-if="dish.description">{{dish.description}}</p>
+                </div>
+                <div class="modal-footer justify-content-center" >
+                    <div class="col-12 row justify-content-center text-center">
+                        <div class="col-2">
+                            <button @click="changeQuantity('minus')" class="btn btn-primary" :class="quantity === 1 ? 'disabled' : ''">-</button>
+                        </div>
+                        <div class="col-2">
+                            {{quantity}}
+                        </div>
+                        <div class="col-2">
+                            <button @click="changeQuantity('plus')" class="btn btn-primary">+</button>
+                        </div>
+                    </div>
+                    <button type="button" @click="addToCart()" class="btn btn-primary w-75">Aggiungi per {{total}} €</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        props: {
+            dish: Object
+        },
+        data() {
+            return {
+                quantity: 1,
+                total: this.dish.price,
+                cart: JSON.parse(window.localStorage.getItem('cart'))
+            }
+        },
+        methods: {
+            changeQuantity(operator) {
+                if(operator === "plus") {
+                    this.quantity++;
+                }else{
+                    this.quantity--;
+                }
+                this.total = (this.quantity * this.dish.price).toFixed(2);
+            },
+            addToCart(){
+                this.cart[this.dish.id] = this.quantity;
+                window.localStorage.removeItem('cart');
+                window.localStorage.setItem('cart', JSON.stringify(this.cart));
+                this.cart = JSON.parse(window.localStorage.getItem('cart'));
+            }
+        }
+    }
+</script>

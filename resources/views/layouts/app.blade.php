@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/backend.css') }}" rel="stylesheet">
 </head>
 <body>
     @stack('nameVar')
@@ -34,29 +34,28 @@
                 <nav class="navbar navbar-expand-md">
                     <div class="container">
                         <div class="container-fluid justify-content-around">
-                            <a class="navbar-brand" href="{{ url('/') }}">
-                                <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
-                            </a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-            
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            
+                            <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
                                 <!-- Left Side Of Navbar -->
                                 <ul class="navbar-nav mr-auto">
-            
+                                    <a href="{{ url('/') }}">
+                                        <img src="{{asset("img/logo-db.png")}}" class="d-inline-block align-text-top w-100">
+                                    </a>
+                                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
                                 </ul>
             
                                 <!-- Right Side Of Navbar -->
-                                <ul class="navbar-nav ml-auto">
+                                <ul class="navbar-nav ml-auto gap-2">
                                     <!-- Authentication Links -->
                                     @guest
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        <a class="btn btn-light text-primary" href="{{ route('login') }}" role="button">Login</a>
                                     </li>
                                     @if (Route::has('register'))
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                            <a class="btn btn-light text-primary" href="{{ route('register') }}" role="button">Registrati</a>
                                         </li>
                                         @endif
                                     @else

@@ -67,7 +67,7 @@
 
         <div class="d-flex">
           @if ($dish->image)
-            <img class="img-thumbnail" style="width: 150px" src="{{ asset('storage/' . $dish->image) }}">
+            <img class="img-thumbnail" style="width: 150px" src="{{ asset('storage/img/dishes/' . $dish->image) }}">
           @endif
           
           <validation-provider name="immagine" :immediate="true" rules="required|image" v-slot="{ errors, validate }">

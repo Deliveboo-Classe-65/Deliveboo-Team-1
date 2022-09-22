@@ -26,7 +26,7 @@ export default {
 
 
 <style lang="scss">
-@import "../sass/app.scss";
+// @import "../sass/frontend.scss";
 
 .container {
     font-family: 'IBM Plex Sans Arabic', sans-serif;

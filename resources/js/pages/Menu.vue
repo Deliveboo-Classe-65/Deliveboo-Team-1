@@ -3,11 +3,10 @@
         <div class="container">
             <div class="row">
                 <!-- Restautant menù -->
-                <div class="col col-8">                
-                    <div class="row mt-4 gap-4">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="my-card" v-for="dish in dishes" :key="dish.id">
+                <div class="col col-8">
+                        <div class="row row-cols-2 g-3 mt-4">
+                            <div class="col" v-for="dish in dishes" :key="dish.id">
+                                <div class="my-card">
                                     <div class="row">
                                         <div class="col col-8">
                                             <div class="card-body">
@@ -16,188 +15,11 @@
                                                 <p class="price">€ {{dish.price}}</p>
                                             </div>
                                         </div>
-                                        <!-- <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div> -->
-                                    </div>    
-                                </div>
-                            </div>
-                            <!-- <div class="col-sm-6">
-                                <div class="my-card">
-                                    <div class="row">
-                                        <div class="col col-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div>
                                     </div>    
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="my-card">
-                                    <div class="row">
-                                        <div class="col col-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="my-card">
-                                    <div class="row">
-                                        <div class="col col-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="my-card">
-                                    <div class="row">
-                                        <div class="col col-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="my-card">
-                                    <div class="row">
-                                        <div class="col col-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="my-card">
-                                    <div class="row">
-                                        <div class="col col-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="my-card">
-                                    <div class="row">
-                                        <div class="col col-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="my-card">
-                                    <div class="row">
-                                        <div class="col col-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="my-card">
-                                    <div class="row">
-                                        <div class="col col-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title product-name">Big king</h5>
-                                                <p class="card-text product-description">Il re degli hamburger è qui. Il nostro BIG KING® ti c...</p>
-                                                <p class="price">€ 6.80</p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="product-img p-3">
-                                                <img src="../../../public/img/big_king.jpeg" alt="Big King burger" class="w-100 h-100">
-                                            </div>
-                                        </div>
-                                    </div>    
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                    
-                </div>
+                </div>                     
                 <!--  Checkout-->
                 
                 <div class="col col-4 border mt-4 cart">

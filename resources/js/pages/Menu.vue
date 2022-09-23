@@ -35,23 +35,23 @@
                         <img v-if="pageCart.length == 0" src="../../../public/img/sad_bag.png" alt="Carrello vuoto">
 
                         <div class="row g-0 align-items-center" v-for="dish in pageCart" :id="'item' + dish.id">
-                            <div class="col-8 text-start">
+                            <div class="col-6 text-start">
                                 {{ dish.name }}
                             </div>
 
-                            <div class="col-2 text-end">
+                            <div class="col-3 text-end">
                                 <button @click="updateCartRows(dish.id, 'minus')"
                                     class="text-primary rounded-circle px-1 btn btn-sm">
                                     <font-awesome-icon icon="fa-solid fa-circle-minus" />
                                 </button>
-                                {{ cart[dish.id] }}
+                                {{ dish.qty }}
                                 <button @click="updateCartRows(dish.id, 'plus')"
                                     class="px-1 btn btn-sm rounded-circle text-primary">
                                     <font-awesome-icon icon="fa-solid fa-circle-plus" />
                                 </button>
                             </div>
-                            <div class="col-2 text-end">
-                                € {{ (dish.price * cart[dish.id]).toFixed(2) }}
+                            <div class="col-3 text-end">
+                                € {{ (dish.price * dish.qty).toFixed(2) }}
                             </div>
                         </div>
 
@@ -103,18 +103,23 @@ export default {
         updateCartRows(dishId, operator) {
             let cart = JSON.parse(window.localStorage.getItem('cart'))
 
-            let rowQuantity = cart[dishId]
             if (operator == 'plus') {
-                cart[dishId] = rowQuantity + 1;
+                cart.forEach(item => {
+                    if (item.id === dishId){
+                        item.qty++
+                    }
+                })
 
             }
 
             if (operator === 'minus') {
-                if (rowQuantity === 1) {
-
-                    delete cart[dishId]
-
-                } else { cart[dishId] = rowQuantity - 1 }
+                cart.forEach((item, index) => {
+                    if (item.id === dishId && item.qty === 1){
+                        cart.splice(index, 1)
+                    } else if ( item.id === dishId ){
+                        item.qty--
+                    }
+                });
             }
 
             window.localStorage.cart = JSON.stringify(cart)
@@ -128,13 +133,23 @@ export default {
         setPageCart() {
             this.updateCurrentCart()
             let cart = []
-            for (const id in this.cart) {
+
+            this.cart.forEach(item => {
                 this.dishes.forEach(dish => {
-                    if (dish.id == id) {
+                    if (item.id == dish.id) {
+                        dish.qty = item.qty
                         cart.push(dish)
                     }
                 })
-            }
+            })
+
+            // for (const id in this.cart) {
+            //     this.dishes.forEach(dish => {
+            //         if (dish.id == id) {
+            //             cart.push(dish)
+            //         }
+            //     })
+            // }
             this.pageCart = cart
             this.setCartTotal()
         },
@@ -142,7 +157,7 @@ export default {
         setCartTotal() {
             let total = 0
             this.pageCart.forEach(dish => {
-                total += dish.price * this.cart[dish.id]
+                total += dish.price * dish.qty
             })
 
             this.cartTotal = total.toFixed(2)
@@ -152,7 +167,7 @@ export default {
     mounted() {
         this.fetchMenu();
         if (!window.localStorage.getItem('cart')) {
-            window.localStorage.setItem('cart', JSON.stringify({}));
+            window.localStorage.setItem('cart', JSON.stringify([]));
         }
     }
 }

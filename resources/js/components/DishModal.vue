@@ -24,7 +24,8 @@
                             <button @click="changeQuantity('plus')" class="btn btn-primary">+</button>
                         </div>
                     </div>
-                    <button type="button" data-bs-dismiss="modal" @click="addToCart()" class="btn btn-primary w-75">Aggiungi per {{returnTotal}}
+                    <button type="button" data-bs-dismiss="modal" @click="addToCart()"
+                        class="btn btn-primary w-75">Aggiungi per {{returnTotal}}
                         €</button>
                 </div>
             </div>
@@ -67,13 +68,40 @@ export default {
         addToCart() {
             let cart = JSON.parse(window.localStorage.cart)
 
-            if (cart.hasOwnProperty(this.dish.id)){
-                cart[this.dish.id] += this.quantity;
+            if (cart.length === 0) {
+                cart.push(
+                    {
+                        id: this.dish.id,
+                        qty: this.quantity
+                    }
+                )
             } else {
-                cart[this.dish.id] = this.quantity;
+
+                let itemNotFinded = true
+                cart.forEach(item => {
+                    if (item.id === this.dish.id) {
+                        item.qty += this.quantity
+                        itemNotFinded = false
+                    }
+                    
+                })
+
+                if (itemNotFinded){
+                    cart.push(
+                        {
+                            id: this.dish.id,
+                            qty: this.quantity
+                        }
+                    )
+                }
             }
 
-           
+            // if (cart.hasOwnProperty(this.dish.id)){
+            //     cart[this.dish.id] += this.quantity;
+            // } else {
+            //     cart[this.dish.id] = this.quantity;
+            // }
+
             window.localStorage.cart = JSON.stringify(cart)
             this.cart = JSON.parse(window.localStorage.getItem('cart'));
             this.$emit('updateCart')

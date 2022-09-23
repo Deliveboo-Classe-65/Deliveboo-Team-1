@@ -1,14 +1,14 @@
 <template>
     <div>
-    <section class="restaurant py-3">
+    <section class="restaurant p-3">
         <div class="container">
             <div class="row restaurant-row">
                 <!-- Restaurant image -->
-                <div class="col col-4 my-3">
+                <div class="col-12 col-md-4 my-3">
                     <img src="../../../public/img/bk.jpeg" alt="Burger King" class="w-100">
                 </div>
                 <!-- Restaurant name and description -->
-                <div class="col col-6 my-3">
+                <div class="col-12 col-md-6 my-3">
                     <h1>{{user.name}}</h1>
                     <div class="d-flex categories">
                         <p class="delivery-time">{{randomNumber}} - {{randomNumber + 15}} minuti - 

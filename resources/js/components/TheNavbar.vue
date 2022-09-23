@@ -3,19 +3,19 @@
     <div>
         <header>
             <nav class="navbar">
-                <div class="container-fluid justify-content-around">
+                <div class="container-fluid justify-content-between px-5">
                     <a class="navbar-brand" href="">
                         <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" class="border-none my-nav-button btn btn-outline-light d-none d-md-inline-block">
                         <router-link class="nav-link" :to="{ name: 'restaurants.index' }">
-                            Visualizza i ristoranti</router-link>
+                           <span class="">Visualizza i ristoranti</span> </router-link>
                     </button>
 
-                    <button class="navbar-toggler border-none" type="button" data-bs-toggle="offcanvas"
+                    <button class="navbar-toggler btn btn-outline-light my-nav-button fs-6" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span class="navbar-toggler-icon bg-light m-1"></span>
-                        <span class="text-white fw-bold">Registrati o accedi</span>
+                        <span class="d-none d-md-inline-block">Registrati o accedi</span>
                     </button>
 
 
@@ -30,7 +30,7 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link text-white fw-bold " href="/admin">Registrati o accedi
+                                    <a class="nav-link text-white fw-bold" href="/admin">Registrati o accedi
                                     </a>
 
                                 </li>
@@ -95,6 +95,20 @@ img {
 
 .navbar-toggler-icon {
     color: #00CCBC;
+}
+
+.btn-outline-light {
+    &:hover {
+        color: #00CCBC;
+    }
+
+    &.my-nav-button {
+        color: white;
+        border-color: white;
+        &:hover {
+            color: #00CCBC!important;
+        }
+    }
 }
 
 // .video-jb {

@@ -9,9 +9,9 @@
             <div class="row">
                 <!-- Restautant menù -->
 
-                <div class="col col-8">
+                <div class="col-12 col-lg-8">
                     <h2 class="my-3">Menu</h2>
-                    <div class="row row-cols-2 g-3 mb-4">
+                    <div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
                         <div class="col" v-for="dish in dishes" :key="dish.id">
                             <button data-bs-toggle="modal" @mouseenter="setCurrentDish(dish)"
                                 :data-bs-target="'#dish' + dish.id" class="my-card">
@@ -30,9 +30,15 @@
 
                 <!--  Checkout-->
 
-                <div class="col col-4 border mt-4 cart">
+                <div class="col-12 col-lg-4 border mt-4 cart">
                     <div class="container">
-                        <img v-if="pageCart.length == 0" src="../../../public/img/sad_bag.png" alt="Carrello vuoto">
+                        <div v-if="pageCart.length == 0" class="text-secondary row justify-content-center">
+                            <div class="col-12" style="font-size: 52px">
+                                <font-awesome-icon icon="fa-solid fa-basket-shopping" />
+                                
+                            </div>
+                            <p class="mt-2 cole-12">Il carrello è vuoto</p>
+                        </div>
 
                         <div class="row g-0 align-items-center" v-for="dish in pageCart" :key="'cartrow' + dish.id" :id="'item' + dish.id">
                             <div class="col-6 text-start">
@@ -62,10 +68,11 @@
                             <div class="col-6 text-end"> € {{ cartTotal }}
                             </div>
                         </div>
-                        <div class="btn btn-warning d-flex flex-grow-1 justify-content-center">Vai al pagamento</div>
+                        <button class="w-75 text-center btn btn-warning" :disabled="pageCart.length === 0">Vai al pagamento</button>
                     </div>
                 </div>
             </div>
+            <div class="py-2"></div>
         </div>
     </section>
 </template>
@@ -177,7 +184,7 @@ export default {
 <style lang="scss" scoped>
 .my-card {
     box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
-    height: 120px;
+    height: 130px;
     width: 100%;
     overflow: hidden;
     border-radius: 4px;

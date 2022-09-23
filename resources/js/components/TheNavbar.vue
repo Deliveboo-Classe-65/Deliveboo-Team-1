@@ -4,17 +4,13 @@
         <header>
             <nav class="navbar">
                 <div class="container-fluid justify-content-between px-5">
-                    <a class="navbar-brand" href="">
+                    <a class="navbar-brand" href="/">
                         <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
-                    <button type="button" class="border-none my-nav-button btn btn-outline-light d-none d-md-inline-block">
-                        <router-link class="nav-link" :to="{ name: 'restaurants.index' }">
-                           <span class="">Visualizza i ristoranti</span> </router-link>
-                    </button>
 
-                    <button class="navbar-toggler btn btn-outline-light my-nav-button fs-6" type="button" data-bs-toggle="offcanvas"
+                    <button class="navbar-toggler btn btn-outline-light my-button fs-6" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                        <span class="navbar-toggler-icon bg-light m-1"></span>
+                        <font-awesome-icon icon="fa-solid fa-bars"/>
                         <span class="d-none d-md-inline-block">Registrati o accedi</span>
                     </button>
 
@@ -71,8 +67,6 @@ export default {
 <style lang="scss" scoped>
 nav {
     background-color: #00CCBC;
-   
-
 }
 
 li {
@@ -93,8 +87,8 @@ img {
     object-fit: contain;
 }
 
-.navbar-toggler-icon {
-    color: #00CCBC;
+.navbar-toggler {
+    padding: 1rem;
 }
 
 .btn-outline-light {
@@ -102,7 +96,7 @@ img {
         color: #00CCBC;
     }
 
-    &.my-nav-button {
+    &.my-button {
         color: white;
         border-color: white;
         &:hover {

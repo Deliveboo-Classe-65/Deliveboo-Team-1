@@ -5,23 +5,23 @@
         <DishModal @updateCart="setPageCart" :dish="currentDish"></DishModal>
 
         <div class="container">
+            
             <div class="row">
                 <!-- Restautant menù -->
 
                 <div class="col col-8">
-                    <div class="row row-cols-2 g-3 mt-4">
+                    <h2 class="my-3">Menu</h2>
+                    <div class="row row-cols-2 g-3 mb-4">
                         <div class="col" v-for="dish in dishes" :key="dish.id">
                             <button data-bs-toggle="modal" @mouseenter="setCurrentDish(dish)"
                                 :data-bs-target="'#dish' + dish.id" class="my-card">
-                                <div class="row">
-                                    <div class="col col-8">
-                                        <div class="card-body">
+                                
+                                        <div class="card-body h-100 text-start pb-3">
                                             <h5 class="card-title product-name">{{ dish.name }}</h5>
-                                            <p class="card-text product-description">{{ dish.description }}</p>
+                                            <p class="card-text text-muted product-description h-50">{{ dish.description.substr(0, 100) + (dish.description.length > 100 ? '...' : '') }}</p>
                                             <p class="price">€ {{dish.price}}</p>
                                         </div>
-                                    </div>
-                                </div>
+                               
                             </button>
 
                         </div>
@@ -177,8 +177,8 @@ export default {
 <style lang="scss" scoped>
 .my-card {
     box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
-    max-height: 132px;
-    max-width: 100%;
+    height: 120px;
+    width: 100%;
     overflow: hidden;
     border-radius: 4px;
     padding: 1rem;

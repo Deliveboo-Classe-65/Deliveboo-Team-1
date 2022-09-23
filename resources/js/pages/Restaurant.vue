@@ -12,7 +12,7 @@
                     <h1>{{user.name}}</h1>
                     <div class="d-flex categories">
                         <p class="delivery-time">{{randomNumber}} - {{randomNumber + 15}} minuti - 
-                            <span v-for="category in user.categories" :key="user.id">{{category.name}}</span>
+                            <span v-for="category in user.categories" :key="'category' + category.id">{{category.name}}</span>
                         </p>
                         
                         <!-- <p class="me-3">Americano</p>

@@ -34,7 +34,7 @@
                     <div class="container">
                         <img v-if="pageCart.length == 0" src="../../../public/img/sad_bag.png" alt="Carrello vuoto">
 
-                        <div class="row g-0 align-items-center" v-for="dish in pageCart" :id="'item' + dish.id">
+                        <div class="row g-0 align-items-center" v-for="dish in pageCart" :key="'cartrow' + dish.id" :id="'item' + dish.id">
                             <div class="col-6 text-start">
                                 {{ dish.name }}
                             </div>

@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Diablo',
                 'description' => 'Al Diablo potrai gustare i veri sapori e colori del Messico in piatti che riprendono le ricette tradizionali messicane con uno stile contemporaneo',
                 'address' => 'Via della Liberazione 42',
-                'image' => 'diablo.jpg',
+                'image' => 'diablo.png',
                 'vat_number' => '11101010100',
                 'categories' => [
                     'messicano'
@@ -198,7 +198,7 @@ class UsersTableSeeder extends Seeder
                 'password' => 'runnerpizza123',
                 'name' => 'Runner Pizza',
                 'address' => 'Via dei Casini 60/A',
-                'image' => 'runner_pizza.jpg',
+                'image' => 'runner_pizza.png',
                 'vat_number' => '66606060606',
                 'categories' => [
                     'pizza'
@@ -233,7 +233,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'McDonalds',
                 'description' => "La McDonald's Corporation è una catena di ristoranti di fast food statunitense",
                 'address' => 'Via Cavour 116',
-                'image' => 'mcdonalds.jpg',
+                'image' => 'mcdonalds.png',
                 'vat_number' => '55505050505',
                 'categories' => [
                     'hamburger'

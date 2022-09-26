@@ -21,7 +21,7 @@
             <div class="col-3" v-for="user in users" :key="user.id">
                 <router-link class="text-decoration-none" :to="{ name: 'restaurant.show', params:{ id: user.id}}">
                     <div class="content">
-                        <img :src="user.image" alt="Burger King" class="w-100">
+                        <img :src="'storage/img/restaurants/' + user.image" :alt="user.name" class="w-100 restaurant-img">
                         <h4>{{user.name}}</h4>
                     </div>
                 </router-link>
@@ -113,4 +113,9 @@
     text-shadow: 0 0  6px rgba(0, 0, 0, 0.8);
 }
 input:checked + span{background-color: #F75A1B;}
+
+.restaurant-img {
+    height: 150px;
+    object-fit: cover;
+}
 </style>

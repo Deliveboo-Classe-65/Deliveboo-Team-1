@@ -8594,7 +8594,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/niccolotoccafondi/Documents/Nicastro - Boolean/deliveboo-team-1/resources/js/backend.js */"./resources/js/backend.js");
+module.exports = __webpack_require__(/*! E:\Boolean\Repos\deliveboo-team-1\resources\js\backend.js */"./resources/js/backend.js");
 
 
 /***/ })

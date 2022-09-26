@@ -3,5 +3,6 @@
     "/js/backend/dishesvalidation.js": "/js/backend/dishesvalidation.js",
     "/js/backend/registervalidation.js": "/js/backend/registervalidation.js",
     "/js/frontend.js": "/js/frontend.js",
-    "/css/app.css": "/css/app.css"
+    "/css/frontend.css": "/css/frontend.css",
+    "/css/backend.css": "/css/backend.css"
 }

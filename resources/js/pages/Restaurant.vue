@@ -5,7 +5,7 @@
             <div class="row restaurant-row">
                 <!-- Restaurant image -->
                 <div class="col-12 col-md-4 my-3">
-                    <img src="../../../public/img/bk.jpeg" alt="Burger King" class="w-100">
+                    <img :src="'storage/img/restaurants/' + user.image" :alt="user.name" class="w-100">
                 </div>
                 <!-- Restaurant name and description -->
                 <div class="col-12 col-md-6 my-3">

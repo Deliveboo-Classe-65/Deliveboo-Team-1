@@ -233,7 +233,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'McDonalds',
                 'description' => "La McDonald's Corporation è una catena di ristoranti di fast food statunitense",
                 'address' => 'Via Cavour 116',
-                'image' => 'mcdonalds.png',
+                'image' => 'mcdonalds.jpg',
                 'vat_number' => '55505050505',
                 'categories' => [
                     'hamburger'

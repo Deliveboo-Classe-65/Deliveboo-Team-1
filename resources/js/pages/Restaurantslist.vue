@@ -21,7 +21,7 @@
             <div class="col-3" v-for="user in users" :key="user.id">
                 <router-link class="text-decoration-none" :to="{ name: 'restaurant.show', params:{ id: user.id}}">
                     <div class="content">
-                        <img :src="'storage/img/restaurants/' + user.image" :alt="user.name" class="w-100 restaurant-img">
+                        <img :src="'/storage/img/restaurants/' + user.image" :alt="user.name" class="w-100 restaurant-img">
                         <h4>{{user.name}}</h4>
                     </div>
                 </router-link>

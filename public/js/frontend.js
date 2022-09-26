@@ -24371,7 +24371,7 @@ var staticRenderFns = [function () {
   }, [_c("img", {
     staticClass: "d-inline-block align-text-top w-100",
     attrs: {
-      src: "img/logo-db.png"
+      src: "/img/logo-db.png"
     }
   })]);
 }, function () {
@@ -24737,7 +24737,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "w-100",
     attrs: {
-      src: "storage/img/restaurants/" + _vm.user.image,
+      src: "/storage/img/restaurants/" + _vm.user.image,
       alt: _vm.user.name
     }
   })]), _vm._v(" "), _c("div", {
@@ -24862,7 +24862,7 @@ var render = function render() {
     }, [_c("img", {
       staticClass: "w-100 restaurant-img",
       attrs: {
-        src: "storage/img/restaurants/" + user.image,
+        src: "/storage/img/restaurants/" + user.image,
         alt: user.name
       }
     }), _vm._v(" "), _c("h4", [_vm._v(_vm._s(user.name))])])])], 1);

@@ -5,7 +5,7 @@
             <nav class="navbar">
                 <div class="container-fluid justify-content-between px-5">
                     <a class="navbar-brand" href="/">
-                        <img src="img/logo-db.png" class="d-inline-block align-text-top w-100">
+                        <img src="/img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
 
                     <button class="navbar-toggler btn btn-outline-light my-button fs-6" type="button" data-bs-toggle="offcanvas"

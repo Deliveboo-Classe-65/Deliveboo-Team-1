@@ -69,7 +69,9 @@
                             <div class="col-6 text-end"> € {{ cartTotal }}
                             </div>
                         </div>
-                        <button class="w-75 text-center btn btn-warning" :disabled="pageCart.length === 0">Vai al pagamento</button>
+                        <router-link to="/checkout">
+                            <button class="w-75 text-center btn btn-warning" :disabled="pageCart.length === 0">Vai al pagamento</button>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -153,13 +155,6 @@ export default {
                 })
             })
 
-            // for (const id in this.cart) {
-            //     this.dishes.forEach(dish => {
-            //         if (dish.id == id) {
-            //             cart.push(dish)
-            //         }
-            //     })
-            // }
             this.pageCart = cart
             this.setCartTotal()
         },

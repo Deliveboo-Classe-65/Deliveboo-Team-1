@@ -65,19 +65,7 @@ export default {
             }
             this.total = (this.quantity * this.dish.price).toFixed(2);
         },
-
-        isCartCurrentRestaurant() {
-            return JSON.parse(window.localStorage.getItem('restaurant')) === this.dish.user_id
-        },
-
         addToCart() {
-            if(window.localStorage.getItem('restaurant')) {
-                if(!this.isCartCurrentRestaurant()) {
-                    console.log("test")
-                }
-            }
-
-            window.localStorage.setItem('restaurant', this.dish.user_id)
             let cart = JSON.parse(window.localStorage.cart)
 
             if (cart.length === 0) {
@@ -107,6 +95,12 @@ export default {
                     )
                 }
             }
+
+            // if (cart.hasOwnProperty(this.dish.id)){
+            //     cart[this.dish.id] += this.quantity;
+            // } else {
+            //     cart[this.dish.id] = this.quantity;
+            // }
 
             window.localStorage.cart = JSON.stringify(cart)
             this.cart = JSON.parse(window.localStorage.getItem('cart'));

@@ -79,6 +79,7 @@
 <script>
 import axios from 'axios';
 import DishModal from '../components/DishModal.vue';
+import CartControlModal from "../components/CartControlModal.vue";
 
 export default {
     components: {

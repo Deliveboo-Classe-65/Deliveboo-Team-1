@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import App from "./App.vue";
 import routes from "./router.js";
 import "bootstrap";
+import VueBraintree from 'vue-braintree'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -24,6 +25,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 Vue.use(VueRouter);
+Vue.use(VueBraintree)
 
 new Vue({
     el: "#app",

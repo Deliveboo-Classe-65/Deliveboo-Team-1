@@ -23,3 +23,5 @@ Route::get("/users/{user}", "Api\UserController@show");
 Route::get("/users/{id}/dishes", "Api\UserController@dishesList");
 
 Route::get("/categories", "Api\CategoriesController@index");
+
+Route::post("/checkout", "Api\OrderController@makePayment");

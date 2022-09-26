@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "./pages/Home";
 import Restaurant from "./pages/Restaurant"
 import Restaurantslist from "./pages/Restaurantslist"
+import Payment from "./pages/Payment"
 
 
 Vue.use(VueRouter)
@@ -14,7 +15,8 @@ const routes = [
 
 
     { path: "/restaurants", component: Restaurantslist, name: "restaurants.index" },
-    { path: "/restaurant/:id", component: Restaurant, name: "restaurant.show" }
+    { path: "/restaurant/:id", component: Restaurant, name: "restaurant.show" },
+    { path: "/checkout", component: Payment, name: "checkout" }
 
 
     // { path: "/restaurants", component: Home, name: "restaurants.index" },

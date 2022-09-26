@@ -23703,6 +23703,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CartControlModal.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CartControlModal.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var credit_card_type__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! credit-card-type */ "./node_modules/credit-card-type/dist/index.js");
+/* harmony import */ var credit_card_type__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(credit_card_type__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    data: Object
+  },
+  methods: {
+    addToCart: function addToCart() {
+      window.localStorage.restaurant = this.data.dish.user_id;
+      window.localStorage.cart = JSON.stringify([{
+        id: this.data.dish.id,
+        qty: this.data.quantity
+      }]);
+      this.$emit("updateCart");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DishModal.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DishModal.vue?vue&type=script&lang=js& ***!
@@ -23751,7 +23781,12 @@ __webpack_require__.r(__webpack_exports__);
 
       if (window.localStorage.getItem('restaurant')) {
         if (!this.isCartCurrentRestaurant()) {
-          console.log("test");
+          document.getElementById("cartControlModalButton").click();
+          this.$emit('changeCart', {
+            'dish': this.dish,
+            'quantity': this.quantity
+          });
+          return;
         }
       }
 
@@ -23939,7 +23974,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    DishModal: _components_DishModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    DishModal: _components_DishModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    CartControlModal: _components_CartControlModal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -23947,7 +23983,8 @@ __webpack_require__.r(__webpack_exports__);
       dishes: [],
       cart: JSON.parse(window.localStorage.getItem('cart')),
       pageCart: [],
-      cartTotal: 0
+      cartTotal: 0,
+      dishToPass: undefined
     };
   },
   methods: {
@@ -24019,6 +24056,9 @@ __webpack_require__.r(__webpack_exports__);
         total += dish.price * dish.qty;
       });
       this.cartTotal = total.toFixed(2);
+    },
+    testCart: function testCart(data) {
+      this.dishToPass = data;
     }
   },
   mounted: function mounted() {
@@ -24185,6 +24225,85 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CartControlModal.vue?vue&type=template&id=07a73e0a&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CartControlModal.vue?vue&type=template&id=07a73e0a& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "modal fade",
+    attrs: {
+      id: "testModal",
+      "data-bs-keyboard": "false",
+      tabindex: "-1",
+      "aria-labelledby": "staticBackdropLabel",
+      "aria-hidden": "true"
+    }
+  }, [_c("div", {
+    staticClass: "modal-dialog"
+  }, [_c("div", {
+    staticClass: "modal-content"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "modal-footer justify-content-center"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_c("button", {
+    staticClass: "btn btn-primary w-75",
+    attrs: {
+      type: "button",
+      "data-bs-dismiss": "modal"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.addToCart();
+      }
+    }
+  }, [_vm._v("\n                            Nuovo carrello\n                        ")])])])])])])]);
+};
+
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "modal-body"
+  }, [_c("h5", {
+    staticClass: "modal-title",
+    attrs: {
+      id: "staticBackdropLabel"
+    }
+  }, [_vm._v("Vuoi creare un nuovo carrello?")]), _vm._v(" "), _c("p", [_vm._v("In questo modo cancelli il carrello esistente e crei un nuovo carrello?")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col"
+  }, [_c("button", {
+    staticClass: "btn btn-primary w-75",
+    attrs: {
+      type: "button",
+      "data-bs-dismiss": "modal"
+    }
+  }, [_vm._v("\n                            Visualizza menu\n                        ")])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DishModal.vue?vue&type=template&id=cbc17450&":
 /*!******************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DishModal.vue?vue&type=template&id=cbc17450& ***!
@@ -24270,7 +24389,7 @@ var render = function render() {
         return _vm.addToCart();
       }
     }
-  }, [_vm._v("Aggiungi per " + _vm._s(_vm.returnTotal) + "\n                    €")])])])])]);
+  }, [_vm._v("Aggiungi per " + _vm._s(_vm.returnTotal) + "€\n                ")])])])])]);
 };
 
 var staticRenderFns = [];
@@ -24634,7 +24753,22 @@ var render = function render() {
       dish: _vm.currentDish
     },
     on: {
+      updateCart: _vm.setPageCart,
+      changeCart: _vm.testCart
+    }
+  }), _vm._v(" "), _c("CartControlModal", {
+    attrs: {
+      data: _vm.dishToPass
+    },
+    on: {
       updateCart: _vm.setPageCart
+    }
+  }), _vm._v(" "), _c("button", {
+    attrs: {
+      id: "cartControlModalButton",
+      "data-bs-toggle": "modal",
+      "data-bs-target": "#testModal",
+      hidden: ""
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "container"
@@ -55085,6 +55219,506 @@ module.exports = VenmoView;
 
 /***/ }),
 
+/***/ "./node_modules/credit-card-type/dist/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/credit-card-type/dist/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var cardTypes = __webpack_require__(/*! ./lib/card-types */ "./node_modules/credit-card-type/dist/lib/card-types.js");
+var add_matching_cards_to_results_1 = __webpack_require__(/*! ./lib/add-matching-cards-to-results */ "./node_modules/credit-card-type/dist/lib/add-matching-cards-to-results.js");
+var is_valid_input_type_1 = __webpack_require__(/*! ./lib/is-valid-input-type */ "./node_modules/credit-card-type/dist/lib/is-valid-input-type.js");
+var find_best_match_1 = __webpack_require__(/*! ./lib/find-best-match */ "./node_modules/credit-card-type/dist/lib/find-best-match.js");
+var clone_1 = __webpack_require__(/*! ./lib/clone */ "./node_modules/credit-card-type/dist/lib/clone.js");
+var customCards = {};
+var cardNames = {
+    VISA: "visa",
+    MASTERCARD: "mastercard",
+    AMERICAN_EXPRESS: "american-express",
+    DINERS_CLUB: "diners-club",
+    DISCOVER: "discover",
+    JCB: "jcb",
+    UNIONPAY: "unionpay",
+    MAESTRO: "maestro",
+    ELO: "elo",
+    MIR: "mir",
+    HIPER: "hiper",
+    HIPERCARD: "hipercard",
+};
+var ORIGINAL_TEST_ORDER = [
+    cardNames.VISA,
+    cardNames.MASTERCARD,
+    cardNames.AMERICAN_EXPRESS,
+    cardNames.DINERS_CLUB,
+    cardNames.DISCOVER,
+    cardNames.JCB,
+    cardNames.UNIONPAY,
+    cardNames.MAESTRO,
+    cardNames.ELO,
+    cardNames.MIR,
+    cardNames.HIPER,
+    cardNames.HIPERCARD,
+];
+var testOrder = clone_1.clone(ORIGINAL_TEST_ORDER);
+function findType(cardType) {
+    return customCards[cardType] || cardTypes[cardType];
+}
+function getAllCardTypes() {
+    return testOrder.map(function (cardType) { return clone_1.clone(findType(cardType)); });
+}
+function getCardPosition(name, ignoreErrorForNotExisting) {
+    if (ignoreErrorForNotExisting === void 0) { ignoreErrorForNotExisting = false; }
+    var position = testOrder.indexOf(name);
+    if (!ignoreErrorForNotExisting && position === -1) {
+        throw new Error('"' + name + '" is not a supported card type.');
+    }
+    return position;
+}
+function creditCardType(cardNumber) {
+    var results = [];
+    if (!is_valid_input_type_1.isValidInputType(cardNumber)) {
+        return results;
+    }
+    if (cardNumber.length === 0) {
+        return getAllCardTypes();
+    }
+    testOrder.forEach(function (cardType) {
+        var cardConfiguration = findType(cardType);
+        add_matching_cards_to_results_1.addMatchingCardsToResults(cardNumber, cardConfiguration, results);
+    });
+    var bestMatch = find_best_match_1.findBestMatch(results);
+    if (bestMatch) {
+        return [bestMatch];
+    }
+    return results;
+}
+creditCardType.getTypeInfo = function (cardType) {
+    return clone_1.clone(findType(cardType));
+};
+creditCardType.removeCard = function (name) {
+    var position = getCardPosition(name);
+    testOrder.splice(position, 1);
+};
+creditCardType.addCard = function (config) {
+    var existingCardPosition = getCardPosition(config.type, true);
+    customCards[config.type] = config;
+    if (existingCardPosition === -1) {
+        testOrder.push(config.type);
+    }
+};
+creditCardType.updateCard = function (cardType, updates) {
+    var originalObject = customCards[cardType] || cardTypes[cardType];
+    if (!originalObject) {
+        throw new Error("\"" + cardType + "\" is not a recognized type. Use `addCard` instead.'");
+    }
+    if (updates.type && originalObject.type !== updates.type) {
+        throw new Error("Cannot overwrite type parameter.");
+    }
+    var clonedCard = clone_1.clone(originalObject);
+    clonedCard = __assign(__assign({}, clonedCard), updates);
+    customCards[clonedCard.type] = clonedCard;
+};
+creditCardType.changeOrder = function (name, position) {
+    var currentPosition = getCardPosition(name);
+    testOrder.splice(currentPosition, 1);
+    testOrder.splice(position, 0, name);
+};
+creditCardType.resetModifications = function () {
+    testOrder = clone_1.clone(ORIGINAL_TEST_ORDER);
+    customCards = {};
+};
+creditCardType.types = cardNames;
+module.exports = creditCardType;
+
+
+/***/ }),
+
+/***/ "./node_modules/credit-card-type/dist/lib/add-matching-cards-to-results.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/credit-card-type/dist/lib/add-matching-cards-to-results.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.addMatchingCardsToResults = void 0;
+var clone_1 = __webpack_require__(/*! ./clone */ "./node_modules/credit-card-type/dist/lib/clone.js");
+var matches_1 = __webpack_require__(/*! ./matches */ "./node_modules/credit-card-type/dist/lib/matches.js");
+function addMatchingCardsToResults(cardNumber, cardConfiguration, results) {
+    var i, patternLength;
+    for (i = 0; i < cardConfiguration.patterns.length; i++) {
+        var pattern = cardConfiguration.patterns[i];
+        if (!matches_1.matches(cardNumber, pattern)) {
+            continue;
+        }
+        var clonedCardConfiguration = clone_1.clone(cardConfiguration);
+        if (Array.isArray(pattern)) {
+            patternLength = String(pattern[0]).length;
+        }
+        else {
+            patternLength = String(pattern).length;
+        }
+        if (cardNumber.length >= patternLength) {
+            clonedCardConfiguration.matchStrength = patternLength;
+        }
+        results.push(clonedCardConfiguration);
+        break;
+    }
+}
+exports.addMatchingCardsToResults = addMatchingCardsToResults;
+
+
+/***/ }),
+
+/***/ "./node_modules/credit-card-type/dist/lib/card-types.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/credit-card-type/dist/lib/card-types.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var cardTypes = {
+    visa: {
+        niceType: "Visa",
+        type: "visa",
+        patterns: [4],
+        gaps: [4, 8, 12],
+        lengths: [16, 18, 19],
+        code: {
+            name: "CVV",
+            size: 3,
+        },
+    },
+    mastercard: {
+        niceType: "Mastercard",
+        type: "mastercard",
+        patterns: [[51, 55], [2221, 2229], [223, 229], [23, 26], [270, 271], 2720],
+        gaps: [4, 8, 12],
+        lengths: [16],
+        code: {
+            name: "CVC",
+            size: 3,
+        },
+    },
+    "american-express": {
+        niceType: "American Express",
+        type: "american-express",
+        patterns: [34, 37],
+        gaps: [4, 10],
+        lengths: [15],
+        code: {
+            name: "CID",
+            size: 4,
+        },
+    },
+    "diners-club": {
+        niceType: "Diners Club",
+        type: "diners-club",
+        patterns: [[300, 305], 36, 38, 39],
+        gaps: [4, 10],
+        lengths: [14, 16, 19],
+        code: {
+            name: "CVV",
+            size: 3,
+        },
+    },
+    discover: {
+        niceType: "Discover",
+        type: "discover",
+        patterns: [6011, [644, 649], 65],
+        gaps: [4, 8, 12],
+        lengths: [16, 19],
+        code: {
+            name: "CID",
+            size: 3,
+        },
+    },
+    jcb: {
+        niceType: "JCB",
+        type: "jcb",
+        patterns: [2131, 1800, [3528, 3589]],
+        gaps: [4, 8, 12],
+        lengths: [16, 17, 18, 19],
+        code: {
+            name: "CVV",
+            size: 3,
+        },
+    },
+    unionpay: {
+        niceType: "UnionPay",
+        type: "unionpay",
+        patterns: [
+            620,
+            [624, 626],
+            [62100, 62182],
+            [62184, 62187],
+            [62185, 62197],
+            [62200, 62205],
+            [622010, 622999],
+            622018,
+            [622019, 622999],
+            [62207, 62209],
+            [622126, 622925],
+            [623, 626],
+            6270,
+            6272,
+            6276,
+            [627700, 627779],
+            [627781, 627799],
+            [6282, 6289],
+            6291,
+            6292,
+            810,
+            [8110, 8131],
+            [8132, 8151],
+            [8152, 8163],
+            [8164, 8171],
+        ],
+        gaps: [4, 8, 12],
+        lengths: [14, 15, 16, 17, 18, 19],
+        code: {
+            name: "CVN",
+            size: 3,
+        },
+    },
+    maestro: {
+        niceType: "Maestro",
+        type: "maestro",
+        patterns: [
+            493698,
+            [500000, 504174],
+            [504176, 506698],
+            [506779, 508999],
+            [56, 59],
+            63,
+            67,
+            6,
+        ],
+        gaps: [4, 8, 12],
+        lengths: [12, 13, 14, 15, 16, 17, 18, 19],
+        code: {
+            name: "CVC",
+            size: 3,
+        },
+    },
+    elo: {
+        niceType: "Elo",
+        type: "elo",
+        patterns: [
+            401178,
+            401179,
+            438935,
+            457631,
+            457632,
+            431274,
+            451416,
+            457393,
+            504175,
+            [506699, 506778],
+            [509000, 509999],
+            627780,
+            636297,
+            636368,
+            [650031, 650033],
+            [650035, 650051],
+            [650405, 650439],
+            [650485, 650538],
+            [650541, 650598],
+            [650700, 650718],
+            [650720, 650727],
+            [650901, 650978],
+            [651652, 651679],
+            [655000, 655019],
+            [655021, 655058],
+        ],
+        gaps: [4, 8, 12],
+        lengths: [16],
+        code: {
+            name: "CVE",
+            size: 3,
+        },
+    },
+    mir: {
+        niceType: "Mir",
+        type: "mir",
+        patterns: [[2200, 2204]],
+        gaps: [4, 8, 12],
+        lengths: [16, 17, 18, 19],
+        code: {
+            name: "CVP2",
+            size: 3,
+        },
+    },
+    hiper: {
+        niceType: "Hiper",
+        type: "hiper",
+        patterns: [637095, 63737423, 63743358, 637568, 637599, 637609, 637612],
+        gaps: [4, 8, 12],
+        lengths: [16],
+        code: {
+            name: "CVC",
+            size: 3,
+        },
+    },
+    hipercard: {
+        niceType: "Hipercard",
+        type: "hipercard",
+        patterns: [606282],
+        gaps: [4, 8, 12],
+        lengths: [16],
+        code: {
+            name: "CVC",
+            size: 3,
+        },
+    },
+};
+module.exports = cardTypes;
+
+
+/***/ }),
+
+/***/ "./node_modules/credit-card-type/dist/lib/clone.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/credit-card-type/dist/lib/clone.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.clone = void 0;
+function clone(originalObject) {
+    if (!originalObject) {
+        return null;
+    }
+    return JSON.parse(JSON.stringify(originalObject));
+}
+exports.clone = clone;
+
+
+/***/ }),
+
+/***/ "./node_modules/credit-card-type/dist/lib/find-best-match.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/credit-card-type/dist/lib/find-best-match.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.findBestMatch = void 0;
+function hasEnoughResultsToDetermineBestMatch(results) {
+    var numberOfResultsWithMaxStrengthProperty = results.filter(function (result) { return result.matchStrength; }).length;
+    /*
+     * if all possible results have a maxStrength property that means the card
+     * number is sufficiently long enough to determine conclusively what the card
+     * type is
+     * */
+    return (numberOfResultsWithMaxStrengthProperty > 0 &&
+        numberOfResultsWithMaxStrengthProperty === results.length);
+}
+function findBestMatch(results) {
+    if (!hasEnoughResultsToDetermineBestMatch(results)) {
+        return null;
+    }
+    return results.reduce(function (bestMatch, result) {
+        if (!bestMatch) {
+            return result;
+        }
+        /*
+         * If the current best match pattern is less specific than this result, set
+         * the result as the new best match
+         * */
+        if (Number(bestMatch.matchStrength) < Number(result.matchStrength)) {
+            return result;
+        }
+        return bestMatch;
+    });
+}
+exports.findBestMatch = findBestMatch;
+
+
+/***/ }),
+
+/***/ "./node_modules/credit-card-type/dist/lib/is-valid-input-type.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/credit-card-type/dist/lib/is-valid-input-type.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isValidInputType = void 0;
+function isValidInputType(cardNumber) {
+    return typeof cardNumber === "string" || cardNumber instanceof String;
+}
+exports.isValidInputType = isValidInputType;
+
+
+/***/ }),
+
+/***/ "./node_modules/credit-card-type/dist/lib/matches.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/credit-card-type/dist/lib/matches.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*
+ * Adapted from https://github.com/polvo-labs/card-type/blob/aaab11f80fa1939bccc8f24905a06ae3cd864356/src/cardType.js#L37-L42
+ * */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.matches = void 0;
+function matchesRange(cardNumber, min, max) {
+    var maxLengthToCheck = String(min).length;
+    var substr = cardNumber.substr(0, maxLengthToCheck);
+    var integerRepresentationOfCardNumber = parseInt(substr, 10);
+    min = parseInt(String(min).substr(0, substr.length), 10);
+    max = parseInt(String(max).substr(0, substr.length), 10);
+    return (integerRepresentationOfCardNumber >= min &&
+        integerRepresentationOfCardNumber <= max);
+}
+function matchesPattern(cardNumber, pattern) {
+    pattern = String(pattern);
+    return (pattern.substring(0, cardNumber.length) ===
+        cardNumber.substring(0, pattern.length));
+}
+function matches(cardNumber, pattern) {
+    if (Array.isArray(pattern)) {
+        return matchesRange(cardNumber, pattern[0], pattern[1]);
+    }
+    return matchesPattern(cardNumber, pattern);
+}
+exports.matches = matches;
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=scss&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=scss& ***!
@@ -72099,17 +72733,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-var script = {}
+/* harmony import */ var _CartControlModal_vue_vue_type_template_id_07a73e0a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartControlModal.vue?vue&type=template&id=07a73e0a& */ "./resources/js/components/CartControlModal.vue?vue&type=template&id=07a73e0a&");
+/* harmony import */ var _CartControlModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CartControlModal.vue?vue&type=script&lang=js& */ "./resources/js/components/CartControlModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
-  script,
-  render,
-  staticRenderFns,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CartControlModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CartControlModal_vue_vue_type_template_id_07a73e0a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CartControlModal_vue_vue_type_template_id_07a73e0a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -72117,8 +72754,42 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   
 )
 
+/* hot reload */
+if (false) { var api; }
 component.options.__file = "resources/js/components/CartControlModal.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CartControlModal.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/CartControlModal.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CartControlModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CartControlModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CartControlModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CartControlModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CartControlModal.vue?vue&type=template&id=07a73e0a&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/CartControlModal.vue?vue&type=template&id=07a73e0a& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_CartControlModal_vue_vue_type_template_id_07a73e0a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../node_modules/vue-loader/lib??vue-loader-options!./CartControlModal.vue?vue&type=template&id=07a73e0a& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CartControlModal.vue?vue&type=template&id=07a73e0a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_CartControlModal_vue_vue_type_template_id_07a73e0a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_CartControlModal_vue_vue_type_template_id_07a73e0a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

@@ -2,7 +2,9 @@
 
     <section>
 
-        <DishModal @updateCart="setPageCart" :dish="currentDish"></DishModal>
+        <DishModal @updateCart="setPageCart" @changeCart="testCart" :dish="currentDish"></DishModal>
+        <CartControlModal :data="dishToPass" @updateCart="setPageCart"></CartControlModal>
+        <button id="cartControlModalButton" data-bs-toggle="modal" data-bs-target="#testModal" hidden></button>
 
         <div class="container">
             
@@ -21,7 +23,6 @@
                                             <p class="card-text text-muted product-description h-50">{{ dish.description.substr(0, 100) + (dish.description.length > 100 ? '...' : '') }}</p>
                                             <p class="price">€ {{dish.price}}</p>
                                         </div>
-                               
                             </button>
 
                         </div>
@@ -83,7 +84,7 @@ import CartControlModal from "../components/CartControlModal.vue";
 
 export default {
     components: {
-        DishModal
+        DishModal, CartControlModal
     },
     data() {
         return {
@@ -91,7 +92,8 @@ export default {
             dishes: [],
             cart: JSON.parse(window.localStorage.getItem('cart')),
             pageCart: [],
-            cartTotal: 0
+            cartTotal: 0,
+            dishToPass: undefined
         }
     },
     methods: {
@@ -169,6 +171,10 @@ export default {
             })
 
             this.cartTotal = total.toFixed(2)
+        },
+
+        testCart(data) {
+            this.dishToPass = data;
         }
     },
 

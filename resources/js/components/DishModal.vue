@@ -25,8 +25,8 @@
                         </div>
                     </div>
                     <button type="button" data-bs-dismiss="modal" @click="addToCart()"
-                        class="btn btn-primary w-75">Aggiungi per {{returnTotal}}
-                        €</button>
+                        class="btn btn-primary w-75">Aggiungi per {{returnTotal}}€
+                    </button>
                 </div>
             </div>
         </div>
@@ -73,7 +73,12 @@ export default {
         addToCart() {
             if(window.localStorage.getItem('restaurant')) {
                 if(!this.isCartCurrentRestaurant()) {
-                    console.log("test")
+                    document.getElementById("cartControlModalButton").click();
+                    this.$emit('changeCart', {
+                        'dish': this.dish,
+                        'quantity': this.quantity
+                    })
+                    return
                 }
             }
 

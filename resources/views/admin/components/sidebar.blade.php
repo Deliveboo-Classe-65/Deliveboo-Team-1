@@ -7,10 +7,6 @@
     </a>
     <ul class="list-unstyled ps-0">
         <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-                Piatti
-            </button>
             <div class="" id="home-collapse" style="">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-4">
                     <li><a href="{{ route('admin.dishes.index') }}" class="link-dark d-inline-flex text-decoration-none rounded">Lista Piatti</a></li>
@@ -20,10 +16,6 @@
         </li>
         
         <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                Ordini
-            </button>
             <div class="" id="orders-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-4">
                     <li><a href="{{ route('admin.orders.index') }}" class="link-dark d-inline-flex text-decoration-none rounded">Lista Ordini</a></li>

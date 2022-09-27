@@ -24,8 +24,6 @@
             '12': 'Dicembre',
         }
 
-        console.log(data)
-
         const chartLabels = []
         const chartData = []
         const chartNumOrders = []
@@ -43,7 +41,7 @@
 
 
         const myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: chartLabels,
         datasets: [
@@ -56,6 +54,14 @@
             borderWidth: 2
             }
         ]
+    },
+
+    options: {
+        elements: {
+            line: {
+                tension: 0.2
+            }
+        }
     }
 })
 

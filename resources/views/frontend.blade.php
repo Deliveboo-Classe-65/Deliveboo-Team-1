@@ -9,8 +9,11 @@
 
     <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
    <script src="{{ asset('js/frontend.js') }}" defer></script>
-</head>
+   <script>
+    const isLogged = {!! Auth::user() ? 'true' : 'false' !!}
 
+   </script>
+</head>
 <body>
     <div id="app">
        

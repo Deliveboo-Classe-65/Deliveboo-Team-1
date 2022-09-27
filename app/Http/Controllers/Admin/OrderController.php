@@ -33,8 +33,6 @@ class OrderController extends Controller
             ->groupBy('months')->where('created_at', '>', Carbon::now()->endOfMonth()->subtract(1, 'year'))
             ->get();
 
-        $data = [];
-
         return view('admin.orders.chart', [
             'orders' => $orders
         ]);

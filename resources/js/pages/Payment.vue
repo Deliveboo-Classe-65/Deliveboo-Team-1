@@ -2,26 +2,37 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
-                <div class="cart">
-                    <div v-for="dish in pageCart" :key="dish.id" class="row g-0 align-items-center">
-                        <div class="col-6 text-start">
-                            {{ dish.name }}
+                <div class="card rounded-0 fs-5 mt-2">
+                    <div class="card-body">
+                        <div class="card-title">
+                            Carrello
                         </div>
+                        <div class="row card-text align-items-center">
+                            <div v-for="dish in pageCart" :key="dish.id" class="row align-items-center">
+                                <div class="col-1 text-start text-black-50">
+                                    {{ dish.qty }}x
+                                </div>
 
-                        <div class="col-3 text-end">
-                            {{ dish.qty }}
-                        </div>
-                        <div class="col-3 text-end">
-                            € {{ (dish.price * dish.qty).toFixed(2) }}
-                        </div>
+                                <div class="col-9 text-start text-muted">
+                                    {{ dish.name }}
+                                </div>
+                                <div class="col-2 text-end text-muted">
+                                    € {{ (dish.price * dish.qty).toFixed(2) }}
+                                </div>
 
+                            </div>
+                            
+                        </div>
                     </div>
-                    <div class="row my-3 fs-5">
-                        <div class="col-6 text-start">
-                            Totale
-                        </div>
-                        <div class="col-6 text-end"> € {{ cartTotal }}
-                        </div>
+                    <div class="card-footer fs-5 fw-bold">
+                        <div class="row">
+                            <div class="col-6 text-start">
+                                Totale
+                            </div>
+                            <div class="col-6 text-end">
+                                € {{ cartTotal }}
+                            </div>
+                    </div>
                     </div>
                 </div>
                 <v-braintree v-if="tokenAuth" :authorization="tokenAuth" locale="it_IT" @success="onSuccess" btnText="Paga"></v-braintree>
@@ -63,6 +74,7 @@ import axios from 'axios'
                         if(resp.data.success) {
                             window.localStorage.removeItem('cart')
                             window.localStorage.removeItem('restaurant')
+                            window.location.href = '/'
                         }
                     })
             },

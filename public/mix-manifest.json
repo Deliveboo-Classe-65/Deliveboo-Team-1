@@ -4,5 +4,6 @@
     "/js/backend/registervalidation.js": "/js/backend/registervalidation.js",
     "/js/frontend.js": "/js/frontend.js",
     "/css/frontend.css": "/css/frontend.css",
-    "/css/backend.css": "/css/backend.css"
+    "/css/backend.css": "/css/backend.css",
+    "/chart.js/chart.js": "/chart.js/chart.js"
 }

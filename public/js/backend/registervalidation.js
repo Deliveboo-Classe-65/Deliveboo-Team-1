@@ -15307,7 +15307,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Boolean\Repos\deliveboo-team-1\resources\js\backend\registervalidation.js */"./resources/js/backend/registervalidation.js");
+module.exports = __webpack_require__(/*! C:\Users\piomb\Documents\Boolean-ufficiale\deliveboo-team-1\resources\js\backend\registervalidation.js */"./resources/js/backend/registervalidation.js");
 
 
 /***/ })

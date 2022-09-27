@@ -3,29 +3,41 @@
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="img-fluid">
-                    <img :src="'storage/img/dishes/' + dish.image" alt="">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="img-fluid text-end p-3">
+                    <!-- <img class="w-100" :src="'/storage/img/restaurants/'+ dish.image" :alt="dish.name"> -->
+                    <!-- <img :src="'/storage/img/restaurants/' + dish.image" :alt="dish.name"
+                                class="w-100 restaurant-img"> -->
+                    <button type="button" class="btn-close btn-padding" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5 class="modal-title" id="staticBackdropLabel">{{dish.name}}</h5>
-                    <p v-if="dish.description">{{dish.description}}</p>
+
+                    <h4 class="modal-title fw-bold margin-custom" id="staticBackdropLabel ">{{dish.name}}</h4>
+                    <p class="fst-italic" v-if="dish.description">{{dish.description}}</p>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <div class="col-12 row justify-content-center text-center">
+                    <div class="col-12 row justify-content-center text-center align-items-center p-3">
                         <div class="col-2">
-                            <button @click="changeQuantity('minus')" class="btn btn-primary"
-                                :class="quantity === 1 ? 'disabled' : ''">-</button>
+                            <div class="content p-2">
+                                <button @click="changeQuantity('minus')"
+                                    class="btn btn-primary rounded-circle text-white fw-bold border-radius"
+                                    :class="quantity === 1 ? 'disabled' : ''">-</button>
+                            </div>
+
                         </div>
                         <div class="col-2">
                             {{quantity}}
                         </div>
                         <div class="col-2">
-                            <button @click="changeQuantity('plus')" class="btn btn-primary">+</button>
+                            <div class="content p-2">
+                                <button @click="changeQuantity('plus')"
+                                    class="btn btn-primary rounded-circle text-white fw-bold border-radius">+</button>
+                            </div>
+
                         </div>
                     </div>
                     <button type="button" data-bs-dismiss="modal" @click="addToCart()"
-                        class="btn btn-primary w-75">Aggiungi per {{returnTotal}}€
+                        class="btn btn-primary w-100 text-white fw-bold">Aggiungi per {{returnTotal}}€
                     </button>
                 </div>
             </div>
@@ -71,8 +83,8 @@ export default {
         },
 
         addToCart() {
-            if(window.localStorage.getItem('restaurant')) {
-                if(!this.isCartCurrentRestaurant()) {
+            if (window.localStorage.getItem('restaurant')) {
+                if (!this.isCartCurrentRestaurant()) {
                     document.getElementById("cartControlModalButton").click();
                     this.$emit('changeCart', {
                         'dish': this.dish,
@@ -100,10 +112,10 @@ export default {
                         item.qty += this.quantity
                         itemNotFinded = false
                     }
-                    
+
                 })
 
-                if (itemNotFinded){
+                if (itemNotFinded) {
                     cart.push(
                         {
                             id: this.dish.id,
@@ -128,3 +140,22 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.btn-padding {
+    background-color: #26D4C6;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+
+}
+
+.border-radius {
+    padding: .5rem 1rem;
+}
+
+.margin-custom {
+    margin-bottom: 1rem;
+}
+</style>

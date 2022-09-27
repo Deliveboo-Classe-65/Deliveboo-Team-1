@@ -23,6 +23,7 @@ Route::middleware("auth")
         Route::get('/', 'HomeController@index')->name('admin');
         // Route::resource("users", "UserController");
         Route::get('orders', 'OrderController@index')->name('orders.index');
+        Route::get('chart', 'OrderController@chart')->name('orders.chart');
         Route::post('orders', 'OrderController@setOrderSent')->name('set_order_sent');
         Route::resource("dishes", "DishController");
     });

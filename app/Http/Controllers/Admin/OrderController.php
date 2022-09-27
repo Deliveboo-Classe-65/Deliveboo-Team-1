@@ -20,8 +20,9 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::where([['user_id', Auth::user()->id]])->orderByRaw('sent IS NULL DESC, sent DESC, chosen_delivery_time asc')->get();
+        $orders = Order::where([['user_id', Auth::user()->id]])->orderByRaw('sent IS NULL DESC, sent DESC, chosen_delivery_time asc')->paginate(15);
         $orders->load('dishes');
+
         return view('admin.orders.index', compact('orders'));
     }
 

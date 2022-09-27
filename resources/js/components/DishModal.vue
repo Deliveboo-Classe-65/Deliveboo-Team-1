@@ -142,6 +142,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.modal-dialog {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
 .btn-padding {
     background-color: #26D4C6;
     border-radius: 2rem;

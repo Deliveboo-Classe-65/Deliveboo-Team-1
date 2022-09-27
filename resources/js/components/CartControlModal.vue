@@ -1,29 +1,24 @@
 <template>
-    <div id="testModal" class="modal fade" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div id="testModal" class="modal fade" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h5 class="modal-title" id="staticBackdropLabel">Vuoi creare un nuovo carrello?</h5>
-                    <p>In questo modo cancelli il carrello esistente e crei un nuovo carrello?</p>
+                    <h4 class="modal-title fw-bold" id="staticBackdropLabel">Vuoi creare un nuovo carrello?</h4>
+                    <p>In questo modo cancelli il carrello esistente e crei un nuovo carrello.</p>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <div class="row">
-                        <div class="col">                           
-                            <button type="button" data-bs-dismiss="modal" class="btn btn-primary w-75">
-                                Visualizza menu
-                            </button>
-                        </div>
-                        <div class="col">
-                            <button type="button" data-bs-dismiss="modal" class="btn btn-primary w-75" @click="addToCart()">
-                                Nuovo carrello
-                            </button>
-                        </div>
-                    </div>
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary w-45 bg-white text-dark">
+                        Visualizza menu
+                    </button>
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary w-45" @click="addToCart()">
+                        Nuovo carrello
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -46,3 +41,13 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.modal-dialog {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+.w-45 {
+    width: 45%;
+}
+</style>

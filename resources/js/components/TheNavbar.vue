@@ -11,7 +11,7 @@
                     <button class="navbar-toggler btn btn-outline-light my-button fs-6" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <font-awesome-icon icon="fa-solid fa-bars"/>
-                        <span class="d-none d-md-inline-block">Registrati o accedi</span>
+                        <span class="d-none d-md-inline-block ms-1"> {{ !isLogged ? 'Registrati o accedi' : 'Menu' }}</span>
                     </button>
 
 
@@ -26,15 +26,12 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link text-white fw-bold" href="/admin">Registrati o accedi
+                                    <a v-if="isLogged" class="nav-link text-white fw-bold" href="/admin">Visualizza Profilo
                                     </a>
-
+                                    <a v-if="!isLogged" class="nav-link text-white fw-bold" href="/admin">Registrati o accedi
+                                    </a>
                                 </li>
                             </ul>
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -52,7 +49,7 @@ export default {
 
     data() {
         return {
-
+            isLogged: isLogged
         }
     },
     methods: {

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
-                <div class="card rounded-0 fs-5 mt-2">
+                <div class="card rounded-0 fs-5 my-2">
                     <div class="card-body">
                         <div class="card-title">
                             Carrello
@@ -21,7 +21,7 @@
                                 </div>
 
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="card-footer fs-5 fw-bold">
@@ -32,10 +32,27 @@
                             <div class="col-6 text-end">
                                 € {{ cartTotal }}
                             </div>
-                    </div>
+                        </div>
                     </div>
                 </div>
-                <v-braintree v-if="tokenAuth" :authorization="tokenAuth" locale="it_IT" @success="onSuccess" btnText="Paga"></v-braintree>
+                <client-form v-if="!clientValid" @clientValid="setClientValid"></client-form>
+
+                <div v-if="tokenAuth && clientValid" class="card rounded-0 mb-5">
+                    <div class="card-body mb-2">
+                        <v-braintree class="rounded-0" :authorization="tokenAuth"
+                            locale="it_IT" @success="onSuccess" btnText="Paga">
+                            <template #button="slotProps">
+                                <button hidden ref="paymentBtnRef" @click="slotProps.submit"></button>
+                            </template>
+                        </v-braintree>
+                        <div class="mb-2 text-center">
+                            <button @click="clickInsideButtons"
+                                class="btn  btn-primary">Effettua il pagamento</button>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -43,89 +60,108 @@
 
 <script>
 import axios from 'axios'
+import ClientForm from '../components/ClientForm.vue'
 
-    export default {
-        data() {
-            return {
-                tokenAuth: undefined,
-                cart: undefined,
-                dishes: undefined,
-                pageCart: [],
-                cartTotal: 0
-            }
-        },
-
-        methods: {
-            fetchMenu() {
-                axios.get("/api/users/" + window.localStorage.restaurant + "/dishes")
-                    .then((resp) => {
-                        this.dishes = resp.data
-                        this.setPageCart()
-                    })
-             },
-
-            onSuccess (payload) {
-                const token = payload.nonce
-                axios.post('/api/checkout', {
-                        'token': token,
-                        'cart': this.cart
-                    })
-                    .then(resp => {
-                        if(resp.data.success) {
-                            window.localStorage.removeItem('cart')
-                            window.localStorage.removeItem('restaurant')
-                            window.location.href = '/'
-                        }
-                    })
-            },
-
-            setPageCart() {
-                let cart = []
-    
-                this.cart.forEach(item => {
-                    this.dishes.forEach(dish => {
-                        if (item.id == dish.id) {
-                            dish.qty = item.qty
-                            cart.push(dish)
-                        }
-                    })
-                })
-    
-                this.pageCart = cart
-                this.setCartTotal()
-            },
-    
-            setCartTotal() {
-                let total = 0
-                this.pageCart.forEach(dish => {
-                    total += dish.price * dish.qty
-                })
-    
-                this.cartTotal = total.toFixed(2)
-            }
-
-        },
-
-
-        mounted() {
-            axios.get("/api/generate")
-                .then(resp => this.tokenAuth = resp.data)
-            this.cart = JSON.parse(window.localStorage.getItem('cart'))
-            this.fetchMenu()
+export default {
+    components: { ClientForm },
+    data() {
+        return {
+            tokenAuth: undefined,
+            cart: undefined,
+            dishes: undefined,
+            pageCart: [],
+            cartTotal: 0,
+            clientValid: false,
+            client: undefined
         }
+    },
+
+    methods: {
+        setClientValid(data) {
+            this.clientValid = true
+            this.client = data
+        },
+
+        fetchMenu() {
+            axios.get("/api/users/" + window.localStorage.restaurant + "/dishes")
+                .then((resp) => {
+                    this.dishes = resp.data
+                    this.setPageCart()
+                })
+        },
+
+        onSuccess(payload) {
+            const token = payload.nonce
+            axios.post('/api/checkout', {
+                'token': token,
+                'cart': this.cart,
+                'restaurant': window.localStorage.restaurant,
+                ...this.client
+            })
+                .then(resp => {
+                    if (resp.data.success) {
+                        window.localStorage.removeItem('cart')
+                        window.localStorage.removeItem('restaurant')
+                        window.location.href = '/'
+                    }
+                })
+        },
+
+        setPageCart() {
+            let cart = []
+
+            this.cart.forEach(item => {
+                this.dishes.forEach(dish => {
+                    if (item.id == dish.id) {
+                        dish.qty = item.qty
+                        cart.push(dish)
+                    }
+                })
+            })
+
+            this.pageCart = cart
+            this.setCartTotal()
+        },
+
+        setCartTotal() {
+            let total = 0
+            this.pageCart.forEach(dish => {
+                total += dish.price * dish.qty
+            })
+
+            this.cartTotal = total.toFixed(2)
+        },
+
+        clickInsideButtons() {
+            this.$refs.paymentBtnRef.click()
+        }
+
+    },
+
+
+    mounted() {
+        axios.get("/api/generate")
+            .then(resp => this.tokenAuth = resp.data)
+        this.cart = JSON.parse(window.localStorage.getItem('cart'))
+        this.fetchMenu()
     }
+}
 </script>
 
 <style lang="scss">
-    .cart {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        min-height: 180px;
-        max-height: 300px;
-        position: sticky;
-        top: 1.5rem;
-    }
+.cart {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+    max-height: 300px;
+    position: sticky;
+    top: 1.5rem;
+}
+
+.braintree-sheet {
+    border-radius: 0;
+}
 </style>

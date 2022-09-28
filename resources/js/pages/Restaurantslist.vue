@@ -21,10 +21,12 @@
 
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="user in users" :key="user.id">
                     <router-link class="text-decoration-none" :to="{ name: 'restaurant.show', params:{ id: user.id}}">
-                        <div class="content">
+                        <div class="my-card card rounded-0 h-100">
                             <img :src="'/storage/img/restaurants/' + user.image" :alt="user.name"
-                                class="w-100 restaurant-img">
-                            <h4>{{user.name}}</h4>
+                                        class="card-img-top rounded-0">
+                            <div class="card-body d-flex align-items-center justify-content-center">
+                                <h5 class="m-0">{{user.name}}</h5>
+                            </div>
                         </div>
                     </router-link>
                 </div>
@@ -83,6 +85,16 @@ export default {
 </script>
 
 <style lang="scss">
+
+    .my-card {
+    box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+    height: 130px;
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .04);
+
+}
 label {
     cursor: pointer;
 }
@@ -127,7 +139,7 @@ input:checked+span {
     background-color: #F75A1B;
 }
 
-.restaurant-img {
+.card-img-top {
     height: 150px;
     object-fit: cover;
 }

@@ -5,8 +5,10 @@
                 <source src="img/jb.mp4">
             </video>
             <div class="my-absolute-div">
-                <h1 class="fw-bold text-white display-3 text-center w-75">I piatti dei ristoranti che ami a domicilio</h1>
-                <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-secondary">Visualizza i ristoranti</router-link>
+                <div class="m-3 my-background text-start">
+                <h1 class="fw-bold display-3 text-primary mb-4">I piatti dei ristoranti che ami a domicilio</h1>
+                <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-secondary px-5 py-2 fs-4">Visualizza i ristoranti</router-link>
+                </div>
             </div>
             
         </div>
@@ -46,7 +48,9 @@
     }
 
     .my-background {
-        max-width: 700px;
+        max-width: 500px;
+        // background-color: #fff;
+
     }
 
     .video {

@@ -21,11 +21,9 @@
                     <h5>{{user.description}}</h5>
                 </div>
                 <!-- Restaurant time to deliver -->
-                <div class="col col-2 my-3 d-flex">
-                    <div class="icon">
-                        <img src="../../../public/img/biker_icon.png" alt="biker icon" class="w-100">
-                    </div>
-                    <p>Consegna: {{randomNumber}} - {{randomNumber + 15}} minuti</p>
+                <div class="col col-2 my-3">
+
+                    <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-primary">Indietro</router-link>
                 </div>
             </div>
         </div>

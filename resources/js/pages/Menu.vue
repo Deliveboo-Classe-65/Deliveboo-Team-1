@@ -167,7 +167,11 @@ export default {
             })
 
             this.cartTotal = total.toFixed(2)
-            updateCart(this.cartTotal)
+            if (window.localStorage.restaurant == this.$route.params.id){
+                updateCart(this.cartTotal)
+            }
+
+            
         },
 
         testCart(data) {

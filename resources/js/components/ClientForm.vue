@@ -162,7 +162,7 @@ extend('digits', {
 
         mounted(){
             const nowTime = new Date()
-            this.orario = (nowTime.getHours() + 1) + ':' + String(nowTime.getMinutes()).padStart(2, '0')
+            this.orario = String((nowTime.getHours()) + 1).padStart(2, '0') + ':' + String(nowTime.getMinutes()).padStart(2, '0')
         }
     }
 </script>

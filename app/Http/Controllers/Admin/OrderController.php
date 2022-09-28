@@ -31,7 +31,7 @@ class OrderController extends Controller
         $orders = Order::select(
             DB::raw('sum(total) as sums, count(id) as orders'),
             DB::raw("DATE_FORMAT(created_at,'%Y %m') as months"))
-            ->groupBy('months')->where('created_at', '>', Carbon::now()->endOfMonth()->subtract(1, 'year'))
+            ->groupBy('months')->where([['user_id', Auth::user()->id]])->where('created_at', '>', Carbon::now()->endOfMonth()->subtract(1, 'year'))
             ->get();
 
         return view('admin.orders.chart', [

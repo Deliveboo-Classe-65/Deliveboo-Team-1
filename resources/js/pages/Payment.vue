@@ -1,7 +1,18 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6">
+    <div class="container" style="height: 80vh">
+        <div v-if="cartTotal > 0 || loading" class="row justify-content-center h-100 align-items-center">
+            <div v-if="paymentComplete" class="col-12 col-md-8 col-lg-6">
+                <div class="card rounded-0 fs-5 my-2">
+                    <div class="card-body text-center">
+                        <h3>Grazie per aver acquistato da noi</h3>
+                        <div class="py-3">
+                            <button class="btn btn-outline-primary"><a href="/">Torna alla HomePage</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="!paymentComplete && !payloadRecived && cartTotal > 0" class="col-12 col-md-8 col-lg-6">
                 <div class="card rounded-0 fs-5 my-2">
                     <div class="card-body">
                         <div class="card-title">
@@ -37,22 +48,48 @@
                 </div>
                 <client-form v-if="!clientValid" @clientValid="setClientValid"></client-form>
 
-                <div v-if="tokenAuth && clientValid" class="card rounded-0 mb-5">
+                <div v-if="tokenAuth && clientValid && !payloadRecived" class="card rounded-0 mb-5">
                     <div class="card-body mb-2">
-                        <v-braintree class="rounded-0" :authorization="tokenAuth"
-                            locale="it_IT" @success="onSuccess" btnText="Paga">
+                        <v-braintree class="rounded-0" :authorization="tokenAuth" locale="it_IT" @success="onSuccess"
+                            btnText="Paga">
                             <template #button="slotProps">
                                 <button hidden ref="paymentBtnRef" @click="slotProps.submit"></button>
                             </template>
                         </v-braintree>
                         <div class="mb-2 text-center">
-                            <button @click="clickInsideButtons"
-                                class="btn  btn-primary">Effettua il pagamento</button>
+                            <button @click="clickInsideButtons" class="btn  btn-primary">Effettua il pagamento</button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div v-if="loading" class="col-12 col-md-8 col-lg-6">
+                <div class="card rounded-0 fs-5 my-2">
+                    <div class="card-body text-center">
+                        <div class="py-5">
 
+                        </div>
+                        <div class="py-5 fs-1">
+                            <font-awesome-icon class="fa-spin" icon="fa-solid fa-circle-notch" />
+                        </div>
+                        <div class="py-5">
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="cartTotal === 0 && !loading && !cart" class="row justify-content-center h-100 align-items-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card rounded-0 fs-5 my-2">
+                    <div class="card-body text-center">
+                        <div class="py-5"></div>
+                        <div style="font-size: 52px">
+                            <font-awesome-icon icon="fa-solid fa-basket-shopping" />
+                        </div>
+                        <p class="mt-2">Il carrello è vuoto</p>
+                        <div class="py-5"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -66,6 +103,9 @@ export default {
     components: { ClientForm },
     data() {
         return {
+            loading: true,
+            payloadRecived: false,
+            paymentComplete: false,
             tokenAuth: undefined,
             cart: undefined,
             dishes: undefined,
@@ -83,15 +123,19 @@ export default {
         },
 
         fetchMenu() {
+            this.loading = true
             axios.get("/api/users/" + window.localStorage.restaurant + "/dishes")
                 .then((resp) => {
                     this.dishes = resp.data
                     this.setPageCart()
+                    this.loading = false
                 })
         },
 
         onSuccess(payload) {
             const token = payload.nonce
+            this.payloadRecived = true
+            this.loading = true
             axios.post('/api/checkout', {
                 'token': token,
                 'cart': this.cart,
@@ -102,7 +146,8 @@ export default {
                     if (resp.data.success) {
                         window.localStorage.removeItem('cart')
                         window.localStorage.removeItem('restaurant')
-                        window.location.href = '/'
+                        this.paymentComplete = true
+                        this.loading = false
                     }
                 })
         },
@@ -141,7 +186,11 @@ export default {
 
     mounted() {
         axios.get("/api/generate")
-            .then(resp => this.tokenAuth = resp.data)
+            .then(resp => {
+                this.tokenAuth = resp.data
+                this.loading = false
+            })
+
         this.cart = JSON.parse(window.localStorage.getItem('cart'))
         this.fetchMenu()
     }

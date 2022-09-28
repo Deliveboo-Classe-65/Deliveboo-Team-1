@@ -16,6 +16,11 @@
     @if (Route::currentRouteName() == 'register' )
         <script src="{{ asset('js/backend/registervalidation.js') }}" defer></script>
     @endif
+
+    @if (Route::currentRouteName() == 'admin.orders.index' )
+    <script src="{{ asset('js/backend/ordersIndex.js') }}" defer></script>
+    @endif
+
     <script src="{{ asset('js/backend.js') }}" defer></script>
 
     <!-- Fonts -->

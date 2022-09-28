@@ -20,8 +20,9 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::where([['user_id', Auth::user()->id]])->orderByRaw('sent IS NULL DESC, sent DESC, chosen_delivery_time asc')->get();
+        $orders = Order::where([['user_id', Auth::user()->id]])->orderByRaw('sent IS NULL DESC, sent DESC, chosen_delivery_time asc')->paginate(15);
         $orders->load('dishes');
+
         return view('admin.orders.index', compact('orders'));
     }
 
@@ -30,7 +31,7 @@ class OrderController extends Controller
         $orders = Order::select(
             DB::raw('sum(total) as sums, count(id) as orders'),
             DB::raw("DATE_FORMAT(created_at,'%Y %m') as months"))
-            ->groupBy('months')->where('created_at', '>', Carbon::now()->endOfMonth()->subtract(1, 'year'))
+            ->groupBy('months')->where([['user_id', Auth::user()->id]])->where('created_at', '>', Carbon::now()->endOfMonth()->subtract(1, 'year'))
             ->get();
 
         return view('admin.orders.chart', [

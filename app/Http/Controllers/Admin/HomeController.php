@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Order;
 
 class HomeController extends Controller
 {
@@ -24,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $orders = Order::where([['user_id', Auth::user()->id]])->whereNull('sent')->orderByRaw('sent IS NULL DESC, sent DESC, chosen_delivery_time asc')->get();
+        $orders->load('dishes');
+        
+        return view('admin.home', compact('orders'));
     }
 }

@@ -8,7 +8,7 @@
                         <img src="/img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
 
-                    <button v-if="returnTotal > 0" class="btn btn-outline-light">
+                    <button v-if="returnTotal > 0" class="btn btn-secondary">
                         <template>
                             <font-awesome-icon class="me-2" icon="fa-solid fa-cart-shopping" />
                         </template>
@@ -93,7 +93,6 @@ img {
 }
 
 .btn-secondary {
-    --bs-btn-hover-border-color: white;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 </style>

@@ -21,9 +21,9 @@
                     <h5>{{user.description}}</h5>
                 </div>
                 <!-- Restaurant time to deliver -->
-                <div class="col col-2 my-3">
+                <div class="col col-2 my-3 text-end">
 
-                    <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-primary">Indietro</router-link>
+                    <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-primary"><font-awesome-icon icon="fa-solid fa-arrow-left" /> Indietro</router-link>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
                     <div class="card-body text-center">
                         <h3>Grazie per aver acquistato da noi</h3>
                         <div class="py-3">
-                            <button class="btn btn-outline-primary"><a href="/">Torna alla HomePage</a></button>
+                            <a href="/" class="btn btn-outline-primary">Torna alla HomePage</a>
                         </div>
                     </div>
                 </div>

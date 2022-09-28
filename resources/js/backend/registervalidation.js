@@ -1,4 +1,3 @@
-
 import Vue from 'vue'
 import { ValidationProvider, extend } from 'vee-validate';
 import { required, email, min, max, min_value, digits, image } from 'vee-validate/dist/rules';
@@ -44,21 +43,13 @@ extend('digits', {
     message: 'Il campo partita IVA deve contenere solo 11 numeri'
 })
 
-// extend('confirmed', {
-//     ...confirmed,
-//     params: ['confirm'],
-//     message: 'Le password non coincidono'
-// })
-
 extend('password', {
     params: ['target'],
     validate(value, { target }) {
-      return value === target;
+        return value === target;
     },
     message: 'Le password non coincidono'
-  });
-
-
+});
 
 // Register it globally
 Vue.component('ValidationProvider', ValidationProvider);
@@ -78,23 +69,13 @@ new Vue({
     },
 
     methods: {
-
         onSubmit(e) {
-            
             this.$refs.form.validate().then(success => {
                 if (success) {
                     e.target.submit()
                 }
-                this.wasValidated = true;
-                
+                this.wasValidated = true;  
             })
-        },
-
-        mounted() {
-            // this.nome = window.MyLib.name;
-            // this.descrizione = window.MyLib.descrizione;
-
-
         }
     }
 })

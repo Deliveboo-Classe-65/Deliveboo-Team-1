@@ -1,82 +1,73 @@
 <template>
-    <div>
-    <section class="restaurant p-3">
-        <div class="container">
-            <div class="row restaurant-row">
-                <!-- Restaurant image -->
-                <div class="col-12 col-md-4 my-3">
-                    <img :src="'/storage/img/restaurants/' + user.image" :alt="user.name" class="w-100">
-                </div>
-                <!-- Restaurant name and description -->
-                <div class="col-12 col-md-6 my-3">
-                    <h1>{{user.name}}</h1>
-                    <div class="d-flex categories">
-                        <p class="delivery-time">{{randomNumber}} - {{randomNumber + 15}} minuti - 
-                            <span v-for="category in user.categories" :key="'category' + category.id">{{category.name}}</span>
-                        </p>
-                        
-                        <!-- <p class="me-3">Americano</p>
-                        <p class="me-3">Hamburger</p> -->
+    <main>
+        <section class="restaurant p-3">
+            <div class="container">
+                <div class="row restaurant-row">
+                    <!-- Restaurant image -->
+                    <div class="col-12 col-md-4 my-3">
+                        <img :src="'/storage/img/restaurants/' + user.image" :alt="user.name" class="w-100">
                     </div>
-                    <h5>{{user.description}}</h5>
-                </div>
-                <!-- Restaurant time to deliver -->
-                <div class="col col-2 my-3">
-
-                    <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-primary">Indietro</router-link>
+                    <!-- Restaurant name and description -->
+                    <div class="col-12 col-md-6 my-3">
+                        <h1>{{user.name}}</h1>
+                        <span v-for="category in user.categories" :key="'category' + category.id" class="text-capitalize badge text-bg-primary text-white me-2">{{category.name}}</span>
+                        <p>{{user.description}}</p>
+                    </div>
+                    <!-- Restaurant time to deliver -->
+                    <div class="col col-2 my-3">
+                        <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-primary">Indietro</router-link>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <Menu></Menu>
-
-    </div>
+        </section>
+        <Menu></Menu>
+    </main>
 </template>
 
 
 <script>
-import axios from 'axios';
-import Menu from './Menu.vue';
+    import axios from 'axios';
+    import Menu from './Menu.vue';
 
+    export default {
+        components: { Menu },
 
-export default {
-    components: { Menu },
-    data() {
-        return {
-            user: {},
-            randomNumber: '',
-
-        }
-    },
-    methods: {
-        fetchData() {
-            axios.get("/api/users/" + this.$route.params.id)
-                .then((resp) => {
-                    this.user = resp.data
-                })
+        data() {
+            return {
+                user: {},
+                randomNumber: ''
+            }
         },
 
-        randomDelivery() {
-            let min = 15;
-            let max = 90;
-            let randomNumber =  Math.floor(Math.random() * (max - min) + min);
+        methods: {
+            fetchData() {
+                axios.get("/api/users/" + this.$route.params.id)
+                    .then((resp) => {
+                        this.user = resp.data
+                    })
+            },
+
+            randomDelivery() {
+                let min = 15;
+                let max = 90;
+                let randomNumber =  Math.floor(Math.random() * (max - min) + min);
                 return this.randomNumber = randomNumber;
+            },
+
         },
 
-    },
-    mounted() {
-        this.fetchData();
-        this.randomDelivery();
+        mounted() {
+            this.fetchData();
+            this.randomDelivery();
+        }
     }
-}
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
     .restaurant {
-            background-color: #fff;
-            border-bottom: 1px solid rgba(0,0,0,.08);
-        }
+        background-color: #fff;
+        border-bottom: 1px solid rgba(0,0,0,.08);
+    }
     .restaurant-row {
         height: 100%;
         min-height: 244px;
@@ -84,9 +75,9 @@ export default {
     }
     
     .icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 4px;
-        }
-    </style>
+        width: 20px;
+        height: 20px;
+        margin-right: 4px;
+    }
+</style>
 

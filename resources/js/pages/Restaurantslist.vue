@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <div class="container p-2">
-            <div class="section-title">
-                <h2 class="mt-4">Ricerca per categoria</h2>
+    <main>
+        <section class="py-5">
+            <div class="container">
+                <h2 class="mb-4">Ristoranti</h2>
                 <div class="mb-5 mt-4">
                     <div class="row g-1">
                         <div v-for="category in categories" :key="category.id" class="col">
@@ -16,76 +16,75 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Restaurant image -->
-            <div class="row g-4 restaurant-row">
-
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="user in users" :key="user.id">
-                    <router-link class="text-decoration-none" :to="{ name: 'restaurant.show', params:{ id: user.id}}">
-                        <div class="my-card card rounded-0 h-100">
-                            <img :src="'/storage/img/restaurants/' + user.image" :alt="user.name"
-                                        class="card-img-top rounded-0">
-                            <div class="card-body d-flex align-items-center justify-content-center">
-                                <h5 class="m-0">{{user.name}}</h5>
+                <div class="row g-4 restaurant-row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="user in users" :key="user.id">
+                        <router-link class="text-decoration-none" :to="{ name: 'restaurant.show', params:{ id: user.id}}">
+                            <div class="my-card card rounded-0 h-100">
+                                <img :src="'/storage/img/restaurants/' + user.image" :alt="user.name" class="card-img-top rounded-0">
+                                <div class="card-body d-flex align-items-center justify-content-center">
+                                    <h5 class="m-0">{{user.name}}</h5>
+                                </div>
                             </div>
-                        </div>
-                    </router-link>
+                        </router-link>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 </template>
 
 <script>
+    import axios from "axios"
+    import Restaurant from '../pages/Restaurant.vue';
 
-import axios from "axios"
-import Restaurant from '../pages/Restaurant.vue';
+    export default {
+        components: { Restaurant },
 
-
-export default {
-    components: { Restaurant },
-
-
-
-    data() {
-        return {
-            users: [],
-            categories: [],
-            searchSelection: []
-        }
-    },
-    methods: {
-        fetchDataUsers() {
-            let query = ''
-
-            for (let i = 0; i < this.searchSelection.length; i++) {
-                query += (i > 0 ? '&' : '') + 'categories[]=' + this.searchSelection[i]
+        data() {
+            return {
+                users: [],
+                categories: [],
+                searchSelection: []
             }
-            axios.get("/api/users?" + query)
-                .then((resp) => {
-                    this.users = resp.data
-                })
         },
-        fetchDataCategories() {
-            axios.get("/api/categories/")
-                .then((resp) => {
-                    this.categories = resp.data
-                })
-        }
-    },
-    mounted() {
-        this.fetchDataUsers();
-        this.fetchDataCategories();
-    },
 
+        methods: {
+            fetchDataUsers() {
+                let query = ''
+                for (let i = 0; i < this.searchSelection.length; i++) {
+                    query += (i > 0 ? '&' : '') + 'categories[]=' + this.searchSelection[i]
+                }
+                axios.get("/api/users?" + query)
+                    .then((resp) => {
+                        this.users = resp.data
+                    })
+            },
 
+            fetchDataCategories() {
+                axios.get("/api/categories/")
+                    .then((resp) => {
+                        this.categories = resp.data
+                    })
+            }
+        },
 
-}
+        mounted() {
+            this.fetchDataUsers();
+            this.fetchDataCategories();
+        },
+    }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import '../../sass/variables';
+
+    main {
+        min-height: 60vh;
+    }
+
+    a {
+        color: inherit;
+    }
 
     .my-card {
         box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
@@ -95,6 +94,9 @@ export default {
         background-color: #fff;
         border: 1px solid rgba(0, 0, 0, .04);
 
+        &:hover {
+            box-shadow: 0 22px 24px 0 rgb(0 0 0 / 8%);
+        }
     }
 
     label {

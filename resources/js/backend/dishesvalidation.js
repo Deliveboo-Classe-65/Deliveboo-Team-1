@@ -1,4 +1,3 @@
-
 import Vue from 'vue'
 import { ValidationProvider, extend } from 'vee-validate';
 import { required, image, min, max, min_value } from 'vee-validate/dist/rules';
@@ -43,15 +42,11 @@ new Vue ({
         descrizione: undefined
     },
 
-
-
     mounted(){
         (() => {
             'use strict'
-        
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
             const forms = document.querySelectorAll('.needs-validation')
-        
             // Loop over them and prevent submission
             Array.from(forms).forEach(form => {
                 form.addEventListener('submit', event => {
@@ -59,11 +54,9 @@ new Vue ({
                         event.preventDefault()
                         event.stopPropagation()
                     }
-        
                     form.classList.add('was-validated')
                 }, false)
             })
-        
         })()
         this.nome = window.MyLib.name;
         this.prezzo = window.MyLib.prezzo;

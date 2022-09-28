@@ -15,18 +15,13 @@
                                 {{ $order->chosen_delivery_time }}
                             </div>
                             <div class="col-md-1 text-center">
-                                <template>
-                                    <font-awesome-icon class="fs-3 {{ $order->sent ? 'text-success' : 'text-warning' }}"
-                                        icon="fa-regular fa-clock" />
-                                </template>
+                                    <i class="fs-3 {{ $order->sent ? 'text-success' : 'text-warning' }} fa-regular fa-clock"></i>
                             </div>
                             <div class="col-md-2 text-center">
                                 <button class="btn btn-sm {{ $order->sent ? 'btn-outline-info' : 'btn-warning' }}" data-bs-toggle="collapse"
                                     data-bs-target={{ '#order' . $order->id }}>
                                     Dettagli 
-                                        <template>
-                                            <font-awesome-icon class="{{ $order->sent ? 'text-info' : '' }} fs-5" icon="fa-solid fa-caret-down" />
-                                        </template>
+                                            <i class="{{ $order->sent ? 'text-info' : '' }} fs-5 fa-solid fa-caret-down"></i>
                                 </button>
                             </div>
 
@@ -90,7 +85,6 @@
                                         <div class="col-4">
                                             Telefono:
                                         </div>
-                                        <i class="fas fa-camera"></i>
                                         <div class="col-8">
                                             {{ '+39 ' . $order->client_phone }}
                                         </div>
@@ -104,16 +98,13 @@
                                         method="post">
                                         @csrf
                                         <button class="btn btn-warning">
-                                            Segna come Spedito <template>
-                                                <font-awesome-icon icon="fa-solid fa-truck-arrow-right" />
-                                            </template>
+                                            Segna come Spedito
+                                                <i class="fa-solid fa-truck-arrow-right"></i>
                                         </button>
                                     </form>
                                 @else
                                     <span class="text-success fs-4">
-                                        <template>
-                                            <font-awesome-icon icon="fa-regular fa-square-check" />
-                                        </template>
+                                        <i class="fa-regular fa-square-check"></i>
                                         Spedito
                                     </span>
                                 @endif

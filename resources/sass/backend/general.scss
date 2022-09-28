@@ -22,3 +22,13 @@ img {
 .navbar-toggler-icon {
     color: #00CCBC;
 }
+
+.hover-auth-li:hover {
+    background-color: darken(#00CCBC, 10%) !important;
+    transition-duration: 300ms;
+}
+
+.hover-link:hover {
+    background-color: #00ccbb6f !important;
+    transition-duration: 300ms;
+}

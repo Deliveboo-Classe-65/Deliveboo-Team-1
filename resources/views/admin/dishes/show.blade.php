@@ -10,12 +10,32 @@
         </a>
         <a href="{{ route('admin.dishes.edit', $dish->id) }}" type="button" class="btn btn-info">Modifica</a>
         
-        <form class="d-inline-block" action="{{ route('admin.dishes.destroy', $dish->id )}}" method="POST">
-          @csrf
-          
-          @method('DELETE')
-          <button type="submit" href="{{ route('admin.dishes.index') }}" class="btn btn-danger">Elimina</button>
-        </form>
+        <button class="btn btn-danger" data-dishid={{ $dish->id }} data-bs-toggle="modal" data-bs-target="#delete">Elimina</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" data-bs-backdrop="static"        data-bs-keyboard="false" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p class="text-center fw-semibold">
+                  Sei sicuro di voler eliminare il piatto definitivamente?
+                </p>
+              </div>
+              <form action="{{ route('admin.dishes.destroy', $dish->id) }}" method="post">
+                @csrf
+              
+                @method('DELETE')
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">No, annulla</button>
+                  <button type="submit" class="btn btn-danger">Sì, elimina</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="row">

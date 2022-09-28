@@ -8,7 +8,7 @@
                     <div class="card-body py-1">
                         <div class="card-text py-2 mb-0 d-flex align-items-center justify-content-between">
 
-                            <div class="col-md-8">{{ $order->delivery_address }}</div>
+                            <div class="col-md-7">{{ $order->delivery_address }}</div>
 
                             <div class="col-md-2 text-end">
 
@@ -20,10 +20,13 @@
                                         icon="fa-regular fa-clock" />
                                 </template>
                             </div>
-                            <div class="col-md-1">
-                                <button class="btn btn-sm btn-outline-info" data-bs-toggle="collapse"
+                            <div class="col-md-2 text-center">
+                                <button class="btn btn-sm {{ $order->sent ? 'btn-outline-info' : 'btn-warning' }}" data-bs-toggle="collapse"
                                     data-bs-target={{ '#order' . $order->id }}>
-                                    Dettagli
+                                    Dettagli 
+                                        <template>
+                                            <font-awesome-icon class="{{ $order->sent ? 'text-info' : '' }} fs-5" icon="fa-solid fa-caret-down" />
+                                        </template>
                                 </button>
                             </div>
 
@@ -100,7 +103,7 @@
                                     <form action="{{ route('admin.set_order_sent', ['postId' => $order->id]) }}"
                                         method="post">
                                         @csrf
-                                        <button class="btn btn-sm btn-warning">
+                                        <button class="btn btn-warning">
                                             Segna come Spedito <template>
                                                 <font-awesome-icon icon="fa-solid fa-truck-arrow-right" />
                                             </template>

@@ -83,6 +83,7 @@
 import axios from 'axios';
 import DishModal from '../components/DishModal.vue';
 import CartControlModal from "../components/CartControlModal.vue";
+import { updateCart } from '../store'
 
 export default {
     components: {
@@ -166,6 +167,7 @@ export default {
             })
 
             this.cartTotal = total.toFixed(2)
+            updateCart(this.cartTotal)
         },
 
         testCart(data) {

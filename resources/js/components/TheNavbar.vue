@@ -8,6 +8,16 @@
                         <img src="/img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
 
+                    <button v-if="returnTotal > 0" class="btn btn-outline-light">
+                        <template>
+                            <font-awesome-icon class="me-2" icon="fa-solid fa-cart-shopping" />
+                        </template>
+                        {{ returnTotal }}
+                        <template>
+                            <font-awesome-icon icon="fa-solid fa-euro-sign" />
+                        </template>
+                    </button>
+
                     <button class="navbar-toggler btn btn-outline-light my-button fs-6" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <font-awesome-icon icon="fa-solid fa-bars"/>
@@ -44,9 +54,9 @@
 </template>
 
 <script>
+import {store} from '../store'
 
 export default {
-
     data() {
         return {
             isLogged: isLogged
@@ -55,8 +65,10 @@ export default {
     methods: {
 
     },
-    mounted() {
-
+    computed: {
+        returnTotal(){
+            return store.cartTotal
+        }
     },
 }
 </script>

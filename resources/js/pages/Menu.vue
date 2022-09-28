@@ -33,7 +33,7 @@
 
                 <div class="col-12 col-lg-4 border mt-4 cart">
                     <div class="container">
-                        <div v-if="pageCart.length == 0" class="text-secondary row justify-content-center">
+                        <div v-if="pageCart.length === 0" class="row justify-content-center">
                             <div class="col-12" style="font-size: 52px">
                                 <font-awesome-icon icon="fa-solid fa-basket-shopping" />
                                 
@@ -69,8 +69,8 @@
                             <div class="col-6 text-end"> € {{ cartTotal }}
                             </div>
                         </div>
-                        <router-link to="/checkout">
-                            <button class="w-75 text-center btn btn-warning" :disabled="pageCart.length === 0">Vai al pagamento</button>
+                        <router-link tag="button" class="w-75 text-center btn btn-warning" :disabled="pageCart.length === 0" to="/checkout">
+                            Vai al pagamento
                         </router-link>
                     </div>
                 </div>

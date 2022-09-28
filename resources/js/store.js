@@ -1,7 +1,7 @@
 import Vue from "vue";
 
 export const store = Vue.observable({
-    cartTotal: 1
+    cartTotal: undefined
 })
 
 export function updateCart(total){

@@ -7,22 +7,23 @@
                     <a class="navbar-brand" href="/">
                         <img src="/img/logo-db.png" class="d-inline-block align-text-top w-100">
                     </a>
-
-                    <button v-if="returnTotal > 0" class="btn btn-secondary">
-                        <template>
-                            <font-awesome-icon class="me-2" icon="fa-solid fa-cart-shopping" />
+                    <div>
+                        <template  v-if="returnTotal > 0">
+                            <router-link  class="btn btn-secondary me-3" tag="button" :to="'/restaurant/' + restaurant">
+                                <template>
+                                    <font-awesome-icon class="me-2" icon="fa-solid fa-cart-shopping" />
+                                </template>
+                                {{ returnTotal }}
+                                <template>
+                                    <font-awesome-icon icon="fa-solid fa-euro-sign" />
+                                </template>
+                            </router-link>
                         </template>
-                        {{ returnTotal }}
-                        <template>
-                            <font-awesome-icon icon="fa-solid fa-euro-sign" />
-                        </template>
-                    </button>
-
                     <button class="btn btn-secondary fs-6" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <font-awesome-icon icon="fa-solid fa-bars"/>
                         <span class="d-none d-md-inline-block ms-1"> {{ !isLogged ? 'Registrati o accedi' : 'Menu' }}</span>
                     </button>
-
+                </div>
 
 
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
@@ -50,17 +51,59 @@
 </template>
 
 <script>
-import {store} from '../store'
+import {store, updateCart} from '../store'
+import axios from 'axios'
 
 export default {
     data() {
         return {
-            isLogged: isLogged
+            isLogged: isLogged,
+            cart: undefined,
+            pageCart: undefined,
+            cartTotal: undefined,
+            dishes: undefined,
+            restaurant: undefined
         }
     },
     methods: {
+        setPageCart() {
+            this.cart = JSON.parse(window.localStorage.getItem('cart'))
+            let cart = []
+
+            this.cart.forEach(item => {
+                this.dishes.forEach(dish => {
+                    if (item.id == dish.id) {
+                        dish.qty = item.qty
+                        cart.push(dish)
+                    }
+                })
+            })
+
+            this.pageCart = cart
+            this.setCartTotal()
+        },
+
+        setCartTotal() {
+            let total = 0
+            this.pageCart.forEach(dish => {
+                total += dish.price * dish.qty
+            })
+
+            this.cartTotal = total.toFixed(2)
+            updateCart(this.cartTotal)
+        },
 
     },
+
+    mounted(){
+        this.restaurant = window.localStorage.restaurant
+        axios.get("/api/users/" + window.localStorage.restaurant + "/dishes")
+                .then((resp) => {
+                    this.dishes = resp.data
+                    this.setPageCart()
+                })
+    },
+
     computed: {
         returnTotal(){
             return store.cartTotal

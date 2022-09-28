@@ -3,13 +3,13 @@
         <section class="work-with-us my-3">
             <div class="container">
                 <h2 class="my-3">Lavora con Deliveboo</h2>
-                <div class="row">
+                <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-3 text-center justify-content-center">
                     <div class="col">
                         <div class="my-card bg-red">
                             <div class="my-card-img">
-
+                                <img src="/storage/img/wwu/rider.jpeg" alt="deliveboo-rider">
                             </div>
-                            <div class="my-card-body ">
+                            <div class="my-card-body">
                                 <h3>Rider</h3>
                                 <p>Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te.</p>
                                 <button class="btn btn-primary">Unisciti a noi</button>
@@ -19,7 +19,7 @@
                     <div class="col">
                         <div class="my-card bg-orange">
                             <div class="my-card-img">
-                                
+                                <img src="/storage/img/wwu/restaurant.png" alt="deliveboo-restaurant">
                             </div>
                             <div class="my-card-body">
                                 <h3>Ristoranti</h3>
@@ -31,7 +31,7 @@
                     <div class="col">
                         <div class="my-card bg-gray">
                             <div class="my-card-img">
-                                
+                                <img src="/storage/img/wwu/work_with_us.jpeg" alt="deliveboo-work-with-us">
                             </div>
                             <div class="my-card-body">
                                 <h3>Lavora con noi</h3>
@@ -87,6 +87,10 @@
 
         min-height: 500px;
 
+        .card-text {
+            min-height: 92px;
+        }
+
         .my-card-body {
             padding: 1rem;
             color: #fff;
@@ -98,9 +102,23 @@
             width: 100%;
             height: 250px;
             clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        .my-card {
+            margin: 0 4rem;
+        }
+
+    }
 
 }
 

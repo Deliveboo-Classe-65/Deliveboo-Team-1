@@ -8,8 +8,11 @@
                 <h1 class="fw-bold text-white display-3 text-center w-75">I piatti dei ristoranti che ami a domicilio</h1>
                 <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-secondary">Visualizza i ristoranti</router-link>
             </div>
+            
         </div>
+        
     </div>
+
 </template>
 
 <script>
@@ -36,9 +39,14 @@
 
     .video-jb {
         
-        height: 100vh;
+        height: 90vh;
         width: 100%;
         object-fit: cover;
+        filter: brightness(60%);
+    }
+
+    .my-background {
+        max-width: 700px;
     }
 
     .video {
@@ -47,14 +55,45 @@
 
     .my-absolute-div {
         position: absolute;
-        top: 0;
+        
         right: 0;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
+        bottom: 10%;
+        left: 10%;
         align-items: center;
-        flex-direction: column;
-        background-color: rgba($color: black, $alpha: 0.4);
+    }
+
+    .my-absolute-button {
+        position: absolute;
+        top: 50%;
+        right: 25%;
+
+        a {
+            text-decoration: none;
+        }
+
+    
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        .video-jb {
+            height: 60vh;
+        }
+
+        .my-absolute-div {
+            display: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 20%;
+        }
+
+        .my-absolute-button {
+            position: absolute;
+            top: 80%;
+            right: 50%;
+            transform: translate(50%, -50%);
+        }
+
     }
 </style>

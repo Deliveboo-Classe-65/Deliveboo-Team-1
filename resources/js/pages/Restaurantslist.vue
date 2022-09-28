@@ -4,8 +4,8 @@
             <div class="section-title">
                 <h2 class="mt-4">Ricerca per categoria</h2>
                 <div class="mb-5 mt-4">
-                    <div class="row g-1">
-                        <div v-for="category in categories" :key="category.id" class="col">
+                    <div class="row g-1 justify-content-center justify-content-sm-start">
+                        <div v-for="category in categories" :key="category.id" class="col-auto">
                             <div class="category" :style="'background:#' + category.color">
                                 <label :for="category.name" :class="searchSelection.includes(category.id) ? 'selected' : ''">
                                     <input :id="category.name" type="checkbox" @change="fetchDataUsers" :value="category.id" v-model="searchSelection">

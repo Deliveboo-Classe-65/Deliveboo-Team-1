@@ -45,6 +45,11 @@ class OrderController extends Controller
         $order->sent = Carbon::now();
         $order->update();
 
+        if ($request->query('from') === 'admin'){
+            return redirect()->route("admin.admin");
+        }
+
         return redirect()->route("admin.orders.index", $order->user_id);
+       
     }
 }

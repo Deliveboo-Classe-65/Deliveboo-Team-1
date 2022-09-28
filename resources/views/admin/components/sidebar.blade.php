@@ -9,7 +9,7 @@
         <li>
             <div>
                 <ul class="btn-toggle-nav list-unstyled fw-normal small bg-light">
-                    <li class="border-top border-bottom bg-primary hover-auth-li"><a href="{{ route('admin.dishes.index') }}" class="btn fw-semibold text-secondary text-uppercase"><i class="fa-solid fa-utensils me-2"></i>{{ Auth::user()->name }}</a></li>
+                    <li class="border-top border-bottom bg-primary hover-auth-li"><a href="{{ route('admin.admin') }}" class="btn fw-semibold text-secondary text-uppercase"><i class="fa-solid fa-utensils me-2"></i>{{ Auth::user()->name }}</a></li>
                     <li class="border-bottom hover-link"><a href="{{ route('admin.dishes.index') }}" class="btn">Lista Piatti</a></li>
                     <li class="border-bottom hover-link"><a href="{{ route('admin.dishes.create') }}" class="btn">Aggiungi Piatto</a></li>
                     <li class="border-bottom hover-link"><a href="{{ route('admin.orders.index') }}" class="btn">Lista Ordini</a></li>

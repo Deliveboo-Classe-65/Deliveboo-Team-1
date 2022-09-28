@@ -56,11 +56,11 @@
                                     <!-- Authentication Links -->
                                     @guest
                                     <li class="nav-item">
-                                        <a class="btn btn-light text-primary" href="{{ route('login') }}" role="button">Login</a>
+                                        <a class="btn btn-secondary" href="{{ route('login') }}" role="button">Login</a>
                                     </li>
                                     @if (Route::has('register'))
                                         <li class="nav-item">
-                                            <a class="btn btn-light text-primary" href="{{ route('register') }}" role="button">Registrati</a>
+                                            <a class="btn btn-secondary" href="{{ route('register') }}" role="button">Registrati</a>
                                         </li>
                                         @endif
                                     @else

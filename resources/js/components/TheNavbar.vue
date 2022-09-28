@@ -96,12 +96,16 @@ export default {
     },
 
     mounted(){
-        this.restaurant = window.localStorage.restaurant
+
+        if(!store.cartTotal){
+            this.restaurant = window.localStorage.restaurant
         axios.get("/api/users/" + window.localStorage.restaurant + "/dishes")
                 .then((resp) => {
                     this.dishes = resp.data
                     this.setPageCart()
                 })
+        }
+        
     },
 
     computed: {

@@ -34,10 +34,9 @@
                         </ul>
                     </div>
                     <div class="col p-3">
-                        <h3>Porta Deliveroo con te</h3>
-                        <div> <img src="" alt="App Store icon"></div>
-
-                        <div><img src="" alt="Google Play icon"></div>
+                        <h3>Porta Deliveboo con te</h3>
+                        <div class="store-icon"><img src="/storage/img/footer/disponibile_su_app_store.png" alt="App Store icon"></div>
+                        <div class="store-icon"><img src="/storage/img/footer/disponibile_su_google_play.png" alt="Google Play icon"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -80,6 +79,16 @@ footer {
         color: #fff;
         margin: 2rem 0.5rem;
         border-radius: 4px;
+    }
+
+    .store-icon {
+        width: 135px;
+        height: 40px;
+        margin: 1rem 0;
+
+        img {
+            width: 100%;
+        }
     }
 
     .socials {

@@ -3,15 +3,15 @@
         <section class="work-with-us my-3">
             <div class="container">
                 <h2 class="my-3">Lavora con Deliveboo</h2>
-                <div class="row">
+                <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-3 text-center justify-content-center">
                     <div class="col">
                         <div class="my-card bg-red">
                             <div class="my-card-img">
-
+                                <img src="/storage/img/wwu/rider.jpeg" alt="deliveboo-rider">
                             </div>
-                            <div class="my-card-body ">
+                            <div class="my-card-body">
                                 <h3>Rider</h3>
-                                <p>Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te.</p>
+                                <p class="card-text">Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te.</p>
                                 <div class="my-btn">Unisciti a noi</div>
                             </div>
                         </div>
@@ -19,11 +19,11 @@
                     <div class="col">
                         <div class="my-card bg-orange">
                             <div class="my-card-img">
-                                
+                                <img src="/storage/img/wwu/restaurant.png" alt="deliveboo-restaurant">
                             </div>
                             <div class="my-card-body">
                                 <h3>Ristoranti</h3>
-                                <p>Diventa partner di Deliveroo e raggiungi sempre più clienti. Ci occupiamo noi della consegna, così che la tua unica preoccupazione sia continuare a preparare il miglior cibo.</p>
+                                <p class="card-text">Diventa partner di Deliveroo e raggiungi sempre più clienti. Ci occupiamo noi della consegna, così che la tua unica preoccupazione sia continuare a preparare il miglior cibo.</p>
                                 <div class="my-btn">Diventa nostro partner</div>
                             </div>
                         </div>
@@ -31,11 +31,11 @@
                     <div class="col">
                         <div class="my-card bg-gray">
                             <div class="my-card-img">
-                                
+                                <img src="/storage/img/wwu/work_with_us.jpeg" alt="deliveboo-work-with-us">
                             </div>
                             <div class="my-card-body">
                                 <h3>Lavora con noi</h3>
-                                <p>La nostra missione è trasformare il modo in cui le persone mangiano. È un obiettivo ambizioso, come noi, e ci servono persone che ci aiutino a raggiungerlo.</p>
+                                <p class="card-text">La nostra missione è trasformare il modo in cui le persone mangiano. È un obiettivo ambizioso, come noi, e ci servono persone che ci aiutino a raggiungerlo.</p>
                                 <div class="my-btn">Scopri di più</div>
                             </div>
                         </div>
@@ -87,6 +87,10 @@
 
         min-height: 500px;
 
+        .card-text {
+            min-height: 92px;
+        }
+
         .my-card-body {
             padding: 1rem;
             color: #fff;
@@ -98,10 +102,15 @@
             width: 100%;
             height: 250px;
             clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
 
         .my-btn {
-            
+            justify-content: center;
             display: inline-block;
             border-radius: 4px;
             padding: .5rem 1rem;
@@ -114,6 +123,14 @@
         }
     }
 
+
+    @media only screen and (max-width: 768px) {
+
+        .my-card {
+            margin: 0 4rem;
+        }
+
+    }
 
 }
 

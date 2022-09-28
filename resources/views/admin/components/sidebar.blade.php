@@ -9,8 +9,8 @@
         <li class="mb-1">
             <div class="" id="home-collapse" style="">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-4">
-                    <li><a href="{{ route('admin.dishes.index') }}" class="link-dark d-inline-flex text-decoration-none rounded">Lista Piatti</a></li>
-                    <li><a href="{{ route('admin.dishes.create') }}" class="link-dark d-inline-flex text-decoration-none rounded">Aggiungi Piatto</a></li>
+                    <li><a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">Lista Piatti</a></li>
+                    <li><a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">Aggiungi Piatto</a></li>
                 </ul>
             </div>
         </li>
@@ -18,8 +18,8 @@
         <li class="mb-1">
             <div class="" id="orders-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-4">
-                    <li><a href="{{ route('admin.orders.index') }}" class="link-dark d-inline-flex text-decoration-none rounded">Lista Ordini</a></li>
-                    <li><a href="{{ route('admin.orders.chart') }}" class="link-dark d-inline-flex text-decoration-none rounded">Grafico Fatturato</a></li>
+                    <li><a href="{{ route('admin.orders.index') }}" class="btn btn-primary">Lista Ordini</a></li>
+                    <li><a href="{{ route('admin.orders.chart') }}" class="btn btn-primary">Grafico Fatturato</a></li>
                 </ul>
             </div>
         </li>

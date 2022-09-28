@@ -12,7 +12,7 @@
                             <div class="my-card-body ">
                                 <h3>Rider</h3>
                                 <p>Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te.</p>
-                                <div class="my-btn">Unisciti a noi</div>
+                                <button class="btn btn-primary">Unisciti a noi</button>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                             <div class="my-card-body">
                                 <h3>Ristoranti</h3>
                                 <p>Diventa partner di Deliveroo e raggiungi sempre più clienti. Ci occupiamo noi della consegna, così che la tua unica preoccupazione sia continuare a preparare il miglior cibo.</p>
-                                <div class="my-btn">Diventa nostro partner</div>
+                                <button class="btn btn-primary">Diventa nostro partner</button>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                             <div class="my-card-body">
                                 <h3>Lavora con noi</h3>
                                 <p>La nostra missione è trasformare il modo in cui le persone mangiano. È un obiettivo ambizioso, come noi, e ci servono persone che ci aiutino a raggiungerlo.</p>
-                                <div class="my-btn">Scopri di più</div>
+                                <button class="btn btn-primary">Scopri di più</button>
                             </div>
                         </div>
                     </div>
@@ -98,19 +98,6 @@
             width: 100%;
             height: 250px;
             clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
-        }
-
-        .my-btn {
-            
-            display: inline-block;
-            border-radius: 4px;
-            padding: .5rem 1rem;
-            color: #fff;
-            background-color: #00ccbc;
-
-            &:hover {
-                background-color: #00a396;
-            }
         }
     }
 

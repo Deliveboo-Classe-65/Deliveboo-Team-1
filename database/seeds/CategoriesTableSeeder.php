@@ -59,15 +59,6 @@ class CategoriesTableSeeder extends Seeder
                 'name' => "giapponese",
                 'color' => "00CCBC",
                 'image' => "categoria_giapponese.png"
-            ],
-            [
-                'name' => "bakery",
-            ],
-            [
-                'name' => "piadina",
-            ],
-            [
-                'name' => "libanese",
             ]
         ];
 

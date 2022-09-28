@@ -294,7 +294,7 @@ class UsersTableSeeder extends Seeder
                 'image' => 'farid_kebab.jpg',
                 'vat_number' => '99909090909',
                 'categories' => [
-                    'arabo', 'piadina'
+                    'arabo'
                 ],
                 'dishes' => [
                     [

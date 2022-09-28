@@ -3,14 +3,16 @@
         <div class="container p-2">
             <div class="section-title">
                 <h2 class="mt-4">Ricerca per categoria</h2>
-                <div class="row g-1 mb-5 mt-4 categories-list">
-                    <div class="col flex-grow-0" v-for="category in categories" :key="category.id">
-                        <div class="cat action">
-                            <label :for="category.name">
-                                <input :id="category.name" type="checkbox" @change="fetchDataUsers" :value="category.id"
-                                    v-model="searchSelection">
-                                <span>{{category.name}}</span>
-                            </label>
+                <div class="mb-5 mt-4">
+                    <div class="row g-1">
+                        <div v-for="category in categories" :key="category.id" class="col">
+                            <div class="category" :style="'background:#' + category.color">
+                                <label :for="category.name" :class="searchSelection.includes(category.id) ? 'selected' : ''">
+                                    <input :id="category.name" type="checkbox" @change="fetchDataUsers" :value="category.id" v-model="searchSelection">
+                                    <span>{{category.name}}</span>
+                                </label>
+                                <img :src="'/storage/img/categories/' + category.image" :alt="category.name">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,8 +73,6 @@ export default {
                     this.categories = resp.data
                 })
         }
-
-
     },
     mounted() {
         this.fetchDataUsers();
@@ -85,62 +85,64 @@ export default {
 </script>
 
 <style lang="scss">
+    @import '../../sass/variables';
 
     .my-card {
-    box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
-    height: 130px;
-    width: 100%;
-    overflow: hidden;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, .04);
+        box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+        height: 130px;
+        width: 100%;
+        overflow: hidden;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, .04);
 
-}
-label {
-    cursor: pointer;
-}
+    }
 
-.cat {
-    background-color: #104068;
-    border-radius: 4px;
-    border: 1px solid #fff;
-    overflow: hidden;
+    label {
+        cursor: pointer;
+    }
 
-}
+    .category {
+        width: 125px;
+        height: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
 
-.cat label {
-    float: left;
-    line-height: 2.0em;
-    height: 2.0em;
-}
+        input {
+            display: none;
+        }
 
-.cat label span {
-    text-align: center;
-    display: block;
-    padding: 0 .8rem;
-    white-space: nowrap;
-}
+        label {
+            color: white;
+            font-weight: bold;
+            text-transform: capitalize;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 0.5rem;
+            display: flex;
+            align-items: flex-end;
 
-.cat label input {
-    position: absolute;
-    display: none;
-    color: #fff !important;
-}
+            &.selected {
+                border: 5px solid $primary;
 
-.cat label input+span {
-    color: #fff;
-}
+                span {
+                    transform: translate(-5px, 5px);
+                }
+            }
+        }
 
-.cat input:checked+span {
-    color: #ffffff;
-    text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
-}
+        img {
+            width: 100%;
+        }
+    }
 
-input:checked+span {
-    background-color: #F75A1B;
-}
-
-.card-img-top {
-    height: 150px;
-    object-fit: cover;
-}
+    .card-img-top {
+        height: 150px;
+        object-fit: cover;
+    }
 </style>

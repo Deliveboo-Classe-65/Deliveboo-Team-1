@@ -9,7 +9,7 @@
                     </a>
                     <div>
                         <template  v-if="returnTotal > 0">
-                            <router-link  class="btn btn-secondary me-3" tag="button" :to="'/restaurant/' + restaurant">
+                            <router-link  class="btn btn-secondary me-3" tag="button" :key="$route.fullPath" :to="{ name: 'restaurant.show', params:{ id: restaurant}}">
                                 <template>
                                     <font-awesome-icon class="me-2" icon="fa-solid fa-cart-shopping" />
                                 </template>
@@ -96,10 +96,9 @@ export default {
     },
 
     mounted(){
-
+        this.restaurant = window.localStorage.restaurant
         if(!store.cartTotal){
-            this.restaurant = window.localStorage.restaurant
-        axios.get("/api/users/" + window.localStorage.restaurant + "/dishes")
+            axios.get("/api/users/" + window.localStorage.restaurant + "/dishes")
                 .then((resp) => {
                     this.dishes = resp.data
                     this.setPageCart()

@@ -99,6 +99,13 @@ export default {
             dishToPass: undefined
         }
     },
+
+        watch:{
+        $route (){
+            this.fetchMenu()
+        }
+    },
+
     methods: {
         fetchMenu() {
             axios.get("/api/users/" + this.$route.params.id + "/dishes")
@@ -129,6 +136,8 @@ export default {
                 cart.forEach((item, index) => {
                     if (item.id === dishId && item.qty === 1){
                         cart.splice(index, 1)
+                        window.localStorage.removeItem('restaurant')
+                        
                     } else if ( item.id === dishId ){
                         item.qty--
                     }
@@ -168,7 +177,7 @@ export default {
 
             this.cartTotal = total.toFixed(2)
             if (window.localStorage.restaurant == this.$route.params.id){
-                updateCart(this.cartTotal)
+                updateCart(this.cartTotal, window.localStorage.restaurant)
             }
 
             

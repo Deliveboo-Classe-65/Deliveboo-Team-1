@@ -48,6 +48,14 @@ export default {
 
         }
     },
+
+    watch:{
+        $route (){
+            this.fetchData()
+        }
+    },
+
+
     methods: {
         fetchData() {
             axios.get("/api/users/" + this.$route.params.id)

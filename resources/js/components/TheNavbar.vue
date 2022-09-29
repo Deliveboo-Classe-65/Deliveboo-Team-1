@@ -9,7 +9,7 @@
                     </a>
                     <div>
                         <template  v-if="returnTotal > 0">
-                            <router-link  class="btn btn-secondary me-3" tag="button" :key="$route.fullPath" :to="{ name: 'restaurant.show', params:{ id: restaurant}}">
+                            <router-link  class="btn btn-secondary me-3" tag="button" :key="$route.fullPath" :to="{ name: 'restaurant.show', params:{ id: restaurantId}}">
                                 <template>
                                     <font-awesome-icon class="me-2" icon="fa-solid fa-cart-shopping" />
                                 </template>
@@ -90,7 +90,9 @@ export default {
             })
 
             this.cartTotal = total.toFixed(2)
-            updateCart(this.cartTotal)
+            this.restaurant = window.localStorage.restaurant
+            updateCart(this.cartTotal, this.restaurant)
+            
         },
 
     },
@@ -110,6 +112,10 @@ export default {
     computed: {
         returnTotal(){
             return store.cartTotal
+        },
+
+        restaurantId(){
+            return store.restaurant
         }
     },
 }

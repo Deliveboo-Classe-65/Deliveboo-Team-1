@@ -6,51 +6,31 @@
             </video>
             <div class="my-absolute-div">
                 <div class="m-3 my-background text-start">
-                <h1 class="fw-bold display-3 text-primary mb-4">I piatti dei ristoranti che ami a domicilio</h1>
-                <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-secondary px-5 py-2 fs-4">Visualizza i ristoranti</router-link>
+                    <h1 class="fw-bold display-3 text-primary mb-4">I piatti dei ristoranti che ami a domicilio</h1>
+                    <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-secondary px-5 py-2 fs-4">Visualizza i ristoranti</router-link>
                 </div>
             </div>
-            
-        </div>
-        
+        </div> 
     </div>
-
 </template>
 
 <script>
-
     export default {
 
-        data() {
-            return {
-
-            }
-        },
-        methods: {
-
-        },
-        mounted() {
-
-        },
     }
-
-
 </script>
 
 <style lang="scss">
-
     .video-jb {
-        
-        height: 90vh;
+        height: 60vh;
         width: 100%;
         object-fit: cover;
+        object-position: top;
         filter: brightness(60%);
     }
 
     .my-background {
         max-width: 500px;
-        // background-color: #fff;
-
     }
 
     .video {
@@ -59,7 +39,6 @@
 
     .my-absolute-div {
         position: absolute;
-        
         right: 0;
         bottom: 10%;
         left: 10%;
@@ -74,16 +53,9 @@
         a {
             text-decoration: none;
         }
-
-    
     }
 
     @media only screen and (max-width: 768px) {
-
-        .video-jb {
-            height: 60vh;
-        }
-
         .my-absolute-div {
             display: absolute;
             top: 0;
@@ -98,6 +70,5 @@
             right: 50%;
             transform: translate(50%, -50%);
         }
-
     }
 </style>

@@ -1,11 +1,11 @@
 <template>
-    <main>
+    <main class="py-5">
         <section class="restaurant p-3">
             <div class="container">
                 <div class="row restaurant-row">
                     <!-- Restaurant image -->
                     <div class="col-12 col-md-4 my-3">
-                        <img :src="'/storage/img/restaurants/' + user.image" :alt="user.name" class="w-100">
+                        <img :src="'/storage/img/restaurants/' + user.image" :alt="user.name" class="w-100 restaurant-img">
                     </div>
                     <!-- Restaurant name and description -->
                     <div class="col-12 col-md-6 my-3">
@@ -14,8 +14,8 @@
                         <p>{{user.description}}</p>
                     </div>
                     <!-- Restaurant time to deliver -->
-                    <div class="col col-2 my-3">
-                        <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-primary">Indietro</router-link>
+                    <div class="col col-2 my-3 text-end">
+                        <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-primary"><font-awesome-icon icon="fa-solid fa-arrow-left" /> Indietro</router-link>
                     </div>
                 </div>
             </div>
@@ -68,6 +68,13 @@
         background-color: #fff;
         border-bottom: 1px solid rgba(0,0,0,.08);
     }
+
+    .restaurant-img {
+        height: 200px;
+        object-fit: cover;
+        object-position: center;
+    }
+
     .restaurant-row {
         height: 100%;
         min-height: 244px;

@@ -15251,12 +15251,7 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])('min_value', _object
 }));
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])('digits', _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__["digits"]), {}, {
   message: 'Il campo partita IVA deve contenere solo 11 numeri'
-})); // extend('confirmed', {
-//     ...confirmed,
-//     params: ['confirm'],
-//     message: 'Le password non coincidono'
-// })
-
+}));
 Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])('password', {
   params: ['target'],
   validate: function validate(value, _ref) {
@@ -15291,9 +15286,6 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
         _this.wasValidated = true;
       });
-    },
-    mounted: function mounted() {// this.nome = window.MyLib.name;
-      // this.descrizione = window.MyLib.descrizione;
     }
   }
 });
@@ -15307,7 +15299,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\piomb\Documents\Boolean-ufficiale\deliveboo-team-1\resources\js\backend\registervalidation.js */"./resources/js/backend/registervalidation.js");
+module.exports = __webpack_require__(/*! E:\Boolean\Repos\deliveboo-team-1\resources\js\backend\registervalidation.js */"./resources/js/backend/registervalidation.js");
 
 
 /***/ })

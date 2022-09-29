@@ -7,8 +7,8 @@
                     <p>In questo modo cancelli il carrello esistente e crei un nuovo carrello.</p>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary w-45 bg-white text-dark">Visualizza menu</button>
-                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary w-45" @click="addToCart()">Nuovo carrello</button>
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-outline-primary col-5">Visualizza menu</button>
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary col-5" @click="addToCart()">Nuovo carrello</button>
                 </div>
             </div>
         </div>
@@ -39,9 +39,5 @@ export default {
 <style lang="scss" scoped>
     .modal-dialog {
         font-family: 'IBM Plex Sans Arabic', sans-serif;
-    }
-
-    .w-45 {
-        width: 45%;
     }
 </style>

@@ -58,7 +58,7 @@
                             <div class="mb-3">
                                 <label for="orario">Orario Consegna</label>
                                 <validation-provider name="orario" :immediate="true" rules="required" v-slot="{ errors }">
-                                    <input ref="timeInput" v-model="orario" type="time" step="300" min="14:30" :class="errors.length > 0 && wasValidated ? 'is-invalid' : '' " class="form-control" name="orario" autocomplete="name" autofocus>
+                                    <input ref="timeInput" v-model="orario" type="time" min="14:30" :class="errors.length > 0 && wasValidated ? 'is-invalid' : '' " class="form-control" name="orario" autocomplete="name" autofocus>
                                     <div v-for="error in errors" class="invalid-feedback">{{ error }}</div>
                                 </validation-provider>
                             </div> 

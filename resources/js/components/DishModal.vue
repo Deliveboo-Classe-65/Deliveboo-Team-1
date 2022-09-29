@@ -2,10 +2,8 @@
     <div class="modal fade" :id="'dish' + dish.id" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="img-fluid text-end p-3">
-                    <button type="button" class="btn-close btn-padding" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
                 <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h4 class="modal-title fw-bold margin-custom" id="staticBackdropLabel ">{{dish.name}}</h4>
                     <p class="fst-italic" v-if="dish.description">{{dish.description}}</p>
                 </div>
@@ -123,15 +121,18 @@
 
 <style lang="scss" scoped>
     .modal-dialog {
-        font-family: 'IBM Plex Sans Arabic', sans-serif;
-    }
+        position: relative;
 
-    .btn-padding {
-        background-color: #26D4C6;
-        border-radius: 2rem;
-        padding: 0.5rem;
-        width: 1.5rem;
-        height: 1.5rem;
+        .btn-close {
+            background-color: #26D4C6;
+            border-radius: 2rem;
+            padding: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
     }
 
     .border-radius {

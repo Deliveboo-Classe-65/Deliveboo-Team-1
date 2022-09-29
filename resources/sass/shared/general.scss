@@ -6,10 +6,6 @@
     --bs-btn-active-color: #{$secondary};
     --bs-btn-active-bg: #{darken($primary, 10%)};
     --bs-btn-active-border-color: #{darken($primary, 10%)};
-
-    &.nav-link {
-        color: white;
-    }
 }
 
 .btn-secondary {
@@ -20,4 +16,16 @@
     --bs-btn-active-color: #{$primary};
     --bs-btn-active-bg: #{darken($secondary, 10%)};
     --bs-btn-active-border-color: #{darken($secondary, 10%)};
+}
+
+.btn-outline-primary {
+    --bs-btn-hover-color: white;
+    --bs-btn-active-color: white;
+}
+
+.btn-warning {
+    --bs-btn-color: white;
+    --bs-btn-hover-color: white;
+    --bs-btn-hover-bg: #{darken($warning, 10%)};
+    --bs-btn-active-color: white;
 }

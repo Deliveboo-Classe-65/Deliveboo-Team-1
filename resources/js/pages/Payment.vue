@@ -2,17 +2,17 @@
     <div class="container" style="height: 80vh">
         <div v-if="cartTotal > 0 || loading" class="row justify-content-center h-100 align-items-center">
             <div v-if="paymentComplete" class="col-12 col-md-8 col-lg-6">
-                <div class="card rounded-0 fs-5 my-2">
+                <div class="card rounded-0 fs-5 my-2 py-5">
                     <div class="card-body text-center">
                         <h3>Grazie per aver acquistato da noi</h3>
                         <div class="py-3">
-                            <button class="btn btn-outline-primary"><a href="/">Torna alla HomePage</a></button>
+                            <a href="/" class="btn btn-outline-primary">Torna alla HomePage</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div v-if="!paymentComplete && !payloadRecived && cartTotal > 0" class="col-12 col-md-8 col-lg-6">
-                <div class="card rounded-0 fs-5 my-2">
+                <div class="card rounded-0 fs-5 my-2 py-5">
                     <div class="card-body">
                         <div class="card-title">Carrello</div>
                         <div class="row card-text align-items-center">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <client-form v-if="!clientValid" @clientValid="setClientValid"></client-form>
-                <div v-if="tokenAuth && clientValid && !payloadRecived" class="card rounded-0 mb-5">
+                <div v-if="tokenAuth && clientValid && !payloadRecived" class="card rounded-0 mb-5 py-5">
                     <div class="card-body mb-2">
                         <v-braintree class="rounded-0" :authorization="tokenAuth" locale="it_IT" @success="onSuccess" btnText="Paga">
                             <template #button="slotProps">
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div v-if="loading" class="col-12 col-md-8 col-lg-6">
-                <div class="card rounded-0 fs-5 my-2">
+                <div class="card rounded-0 fs-5 my-2 py-5">
                     <div class="card-body text-center">
                         <div class="py-5 fs-1">
                             <font-awesome-icon class="fa-spin" icon="fa-solid fa-circle-notch" />
@@ -56,7 +56,7 @@
         </div>
         <div v-if="cartTotal === 0 && !loading && !cart" class="row justify-content-center h-100 align-items-center">
             <div class="col-12 col-md-8 col-lg-6">
-                <div class="card rounded-0 fs-5 my-2">
+                <div class="card rounded-0 fs-5 my-2 py-5">
                     <div class="card-body text-center">
                         <div style="font-size: 52px">
                             <font-awesome-icon icon="fa-solid fa-basket-shopping" />

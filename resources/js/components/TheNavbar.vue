@@ -24,14 +24,22 @@
                 </div>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <img src="img/logo-db-inverted.png" class="d-inline-block align-text-top w-100">
+                        <img src="/img/logo-db-inverted.png" class="d-inline-block align-text-top w-100">
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a v-if="isLogged" class="nav-link btn btn-primary" href="/admin">Visualizza Profilo</a>
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 h-100">
+                            <li class="nav-item h-100">
                                 <a v-if="!isLogged" class="nav-link btn btn-primary" href="/admin">Registrati o accedi</a>
+                                <div v-if="isLogged" class="d-flex flex-column justify-content-between h-100">
+                                    <div>
+                                        <a class="nav-link btn btn-primary" href="/admin">Visualizza Profilo</a>
+                                        <a class="nav-link btn btn-outline-primary" href="/admin/dishes">Lista piatti</a>
+                                        <a class="nav-link btn btn-outline-primary" href="/admin/orders">Lista ordini</a>
+                                        <a class="nav-link btn btn-outline-primary" href="/admin/chart">Grafico fatturato</a>
+                                    </div>
+                                    <a class="nav-link btn btn-danger" href="/logout">Logout</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -111,12 +119,20 @@
     li {
 
         a {
-            background-color: #00CCBC;
             letter-spacing: 1px;
             border-radius: 4px;
-            padding: .5rem;
-            text-align: center;
             margin-bottom: 1rem;
+
+            &.nav-link {
+
+                &.btn-primary {
+                    color: white;
+                }
+
+                &.btn-danger {
+                    color: white;
+                }
+            }
         }
     }
 

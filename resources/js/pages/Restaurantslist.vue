@@ -3,8 +3,8 @@
         <section class="py-5">
             <div class="container">
                 <h2 class="mb-4">Ristoranti</h2>
-                <div class="mb-5 mt-4">
-                    <div class="row g-1 justify-content-center justify-content-sm-start">
+                <div class="mb-5 mt-4 position-relative">
+                    <div ref="toScroll" class="row g-1 flex-nowrap scroll">
                         <div v-for="category in categories" :key="category.id" class="col-auto">
                             <div class="category" :style="'background:#' + category.color">
                                 <label :for="category.name" :class="searchSelection.includes(category.id) ? 'selected' : ''">
@@ -15,6 +15,8 @@
                             </div>
                         </div>
                     </div>
+                    <button @click="scroll('left')" class="btn btn-secondary rounded-circle left-button absolute-button"><font-awesome-icon icon="fa-solid fa-chevron-left" /></button>
+                    <button @click="scroll('right')" class="btn btn-secondary rounded-circle right-button absolute-button"><font-awesome-icon icon="fa-solid fa-chevron-right" /></button>
                 </div>
                 <div class="row g-4 restaurant-row">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="user in users" :key="user.id">
@@ -65,6 +67,21 @@
                     .then((resp) => {
                         this.categories = resp.data
                     })
+            },
+
+            scroll(direction) {
+                if(direction === "right") {
+                    this.$refs.toScroll.scrollBy({
+                        left: 500,
+                        behavior: 'smooth'
+                    })
+                }
+                if (direction === "left") {
+                    this.$refs.toScroll.scrollBy({
+                        left: -500,
+                        behavior: 'smooth'
+                    })
+                }
             }
         },
 
@@ -84,6 +101,28 @@
 
     a {
         color: inherit;
+    }
+
+    .scroll {
+        overflow-x: scroll;
+    }
+
+    .scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .absolute-button {
+        position: absolute;
+        top: 50%;
+
+        &.left-button {
+            left: 0;
+            transform: translate(-30%, -50%);
+        }
+        &.right-button {
+            right: 0;
+            transform: translate(30%, -50%);
+        }
     }
 
     .my-card {

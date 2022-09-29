@@ -25,7 +25,6 @@
         window.MyLib.descrizione = '{{$dish->description}}'
     </script>
   @endpush
-  @csrf
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
       <h1>Modifica piatto</h1>

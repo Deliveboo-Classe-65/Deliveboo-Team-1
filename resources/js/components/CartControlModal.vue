@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { updateCard } from 'credit-card-type';
 
 export default {
     props: {

@@ -29,3 +29,11 @@
     --bs-btn-hover-bg: #{darken($warning, 10%)};
     --bs-btn-active-color: white;
 }
+
+.my-w-75 {
+    width: 75%;
+    
+    @media only screen and (min-width: 768px) {
+        width: 100%
+    }
+}

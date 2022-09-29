@@ -1,7 +1,6 @@
-@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@300;
+@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;
 
-400;600&display=swap);@charset "UTF-8";
-
+700&display=swap);@charset "UTF-8"; 
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -46,7 +45,7 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: "Oswald", sans-serif;
+  --bs-font-sans-serif: "IBM Plex Sans Arabic", sans-serif;
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -12645,6 +12644,16 @@ img {
   color: #00CCBC;
 }
 
+.hover-auth-li:hover {
+  background-color: #00998d !important;
+  transition-duration: 300ms;
+}
+
+.hover-link:hover {
+  background-color: rgba(0, 204, 187, 0.4352941176) !important;
+  transition-duration: 300ms;
+}
+
 .btn-primary {
   --bs-btn-color: white;
   --bs-btn-hover-color: white;
@@ -12655,10 +12664,6 @@ img {
   --bs-btn-active-border-color: #00998d;
 }
 
-.btn-primary.nav-link {
-  color: white;
-}
-
 .btn-secondary {
   --bs-btn-color: #00CCBC;
   --bs-btn-hover-color: #00CCBC;
@@ -12667,5 +12672,27 @@ img {
   --bs-btn-active-color: #00CCBC;
   --bs-btn-active-bg: #e6e6e6;
   --bs-btn-active-border-color: #e6e6e6;
+}
+
+.btn-outline-primary {
+  --bs-btn-hover-color: white;
+  --bs-btn-active-color: white;
+}
+
+.btn-warning {
+  --bs-btn-color: white;
+  --bs-btn-hover-color: white;
+  --bs-btn-hover-bg: #d39e00;
+  --bs-btn-active-color: white;
+}
+
+.my-w-75 {
+  width: 75%;
+}
+
+@media only screen and (min-width: 768px) {
+  .my-w-75 {
+    width: 100%;
+  }
 }
 

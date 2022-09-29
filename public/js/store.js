@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -12382,15 +12382,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
 var store = vue__WEBPACK_IMPORTED_MODULE_0___default.a.observable({
-  cartTotal: 1
+  cartTotal: undefined,
+  restaurant: window.localStorage.restaurant
 });
-function updateCart(total) {
+function updateCart(total, restaurant) {
   store.cartTotal = total;
+  store.restaurant = restaurant;
 }
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!*************************************!*\
   !*** multi ./resources/js/store.js ***!
   \*************************************/

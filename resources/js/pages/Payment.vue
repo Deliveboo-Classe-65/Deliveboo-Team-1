@@ -50,14 +50,13 @@
 
                 <div v-if="tokenAuth && clientValid && !payloadRecived" class="card rounded-0 mb-5">
                     <div class="card-body mb-2">
-                        <v-braintree class="rounded-0" :authorization="tokenAuth" locale="it_IT" @success="onSuccess"
-                            btnText="Paga">
+                        <v-braintree class="rounded-0" :authorization="tokenAuth" locale="it_IT" @success="onSuccess">
                             <template #button="slotProps">
                                 <button hidden ref="paymentBtnRef" @click="slotProps.submit"></button>
                             </template>
                         </v-braintree>
                         <div class="mb-2 text-center">
-                            <button @click="clickInsideButtons" class="btn  btn-primary">Effettua il pagamento</button>
+                            <button v-if="!loading" @click="clickInsideButtons" class="btn  btn-primary">Effettua il pagamento</button>
                         </div>
                     </div>
                 </div>
@@ -98,6 +97,7 @@
 <script>
 import axios from 'axios'
 import ClientForm from '../components/ClientForm.vue'
+import { updateCart } from '../store'
 
 export default {
     components: { ClientForm },
@@ -144,8 +144,9 @@ export default {
             })
                 .then(resp => {
                     if (resp.data.success) {
-                        window.localStorage.removeItem('cart')
+                        window.localStorage.cart = JSON.stringify([])
                         window.localStorage.removeItem('restaurant')
+                        updateCart([])
                         this.paymentComplete = true
                         this.loading = false
                     }

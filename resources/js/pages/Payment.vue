@@ -1,5 +1,5 @@
 <template>
-    <div class="container" style="height: 80vh">
+    <div class="container" style="min-height: 80vh;">
         <div v-if="cartTotal > 0 || loading" class="row justify-content-center h-100 align-items-center">
             <div v-if="paymentComplete" class="col-12 col-md-8 col-lg-6">
                 <div class="card rounded-0 fs-5 my-2 py-5">
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="cartTotal === 0 && !loading && !cart" class="row justify-content-center h-100 align-items-center">
+        <div v-if="cartTotal == 0 && !loading && cart.length === 0" class="row justify-content-center h-100 align-items-center">
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="card rounded-0 fs-5 my-2 py-5">
                     <div class="card-body text-center">
@@ -62,6 +62,7 @@
                             <font-awesome-icon icon="fa-solid fa-basket-shopping" />
                         </div>
                         <p class="mt-2">Il carrello è vuoto</p>
+                        <a class="nav-link btn btn-primary" href="/restaurants">Torna a ristoranti</a>
                     </div>
                 </div>
             </div>

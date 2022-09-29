@@ -29,23 +29,31 @@
     import axios from 'axios';
     import Menu from './Menu.vue';
 
-    export default {
-        components: { Menu },
 
-        data() {
-            return {
-                user: {},
-                randomNumber: ''
-            }
+export default {
+    components: { Menu },
+    data() {
+        return {
+            user: {},
+            randomNumber: '',
+
+        }
+    },
+
+    watch:{
+        $route (){
+            this.fetchData()
+        }
+    },
+
+
+    methods: {
+        fetchData() {
+            axios.get("/api/users/" + this.$route.params.id)
+                .then((resp) => {
+                    this.user = resp.data
+                })
         },
-
-        methods: {
-            fetchData() {
-                axios.get("/api/users/" + this.$route.params.id)
-                    .then((resp) => {
-                        this.user = resp.data
-                    })
-            },
 
             randomDelivery() {
                 let min = 15;

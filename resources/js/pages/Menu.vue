@@ -60,30 +60,35 @@
     import CartControlModal from "../components/CartControlModal.vue";
     import { updateCart } from '../store'
 
-    export default {
-        components: {
-            DishModal, CartControlModal
-        },
+export default {
+    components: {
+        DishModal, CartControlModal
+    },
+    data() {
+        return {
+            currentDish: {},
+            dishes: [],
+            cart: JSON.parse(window.localStorage.getItem('cart')),
+            pageCart: [],
+            cartTotal: 0,
+            dishToPass: undefined
+        }
+    },
 
-        data() {
-            return {
-                currentDish: {},
-                dishes: [],
-                cart: JSON.parse(window.localStorage.getItem('cart')),
-                pageCart: [],
-                cartTotal: 0,
-                dishToPass: undefined
-            }
-        },
+        watch:{
+        $route (){
+            this.fetchMenu()
+        }
+    },
 
-        methods: {
-            fetchMenu() {
-                axios.get("/api/users/" + this.$route.params.id + "/dishes")
-                    .then((resp) => {
-                        this.dishes = resp.data
-                        this.setPageCart()
-                    })
-            },
+    methods: {
+        fetchMenu() {
+            axios.get("/api/users/" + this.$route.params.id + "/dishes")
+                .then((resp) => {
+                    this.dishes = resp.data
+                    this.setPageCart()
+                })
+        },
 
             setCurrentDish(dish) {
                 this.currentDish = dish
@@ -102,7 +107,9 @@
                     cart.forEach((item, index) => {
                         if (item.id === dishId && item.qty === 1){
                             cart.splice(index, 1)
-                        } else if ( item.id === dishId ){
+                            window.localStorage.removeItem('restaurant')
+                        
+                    } else if ( item.id === dishId ){
                             item.qty--
                         }
                     });
@@ -137,7 +144,7 @@
                 })
                 this.cartTotal = total.toFixed(2)
                 if (window.localStorage.restaurant == this.$route.params.id){
-                    updateCart(this.cartTotal)
+                    updateCart(this.cartTotal, window.localStorage.restaurant)
                 }
             },
 

@@ -81,15 +81,19 @@
                 this.setCartTotal()
             },
 
-            setCartTotal() {
-                let total = 0
-                this.pageCart.forEach(dish => {
-                    total += dish.price * dish.qty
-                })
-                this.cartTotal = total.toFixed(2)
-                updateCart(this.cartTotal)
-            },
+        setCartTotal() {
+            let total = 0
+            this.pageCart.forEach(dish => {
+                total += dish.price * dish.qty
+            })
+
+            this.cartTotal = total.toFixed(2)
+            this.restaurant = window.localStorage.restaurant
+            updateCart(this.cartTotal, this.restaurant)
+            
         },
+
+    },
 
         mounted(){
             this.restaurant = window.localStorage.restaurant
@@ -103,12 +107,16 @@
             
         },
 
-        computed: {
-            returnTotal(){
-                return store.cartTotal
-            }
+    computed: {
+        returnTotal(){
+            return store.cartTotal
+        },
+
+        restaurantId(){
+            return store.restaurant
         }
-    }
+    },
+}
 </script>
 
 <style lang="scss" scoped>

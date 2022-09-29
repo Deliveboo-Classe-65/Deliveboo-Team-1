@@ -5,7 +5,7 @@
             <validation-observer ref="form" v-slot="{ errors }">
                 <form @submit.prevent="onSubmit"  novalidate>
                     <fieldset class="row" :disabled="validClient">
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="name">Nome</label>
                                 <validation-provider name="nome" :immediate="true" rules="required" v-slot="{ errors }">
@@ -14,7 +14,7 @@
                                 </validation-provider>
                             </div> 
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="cognome">Cognome</label>
                                 <validation-provider name="cognome" :immediate="true" rules="required" v-slot="{ errors }">
@@ -23,7 +23,7 @@
                                 </validation-provider>
                             </div> 
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="email">Indirizzo e-mail</label>
                                 <validation-provider name="email" :immediate="true" rules="required|email" v-slot="{ errors }">
@@ -36,7 +36,7 @@
                                 </validation-provider>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="telefono">Telefono</label>
                                 <validation-provider name="telefono" :immediate="true" rules="required|digits:10" v-slot="{ errors }">
@@ -45,7 +45,7 @@
                                 </validation-provider>
                             </div>
                         </div>
-                        <div class="col-9">
+                        <div class="col-12 col-md-8">
                             <div class="mb-3">
                                 <label for="indirizzo">Indirizzo di spedizione</label>
                                 <validation-provider name="indirizzo" :immediate="true" rules="required|min:5" v-slot="{ errors }">
@@ -54,7 +54,7 @@
                                 </validation-provider>
                             </div> 
                         </div>
-                        <div class="col-3">
+                        <div class="col-12 col-md-4">
                             <div class="mb-3">
                                 <label for="orario">Orario Consegna</label>
                                 <validation-provider name="orario" :immediate="true" rules="required" v-slot="{ errors }">

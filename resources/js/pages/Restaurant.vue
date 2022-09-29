@@ -2,20 +2,19 @@
     <main class="py-5">
         <section class="restaurant p-3">
             <div class="container">
-                <div class="row restaurant-row">
+                <div class="row restaurant-row flex-column-reverse flex-md-row">
                     <!-- Restaurant image -->
-                    <div class="col-12 col-md-4 my-3">
+                    <div class="col-12 col-md-5 my-3">
                         <img :src="'/storage/img/restaurants/' + user.image" :alt="user.name" class="w-100 restaurant-img">
                     </div>
                     <!-- Restaurant name and description -->
-                    <div class="col-12 col-md-6 my-3">
-                        <h1>{{user.name}}</h1>
+                    <div class="col-12 col-md-7 my-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h1>{{user.name}}</h1>
+                            <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-primary"><font-awesome-icon icon="fa-solid fa-arrow-left" /> Indietro</router-link>
+                        </div>
                         <span v-for="category in user.categories" :key="'category' + category.id" class="text-capitalize badge text-bg-primary text-white me-2">{{category.name}}</span>
                         <p>{{user.description}}</p>
-                    </div>
-                    <!-- Restaurant time to deliver -->
-                    <div class="col col-2 my-3 text-end">
-                        <router-link :to="{ name: 'restaurants.index' }" tag="button" class="border-none btn btn-primary"><font-awesome-icon icon="fa-solid fa-arrow-left" /> Indietro</router-link>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
     <main>
         <section class="py-5">
             <div class="container">
-                <h2 class="mb-4">Ristoranti</h2>
+                <h2 class="mb-4 text-center text-sm-start">Ristoranti</h2>
                 <div class="mb-5 mt-4 position-relative">
                     <div ref="toScroll" class="row g-1 flex-nowrap scroll">
                         <div v-for="category in categories" :key="category.id" class="col-auto">
@@ -136,6 +136,11 @@
         &:hover {
             box-shadow: 0 22px 24px 0 rgb(0 0 0 / 8%);
         }
+
+        @media only screen and (max-width: 575px) {
+            width: 90%;
+            margin: 0 auto;
+        }
     }
 
     label {
@@ -185,5 +190,9 @@
     .card-img-top {
         height: 150px;
         object-fit: cover;
+
+        @media only screen and (max-width: 575px) {
+            height: 250px;
+        }
     }
 </style>

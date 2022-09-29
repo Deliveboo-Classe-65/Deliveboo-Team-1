@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Dish;
 use App\Order;
+use App\User;
 
 class OrderController extends Controller
 {
@@ -51,7 +52,12 @@ class OrderController extends Controller
             }
         }
 
-        return response()->json($result);
+        $response = [
+            'paymentResult' => $result,
+            'restaurant' => User::find($request->restaurant)->first()->name
+        ];
+
+        return response()->json($response);
     }
 
     public function generateToken(Gateway $gateway)

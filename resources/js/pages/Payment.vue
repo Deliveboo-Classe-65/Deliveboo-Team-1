@@ -2,24 +2,33 @@
     <div class="container" style="min-height: 80vh;">
         <div v-if="cartTotal > 0 || loading" class="row justify-content-center h-100 align-items-center">
             <div v-if="paymentComplete" class="col-12 col-md-8 col-lg-6">
-                <div class="card rounded-0 fs-5 my-2 py-5">
+                <div class="card rounded-0 fs-5 my-2 p-3">
                     <div class="card-body text-center">
-                        <h3>Grazie per aver acquistato da noi</h3>
-                        <div class="py-3">
+                        <h3>Grazie per aver acquistato da {{restaurantName}}</h3>
+                        <p>Il suo ordine è andato a buon fine e sarà spedito al più presto.</p>
+                        <h5 class="pt-4">Riepilogo ordine</h5>
+                        <div class="row card-text align-items-center">
+                            <div v-for="dish in pageCart" :key="dish.id" class="row align-items-center">
+                                <div class="col-2 text-black-50 text-end">{{ dish.qty }}x</div>
+                                <div class="col-7 text-start text-muted">{{ dish.name }}</div>
+                                <div class="col-3 text-end text-muted">€ {{ (dish.price * dish.qty).toFixed(2) }}</div>
+                            </div>
+                        </div>
+                        <div class="pt-5">
                             <a href="/" class="btn btn-outline-primary">Torna alla HomePage</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div v-if="!paymentComplete && !payloadRecived && cartTotal > 0" class="col-12 col-md-8 col-lg-6">
-                <div class="card rounded-0 fs-5 my-2 py-5">
+            <div v-if="!payloadRecived && cartTotal > 0" class="col-12 col-md-8 col-lg-6">
+                <div class="card rounded-0 fs-5 my-2">
                     <div class="card-body">
                         <div class="card-title">Carrello</div>
                         <div class="row card-text align-items-center">
                             <div v-for="dish in pageCart" :key="dish.id" class="row align-items-center">
-                                <div class="col-1 text-start text-black-50">{{ dish.qty }}x</div>
-                                <div class="col-9 text-start text-muted">{{ dish.name }}</div>
-                                <div class="col-2 text-end text-muted">€ {{ (dish.price * dish.qty).toFixed(2) }}</div>
+                                <div class="col-2 text-black-50 text-end">{{ dish.qty }}x</div>
+                                <div class="col-7 text-start text-muted">{{ dish.name }}</div>
+                                <div class="col-3 text-end text-muted">€ {{ (dish.price * dish.qty).toFixed(2) }}</div>
                             </div>
                         </div>
                     </div>
@@ -71,9 +80,9 @@
 </template>
 
 <script>
-import axios from 'axios'
-import ClientForm from '../components/ClientForm.vue'
-import { updateCart } from '../store'
+    import axios from 'axios'
+    import ClientForm from '../components/ClientForm.vue'
+    import { updateCart } from '../store'
 
     export default {
         components: { ClientForm },
@@ -89,7 +98,8 @@ import { updateCart } from '../store'
                 pageCart: [],
                 cartTotal: 0,
                 clientValid: false,
-                client: undefined
+                client: undefined,
+                restaurantName: undefined
             }
         },
 
@@ -120,12 +130,13 @@ import { updateCart } from '../store'
                     ...this.client
                 })
                     .then(resp => {
-                        if (resp.data.success) {
+                        if (resp.data.paymentResult.success) {
                             window.localStorage.cart = JSON.stringify([])
                             window.localStorage.removeItem('restaurant')
                             updateCart([])
-                        this.paymentComplete = true
+                            this.paymentComplete = true
                             this.loading = false
+                            this.restaurantName = resp.data.restaurant
                         }
                     })
             },

@@ -3,21 +3,21 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="row col-lg-8 mb-5">
-                <div class="col-sm-6">
-                    <div class="card rounded-0">
-                        <div class="card-body">
+            <div class="row mb-5 gy-3">
+                <div class="col-md-6">
+                    <div class="card rounded-0 h-100">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Piatti</h5>
-                            <p>Vai al menu di controllo dei piatti</p>
+                            <p class="flex-grow-1">Vai al menu di controllo dei piatti</p>
                             <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary w-100">Vai</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="card rounded-0">
-                        <div class="card-body">
+                <div class="col-md-6">
+                    <div class="card rounded-0 h-100">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Ordini</h5>
-                            <p>Vai al sommario degli ordini</p>
+                            <p class="flex-grow-1">Vai al sommario degli ordini</p>
                             <a href="{{ route('admin.orders.index') }}" class="btn btn-primary w-100">Vai</a>
                         </div>
                     </div>
@@ -25,23 +25,23 @@
             </div>
             @isset($orders)
                 @if (!$orders->isEmpty())
-                    <h3 class="mb-3 col-lg-8">Lista ordini da preparare</h3>
+                    <h3 class="mb-3">Lista ordini da preparare</h3>
                 @endif      
                 @foreach ($orders as $order)
-                    <div class="col-lg-8">
+                    <div>
                         <div class="card rounded-0 mb-1">
                             <div class="card-body py-1">
                                 <div class="card-text py-2 mb-0 d-flex align-items-center justify-content-between">
-                                    <div class="col-md-8">{{ $order->delivery_address }}</div>
-                                    <div class="col-md-2 text-end">{{ $order->chosen_delivery_time }}</div>
-                                    <div class="col-md-1 text-center">
+                                    <div class="col-4 col-lg-8">{{ $order->delivery_address }}</div>
+                                    <div class="col-3 col-lg-2 text-end">{{ $order->chosen_delivery_time }}</div>
+                                    <div class="col-2 col-lg-1 text-center">
                                         @if ($order->sent)
                                             <i class="fs-3 text-success fa-solid fa-truck" ></i>                                       
                                         @else
                                             <i class="fs-3 text-warning fa-solid fa-clock" ></i>
                                         @endif
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-3 col-lg-1 text-end">
                                         <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target={{ '#order' . $order->id }}>Dettagli</button>
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                     <div class="mb-2 row">
                                         <div class="col">
                                             @if (!$order->sent)
-                                                <form action="{{ route('admin.set_order_sent', ['postId' => $order->id]) }}"method="post">
+                                                <form action="{{ route('admin.set_order_sent', ['postId' => $order->id, 'from' => 'admin']) }}"method="post">
                                                     @csrf
                                                     <button class="btn btn-warning">Segna come Spedito <i class="fa-solid fa-truck-arrow-right"></i></button>
                                                 </form>

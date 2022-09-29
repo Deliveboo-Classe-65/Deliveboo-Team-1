@@ -12654,6 +12654,12 @@ img {
   transition-duration: 300ms;
 }
 
+.active-sidebar-button {
+  background-color: rgba(0, 204, 187, 0.4352941176) !important;
+  border-radius: 0;
+  color: black;
+}
+
 .btn-primary {
   --bs-btn-color: white;
   --bs-btn-hover-color: white;

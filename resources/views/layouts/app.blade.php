@@ -22,7 +22,7 @@
         @stack('nameVar')
         <div id="app">
             <header>
-                <nav class="navbar navbar-expand-md">
+                <nav class="navbar navbar-expand">
                     <div class="container">
                         <div class="container-fluid justify-content-around">
                             <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
@@ -67,10 +67,10 @@
             <main class="py-4">
                 <div class="container">
                     <div class="row">
-                        <div class="col-10">@yield('content')</div>
+                        <div class="col-9">@yield('content')</div>
                         @guest 
                             @else
-                            <div class="col-2">
+                            <div class="col-3">
                                 @include('admin.components.sidebar')
                             </div>
                         @endguest

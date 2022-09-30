@@ -2,6 +2,7 @@
     <div class="modal fade" :id="'dish' + dish.id" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+                <img v-if="dish.image" :src="'/storage/img/dishes/' + dish.image" class="card-img-top" :alt="dish.name">
                 <div class="modal-body">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h4 class="modal-title fw-bold margin-custom" id="staticBackdropLabel ">{{dish.name}}</h4>

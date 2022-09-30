@@ -14,7 +14,16 @@
                                 <div class="card-body h-100 text-start pb-3">
                                     <h5 class="card-title product-name">{{ dish.name }}</h5>
                                     <p class="card-text text-muted product-description h-50">{{ dish.description.substr(0, 100) + (dish.description.length > 100 ? '...' : '') }}</p>
-                                    <p class="price">€ {{dish.price}}</p>
+                                    <div class="row">
+                                        <p class="price col">€ {{dish.price}}</p>
+                                        <div class="col text-end" v-if="dish.types">
+                                            <template v-for="type in dish.types">
+                                                <font-awesome-icon v-if="type.id === 1" icon="fa-solid fa-leaf" class="text-success" />
+                                                <font-awesome-icon v-if="type.id === 2" icon="fa-solid fa-pepper-hot" class="text-danger" />
+                                                <font-awesome-icon v-if="type.id === 3" icon="fa-solid fa-wheat-awn" class="text-warning" />
+                                            </template>
+                                        </div>
+                                    </div>
                                 </div>
                             </button>
                         </div>

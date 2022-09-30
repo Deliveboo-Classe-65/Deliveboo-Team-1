@@ -67,12 +67,13 @@
             <main class="py-4">
                 <div class="container">
                     <div class="row">
-                        <div class="col-9">@yield('content')</div>
                         @guest 
+                            <div class="col-12">@yield('content')</div>
                             @else
-                            <div class="col-3">
-                                @include('admin.components.sidebar')
-                            </div>
+                                <div class="col-9">@yield('content')</div>
+                                <div class="col-3">
+                                    @include('admin.components.sidebar')
+                                </div>
                         @endguest
                     </div>
                 </div>     

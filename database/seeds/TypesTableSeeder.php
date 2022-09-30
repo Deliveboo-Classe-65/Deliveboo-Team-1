@@ -19,9 +19,6 @@ class TypesTableSeeder extends Seeder
                 'name' => "vegetariano",
             ],
             [
-                'name' => "vegano",
-            ],
-            [
                 'name' => "piccante",
             ],
             [
@@ -35,9 +32,6 @@ class TypesTableSeeder extends Seeder
             $data = new Type();
             // Set its values, if specified
             $data->name = $type['name'];
-            if (key_exists('image', $type)) {
-                $data->image = $type['image'];
-            }
             // Save data to database
             $data->save();
         }

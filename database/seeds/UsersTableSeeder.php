@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 use App\Dish;
+use App\Type;
 
 class UsersTableSeeder extends Seeder
 {
@@ -38,7 +39,10 @@ class UsersTableSeeder extends Seeder
                     [
                         'name' => "Burrito",
                         'price' => 4.99,
-                        'description' => "Il burrito o taco de harina è una pietanza che appartiene alla cucina tex-mex e consiste in una tortilla di farina di grano riempita con carne di bovino, pollo o maiale, che è poi chiusa ottenendo una forma sottile."
+                        'description' => "Il burrito o taco de harina è una pietanza che appartiene alla cucina tex-mex e consiste in una tortilla di farina di grano riempita con carne di bovino, pollo o maiale, che è poi chiusa ottenendo una forma sottile.",
+                        'types' => [
+                            'piccante'
+                        ]
                     ],
                     [
                         'name' => "Chilaquiles",
@@ -68,12 +72,15 @@ class UsersTableSeeder extends Seeder
                     [
                         'name' => "Nuvole di drago",
                         'price' => 4.99,
-                        'description' => "Le nuvole di drago sono un tipico antipasto cinese. Sono delle patate fritte di colore bianco a base di granchio, particolarmente leggere. Generalmente sono accompagnate dalla tipica salsa agrodolce cinese"
+                        'description' => "Le nuvole di drago sono un tipico antipasto cinese. Sono delle patate fritte di colore bianco a base di granchio, particolarmente leggere. Generalmente sono accompagnate dalla tipica salsa agrodolce cinese",
                     ],
                     [
                         'name' => "Involtini primavera",
                         'price' => 4.99,
-                        'description' => "Gli involtini primavera sono un antipasto tipico cinese, molto apprezzato in Occidente. Sono dei fagottini di pasta con un ripieno di verdure, di carne o misto e in origine venivano preparati per festeggiare il Capodanno Cinese, che portava con sè anche la primavera."
+                        'description' => "Gli involtini primavera sono un antipasto tipico cinese, molto apprezzato in Occidente. Sono dei fagottini di pasta con un ripieno di verdure, di carne o misto e in origine venivano preparati per festeggiare il Capodanno Cinese, che portava con sè anche la primavera.",
+                        'types' => [
+                            'vegetariano'
+                        ]
                     ]
                 ]
             ],      
@@ -92,12 +99,18 @@ class UsersTableSeeder extends Seeder
                     [
                         'name' => "Nighiri",
                         'price' => 5.99,
-                        'description' => "8 pezzi, nigiri è una pallina ovale di riso, modellata a mano e guarnita da una fettina sottile di pesce. Solitamente si tratta di salmone, tonno, anguilla, polpo, gambero o anche di frittata."
+                        'description' => "8 pezzi, nigiri è una pallina ovale di riso, modellata a mano e guarnita da una fettina sottile di pesce. Solitamente si tratta di salmone, tonno, anguilla, polpo, gambero o anche di frittata.",
+                        'types' => [
+                            'senza glutine'
+                        ]
                     ],
                     [
                         'name' => "Hosomaki",
                         'price' => 5.99,
-                        'description' => "8 pezzi, un tipico hosomaki consiste in un rotolino di riso avvolto in alga Nori (un particolare tipo di alga, che viene essiccata e tostata). Il ripieno può essere di pesce, crostacei, frutta o verdura."
+                        'description' => "8 pezzi, un tipico hosomaki consiste in un rotolino di riso avvolto in alga Nori (un particolare tipo di alga, che viene essiccata e tostata). Il ripieno può essere di pesce, crostacei, frutta o verdura.",
+                        'types' => [
+                            'senza glutine'
+                        ]
                     ]
                 ]
             ],       
@@ -121,12 +134,18 @@ class UsersTableSeeder extends Seeder
                     [
                         'name' => "Kati Rool",
                         'price' => 5.20,
-                        'description' => "Il Kati Roll invece, originario di Calcutta è un tipico cibo da strada del tutto simile a un kebab: la ricetta consiste nell’arrotolare all’interno del pane paratha, una sorta di piadina, carne di agnello e verdure. E’ comunque possibile gustare kati con carne di pollo o accompagnarlo a una rinfrescante salsa a base di lime o limone, o ancora al chaat masala, miscela di spezie e mango in polvere."
+                        'description' => "Il Kati Roll invece, originario di Calcutta è un tipico cibo da strada del tutto simile a un kebab: la ricetta consiste nell’arrotolare all’interno del pane paratha, una sorta di piadina, carne di agnello e verdure. E’ comunque possibile gustare kati con carne di pollo o accompagnarlo a una rinfrescante salsa a base di lime o limone, o ancora al chaat masala, miscela di spezie e mango in polvere.",
+                        'types' => [
+                            'piccante'
+                        ]
                     ],
                     [
                         'name' => "Pollo Tandoori",
                         'price' => 7,70,
-                        'description' => "Il Pollo Tandoori è senza dubbio una delle tipicità che fanno parte della cucina indiana, anche se particolarmente popolare anche nella cucina del sud-est asiatico. Consiste nel marinare il pollo in una salsa di yogurt e spezie chiamata Tandoori Masala che prevede l’utilizzo di coriandolo, cumino, aglio, cannella, cardamomo, pepe di Cayenna, pepe, zenzero, chiodi di garofano e alloro per poi cuocerlo come da tradizione all’interno di particolari forni di argilla detti Tandoor da cui trae origine il nome."
+                        'description' => "Il Pollo Tandoori è senza dubbio una delle tipicità che fanno parte della cucina indiana, anche se particolarmente popolare anche nella cucina del sud-est asiatico. Consiste nel marinare il pollo in una salsa di yogurt e spezie chiamata Tandoori Masala che prevede l’utilizzo di coriandolo, cumino, aglio, cannella, cardamomo, pepe di Cayenna, pepe, zenzero, chiodi di garofano e alloro per poi cuocerlo come da tradizione all’interno di particolari forni di argilla detti Tandoor da cui trae origine il nome.",
+                        'types' => [
+                            'piccante'
+                        ]
                     ],
                 ]
             ],       
@@ -145,17 +164,26 @@ class UsersTableSeeder extends Seeder
                     [
                         'name' => "Hummus",
                         'price' => 4.20,
-                        'description' => "L'hummus è una salsa a base di pasta di ceci e pasta di semi di sesamo (tahina) aromatizzata con olio di oliva, aglio, succo di limone e paprica, semi di cumino in polvere e prezzemolo finemente tritato."
+                        'description' => "L'hummus è una salsa a base di pasta di ceci e pasta di semi di sesamo (tahina) aromatizzata con olio di oliva, aglio, succo di limone e paprica, semi di cumino in polvere e prezzemolo finemente tritato.",
+                        'types' => [
+                            'vegetariano'
+                        ]
                     ],
                     [
                         'name' => "Labneh",
                         'price' => 4.99,
-                        'description' => "Il labneh, pronunciato anche labaneh, è un tipo di yogurt di colore bianco, realizzato con latte di pecora, vacca, occasionalmente con latte di capra, tipico delle cucine del Medio Oriente."
+                        'description' => "Il labneh, pronunciato anche labaneh, è un tipo di yogurt di colore bianco, realizzato con latte di pecora, vacca, occasionalmente con latte di capra, tipico delle cucine del Medio Oriente.",
+                        'types' => [
+                            'vegetariano'
+                        ]
                     ],
                     [
                         'name' => "Manakeesh",
                         'price' => 4.99,
-                        'description' => "Lo Za'atar è una miscela di spezie originaria del Medio Oriente. Il termine arabo zaʿtar si riferisce ad alcune piante locali della famiglia delle Lamiaceae, tra le quali maggiorana, origano e timo."
+                        'description' => "Lo Za'atar è una miscela di spezie originaria del Medio Oriente. Il termine arabo zaʿtar si riferisce ad alcune piante locali della famiglia delle Lamiaceae, tra le quali maggiorana, origano e timo.",
+                        'types' => [
+                            'vegetariano'
+                        ]
                     ],
                 ]
             ],      
@@ -173,12 +201,18 @@ class UsersTableSeeder extends Seeder
                     [
                         'name' => "Margherita",
                         'price' => 4.50,
-                        'description' => "La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella, basilico fresco, sale e olio; è, assieme alla pizza marinara, la più popolare pizza italiana."
+                        'description' => "La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella, basilico fresco, sale e olio; è, assieme alla pizza marinara, la più popolare pizza italiana.",
+                        'types' => [
+                            'vegetariano'
+                        ]
                     ],
                     [
                         'name' => "Diavola",
                         'price' => 6.00,
-                        'description' => "Pomodoro, mozzarella, acciughe, cipolle, olive, olio piccante"
+                        'description' => "Pomodoro, mozzarella, acciughe, cipolle, olive, olio piccante",
+                        'types' => [
+                            'piccante'
+                        ]
                     ],
                     [
                         'name' => "Capricciosa",
@@ -207,12 +241,18 @@ class UsersTableSeeder extends Seeder
                     [
                         'name' => "Margherita",
                         'price' => 4.50,
-                        'description' => "La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella, basilico fresco, sale e olio; è, assieme alla pizza marinara, la più popolare pizza italiana."
+                        'description' => "La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella, basilico fresco, sale e olio; è, assieme alla pizza marinara, la più popolare pizza italiana.",
+                        'types' => [
+                            'vegetariano'
+                        ]
                     ],
                     [
                         'name' => "Diavola",
                         'price' => 6.00,
-                        'description' => "Pomodoro, mozzarella, acciughe, cipolle, olive, olio piccante"
+                        'description' => "Pomodoro, mozzarella, acciughe, cipolle, olive, olio piccante",
+                        'types' => [
+                            'piccante'
+                        ]
                     ],
                     [
                         'name' => "Capricciosa",
@@ -300,17 +340,26 @@ class UsersTableSeeder extends Seeder
                     [
                         'name' => "Panino Kebab",
                         'price' => 3.50,
-                        'description' => "Il kebab, in turco kebap, significa carne arrostita. È un piatto tipico della cucina turca a base di carne, diventato popolare in tutto il mondo grazie alle immigrazioni provenienti dal Medio Oriente"
+                        'description' => "Il kebab, in turco kebap, significa carne arrostita. È un piatto tipico della cucina turca a base di carne, diventato popolare in tutto il mondo grazie alle immigrazioni provenienti dal Medio Oriente",
+                        'types' => [
+                            'piccante'
+                        ]
                     ],
                     [
                         'name' => "Piadina Kebab",
                         'price' => 4.00,
-                        'description' => "Una buona piadina è sempre un’ottima idea per un pranzo veloce o da consumare fuori casa. Questa versione con kebab di pollo e verdure è particolarmente sfiziosa e particolare"
+                        'description' => "Una buona piadina è sempre un’ottima idea per un pranzo veloce o da consumare fuori casa. Questa versione con kebab di pollo e verdure è particolarmente sfiziosa e particolare",
+                        'types' => [
+                            'piccante'
+                        ]
                     ],
                     [
                         'name' => "Falafel",
                         'price' => 4.00,
-                        'description' => "I falafel sono una pietanza mediorientale costituita da polpette di legumi speziate e fritte. I più utilizzati sono le fave, i ceci e i fagioli tritati e conditi con sommacco, cipolla, aglio, cumino e coriandolo. I falafel sostituivano la carne nei giorni del digiuno dei copti egiziani. Il termine è formato da tre parole che in copto significavano letteralmente 'con tanti fagioli'."
+                        'description' => "I falafel sono una pietanza mediorientale costituita da polpette di legumi speziate e fritte. I più utilizzati sono le fave, i ceci e i fagioli tritati e conditi con sommacco, cipolla, aglio, cumino e coriandolo. I falafel sostituivano la carne nei giorni del digiuno dei copti egiziani. Il termine è formato da tre parole che in copto significavano letteralmente 'con tanti fagioli'.",
+                        'types' => [
+                            'piccante'
+                        ]
                     ],
                 ]
             ]             
@@ -360,6 +409,12 @@ class UsersTableSeeder extends Seeder
                 $newDish->visibility = 1;
                 // Save data to database
                 $newDish->save();
+                if(key_exists('types', $dish)) {
+                    foreach($dish['types'] as $type) {
+                        $dishType = Type::where('name', $type)->first();
+                        $newDish->types()->attach($dishType);
+                    }
+                }
             }
         }
     }

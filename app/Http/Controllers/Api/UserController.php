@@ -13,6 +13,9 @@ class UserController extends Controller
     public function index(Request $request) {
         // Get all users and load its categories
         $users = User::with("categories")->select("id", "name", "slug", "image")->get();
+        $users = $users->filter(function ($user) {
+            return $user->dishes->count() !== 0;
+        });
         // Get the query string
         $queryString = $request->query();
         // Check if categories is a query field

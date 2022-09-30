@@ -7,7 +7,7 @@
                 </a>
                 <div>
                     <template v-if="returnTotal > 0">
-                        <router-link  class="btn btn-secondary me-3 d-none d-sm-inline-block" tag="button" :key="$route.fullPath" :to="{ name: 'restaurant.show', params:{ id: restaurant}}">
+                        <router-link  class="btn btn-secondary me-3 d-none d-sm-inline-block" tag="button" :key="$route.fullPath" :to="{ name: 'restaurant.show', params:{ id: restaurantId}}">
                             <template>
                                 <font-awesome-icon class="me-2" icon="fa-solid fa-cart-shopping" />
                             </template>

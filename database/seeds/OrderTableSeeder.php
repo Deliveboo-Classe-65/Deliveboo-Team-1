@@ -24,7 +24,7 @@ class OrderTableSeeder extends Seeder
         $restaurants = User::all();
 
         foreach ($restaurants as $restaurant){
-            for ($i = 0; $i < 50; $i++){
+            for ($i = 0; $i < 200; $i++){
                 $newOrder = new Order();
                 $newOrder->user_id = $restaurant->id;
                 $newOrder->client_name = $names[array_rand($names)];

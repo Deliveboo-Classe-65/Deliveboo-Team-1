@@ -38,7 +38,7 @@
                                         <a class="nav-link btn btn-outline-primary" href="/admin/orders">Lista ordini</a>
                                         <a class="nav-link btn btn-outline-primary" href="/admin/chart">Grafico fatturato</a>
                                     </div>
-                                    <a class="nav-link btn btn-danger" href="/logout">Logout</a>
+                                    <a class="nav-link btn btn-danger" href="#" @click.prevent="logout" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">Logout</a>
                                 </div>
                             </li>
                         </ul>
@@ -61,7 +61,7 @@
                 pageCart: undefined,
                 cartTotal: undefined,
                 dishes: undefined,
-                restaurant: undefined
+                restaurant: undefined,
             }
         },
 
@@ -81,19 +81,22 @@
                 this.setCartTotal()
             },
 
-        setCartTotal() {
-            let total = 0
-            this.pageCart.forEach(dish => {
-                total += dish.price * dish.qty
-            })
+            setCartTotal() {
+                let total = 0
+                this.pageCart.forEach(dish => {
+                    total += dish.price * dish.qty
+                })
 
-            this.cartTotal = total.toFixed(2)
-            this.restaurant = window.localStorage.restaurant
-            updateCart(this.cartTotal, this.restaurant)
-            
+                this.cartTotal = total.toFixed(2)
+                this.restaurant = window.localStorage.restaurant
+                updateCart(this.cartTotal, this.restaurant)
+                
+            },
+            logout() {
+                axios.post('/logout')
+                this.isLogged = false;
+            },
         },
-
-    },
 
         mounted(){
             this.restaurant = window.localStorage.restaurant

@@ -1,6 +1,7 @@
 @extends('admin.home')
 
 @section('content')
+    <h1>Grafico fatturato</h1>
     <script src="{{ asset('chart.js/chart.js') }}"></script>
     <canvas id="myChart" width="500" height="200" class="pb-5"></canvas>
     <canvas id="ordersChart" width="500" height="200"></canvas>
@@ -68,6 +69,13 @@
                     borderWidth: 2
                     }
                 ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
         })
     </script>

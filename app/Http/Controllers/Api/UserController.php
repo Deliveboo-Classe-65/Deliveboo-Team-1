@@ -14,7 +14,15 @@ class UserController extends Controller
         // Get all users and load its categories
         $users = User::with("categories")->select("id", "name", "slug", "image")->get();
         $users = $users->filter(function ($user) {
-            return $user->dishes->count() !== 0;
+            if($user->dishes->count() === 0) {
+                return false;
+            }
+            foreach($user->dishes as $dish) {
+                if($dish->visibility) {
+                    return true;
+                }
+            }
+            return false;
         });
         // Get the query string
         $queryString = $request->query();

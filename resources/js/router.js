@@ -18,15 +18,6 @@ const routes = [
     { path: "/restaurant/:id", component: Restaurant, name: "restaurant.show" },
     { path: "/checkout", component: Payment, name: "checkout" }
 
-
-    // { path: "/restaurants", component: Home, name: "restaurants.index" },
-
-
-
-
-
-
-
 ]
 
 export default new VueRouter({

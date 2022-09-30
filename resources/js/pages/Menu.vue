@@ -116,7 +116,9 @@ export default {
                     cart.forEach((item, index) => {
                         if (item.id === dishId && item.qty === 1){
                             cart.splice(index, 1)
-                            window.localStorage.removeItem('restaurant')
+                            if(this.pageCart.length === 1) {
+                                window.localStorage.removeItem('restaurant')
+                            }
                         
                     } else if ( item.id === dishId ){
                             item.qty--

@@ -166,6 +166,6 @@ class DishController extends Controller
         $dish = Dish::findOrFail($id);
         $dish->delete();
 
-        return redirect()->route("admin.dishes.index");
+        return redirect()->route("admin.dishes.index")->with(['success' => 'true']);
     }
 }

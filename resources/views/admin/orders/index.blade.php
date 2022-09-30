@@ -1,6 +1,7 @@
 @extends('admin.home')
 
 @section('content')
+    <h1 class="text-center">Lista ordini</h1>
     <div class="row justify-content-center">
         @foreach ($orders as $order)
             <div class="col-lg-8">

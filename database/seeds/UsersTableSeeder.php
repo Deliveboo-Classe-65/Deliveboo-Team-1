@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'diablo@gmail.com',
                 'password' => 'diablo123',
                 'name' => 'Diablo',
-                'description' => 'Al Diablo potrai gustare i veri sapori e colori del Messico in piatti che riprendono le ricette tradizionali messicane con uno stile contemporaneo',
+                'description' => 'Al Diablo potrai gustare i veri sapori e colori del Messico in piatti che riprendono le ricette tradizionali messicane con uno stile contemporaneo.',
                 'address' => 'Via della Liberazione 42',
                 'image' => 'diablo.png',
                 'vat_number' => '11101010100',
@@ -85,12 +85,12 @@ class UsersTableSeeder extends Seeder
                 ]
             ],      
             [
-                'email' => 'nikkosushi@gmail.com',
-                'password' => 'nikkosushi123',
-                'name' => 'Nikko Sushi',
+                'email' => 'sushinikko@gmail.com',
+                'password' => 'sushinikko123',
+                'name' => 'Sushi Nikko',
                 'description' => 'Ristorante giapponese a Roma che offre piatti cucinati da chef esperti della cucina e della tradizione giapponese, come il sushi, sashimi e noodles. ',
                 'address' => 'Via Ognissanti',
-                'image' => 'nikko_sushi.jpg',
+                'image' => 'sushi_nikko.jpg',
                 'vat_number' => '22202020202',
                 'categories' => [
                     'giapponese'
@@ -188,11 +188,12 @@ class UsersTableSeeder extends Seeder
                 ]
             ],      
             [
-                'email' => 'ilsipario@gmail.com',
-                'password' => 'ilsipario123',
-                'name' => 'Il Sipario',
+                'email' => 'granovivo@gmail.com',
+                'password' => 'granovivo123',
+                'name' => 'Pizzeria Grano Vivo',
+                'description' => 'Grano Vivo è gusto, ricerca e innovazione. Anche a casa tua.',
                 'address' => 'Via Firenze 66',
-                'image' => 'il_sipario.jpg',
+                'image' => 'grano_vivo.jpg',
                 'vat_number' => '44404040404',
                 'categories' => [
                     'pizza', 'italiano'
@@ -231,6 +232,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'runnerpizza@gmail.com',
                 'password' => 'runnerpizza123',
                 'name' => 'Runner Pizza',
+                'description' => 'La Pizza Calda a Casa Tua in 27 minuti',
                 'address' => 'Via dei Casini 60/A',
                 'image' => 'runner_pizza.png',
                 'vat_number' => '66606060606',
@@ -271,7 +273,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'mcdonalds@gmail.com',
                 'password' => 'mcdonalds123',
                 'name' => 'McDonalds',
-                'description' => "La McDonald's Corporation è una catena di ristoranti di fast food statunitense",
+                'description' => "La McDonald's Corporation è una catena di ristoranti di fast food statunitense.",
                 'address' => 'Via Cavour 116',
                 'image' => 'mcdonalds.jpg',
                 'vat_number' => '55505050505',
@@ -360,6 +362,35 @@ class UsersTableSeeder extends Seeder
                         'types' => [
                             'piccante'
                         ]
+                    ],
+                ]
+                ],             
+            [
+                'email' => 'gangnam@gmail.com',
+                'password' => 'gangnam123',
+                'name' => 'Gangnam',
+                'description' => "Il primo ristorante coreano a Roma dove poter gustare i migliori piatti della cucina coreana.",
+                'address' => 'Via Bistrozzi 87',
+                'image' => 'gangnam.jpg',
+                'vat_number' => '99989090909',
+                'categories' => [
+                    'coreano'
+                ],
+                'dishes' => [
+                    [
+                        'name' => "Banchan",
+                        'price' => 15.00,
+                        'description' => "Una lunga serie di antipasti pensati per essere condivisi: si va da un minimo di 5 ad un massimo di 20, ma ogni ristorante ne serve quanti vuole, includendo sempre una ciotola di zuppa o di riso al vapore.",
+                    ],
+                    [
+                        'name' => "Gaebul",
+                        'price' => 20.00,
+                        'description' => "Chiamato anche “penis fish”, il Gaebul è un pesce tipico della zona costiera di Busan. Lo si serve crudo e marinato oppure grigliato. Decisamente uno dei piatti meno appetibili della cucina coreana, almeno per noi occidentali.",
+                    ],
+                    [
+                        'name' => "Pajeon",
+                        'price' => 4.00,
+                        'description' => "Il pancake coreano, che i coreani chiamano anche pizza, è un piatto da cui non si può prescindere. La versione più gettonata è quella con cipolle e pesce ma si trova anche il Pajeon di kimchi. Una via di mezzo tra un pancake e una frittata, il Pajeon è davvero piacevole da mangiare dopo un’escursione, accompagnato dai tanti stuzzichini tipici della cucina coreana e che vengono solitamente serviti come antipasti conviviali.",
                     ],
                 ]
             ]             

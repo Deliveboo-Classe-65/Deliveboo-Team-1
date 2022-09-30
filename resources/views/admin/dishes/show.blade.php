@@ -13,10 +13,8 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
+              <h5>Sei sicuro di voler eliminare il piatto definitivamente?</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p class="text-center fw-semibold">Sei sicuro di voler eliminare il piatto definitivamente?</p>
             </div>
             <form action="{{ route('admin.dishes.destroy', $dish->id) }}" method="post">
               @csrf
@@ -31,13 +29,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        @if ($dish->image)
+      @if ($dish->image)
+        <div class="col-4">
           <img class="img-thumbnail" src="{{ asset('storage/img/dishes/' . $dish->image) }}">
-        @endif
-      </div>
-      <div class="col-8">
-        <h3 class="mb-4">{{ $dish->name }}{!! $dish->visibility ? '<i class="fa-solid fa-eye text-success"></i>' : '<i class="fa-solid fa-eye-slash text-danger"></i>' !!}</h3>
+        </div>
+      @endif
+      <div class="{{$dish->image ? 'col-8' : 'col-12'}}">
+        <h3 class="mb-4">{{ $dish->name }} {!! $dish->visibility ? '<i class="fa-solid fa-eye text-success"></i>' : '<i class="fa-solid fa-eye-slash text-danger"></i>' !!}</h3>
         <h5>Descrizione:</h5>
         <p>{{ $dish->description }}</p>
         @if ($dish->types->count() !== 0)

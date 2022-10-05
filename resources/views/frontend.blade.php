@@ -4,8 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Deliveboo</title>
-        <link rel="stylesheet" href="{{ asset("css/app.css") }}">
-        <script src="{{ asset("js/frontend.js") }}" defer></script>
+        <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
+        <script src="{{ asset('js/frontend.js') }}" defer></script>
+        <script>
+            const isLogged = {!! Auth::user() ? 'true' : 'false' !!}
+        </script>
     </head>
     <body>
         <div id="app"></div>

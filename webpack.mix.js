@@ -13,4 +13,10 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/frontend.js', 'public/js')
     .js('resources/js/backend.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .js('resources/js/backend/dishesvalidation.js', 'public/js/backend')
+    .js('resources/js/backend/registervalidation.js', 'public/js/backend')
+    .js('resources/js/store.js', 'public/js')
+    .sass('resources/sass/frontend.scss', 'public/css')
+    .sass('resources/sass/backend.scss', 'public/css')
+    .copy('node_modules/chart.js/dist/chart.js', 'public/chart.js/chart.js')
+    

@@ -6,6 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Category;
+use App\Dish;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'slug', 'description', 'address', 'image', 'vat_number'
     ];
 
     /**
@@ -36,4 +39,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Category model relationship
+    public function categories() {
+        return $this->belongsToMany('App\Category');
+    }
+
+    // Dish model relationship
+    public function dishes() {
+        return $this->hasMany('App\Dish');
+    }
+
+    // Order model relationship
+    public function orders() {
+        return $this->hasMany('App\Order');
+    }
 }

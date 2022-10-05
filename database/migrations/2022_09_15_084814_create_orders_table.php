@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string("client_email");
             $table->string("client_phone", 10);
             $table->decimal("total", 6, 2);
-            $table->timestamp("sent");
+            $table->timestamp("sent")->nullable();
             $table->timestamps();
         });
     }

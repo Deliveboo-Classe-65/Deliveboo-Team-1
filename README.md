@@ -16,7 +16,11 @@ This part was created using Laravel and the LaravelUI package. The user can also
 
 ### Contributors
 <a href="https://github.com/constantinandrei">Constantin Andrei</a>
+
 <a href="https://github.com/bronzo97">Danilo Bronzo</a>
+
 <a href="https://github.com/NickAstley">Andrea Nicastro</a>
+
 <a href="https://github.com/EnricoPiombini">Enrico Piombini</a>
+
 <a href="https://github.com/FernandoSilvera">Fernando Silvera</a>

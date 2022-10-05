@@ -1,7 +1,8 @@
+# Deliveboo
 ## About the project
 
 As a team of 5, we had the opportunity to test everything we learnt during the Full Stack Web Development course by <a href="https://boolean.careers/">Boolean</a>.
-Our task consisted in mimicking some of the functionalities of <a href="https://deliveroo.it/it/">deliveroo.it</a>
+Our task consisted in mimicking some of the functionalities of 
 
 ##  Front End
 
@@ -12,3 +13,10 @@ An unregistered user can filter by categories through the various restaurants, w
 
 A restaurant owner can register and have the opportunity to manage the restaurant dishes and the clients orders. 
 This part was created using Laravel and the LaravelUI package. The user can also find a graph summarizing the orders trend through the year, which uses the Chart.js library.
+
+### Contributors
+<a href="https://github.com/constantinandrei">Constantin Andrei</a>
+<a href="https://github.com/bronzo97">Danilo Bronzo</a>
+<a href="https://github.com/NickAstley">Andrea Nicastro</a>
+<a href="https://github.com/EnricoPiombini">Enrico Piombini</a>
+<a href="https://github.com/FernandoSilvera">Fernando Silvera</a>
